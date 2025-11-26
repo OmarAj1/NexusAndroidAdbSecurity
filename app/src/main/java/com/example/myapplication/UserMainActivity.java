@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -9,6 +10,10 @@ import androidx.core.view.WindowInsetsCompat;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -21,37 +26,40 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import android.graphics.Color;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.File;
+// --- BOUNCY CASTLE IMPORTS (Standard, works on Android) ---
+import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.cert.X509CertificateHolder;
+import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
+import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.operator.ContentSigner;
+import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
+
+import java.math.BigInteger;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.SecureRandom;
+import java.security.Security;
+import java.security.cert.Certificate;
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.net.Socket;
 
-// --- CORRECT IMPORTS FOR LIBADB-ANDROID ---
-// Even if these show as RED in the editor, if the Build says "Successful",
-// the app WILL run. This library uses the 'com.tananaev' package name.
-import com.tananaev.adblib.AdbConnection;
-import com.tananaev.adblib.AdbCrypto;
-import com.tananaev.adblib.AdbStream;
-import com.tananaev.adblib.AdbBase64;
-
-//import com.github.muntashirakon.adb;
+import io.github.muntashirakon.adb.AbsAdbConnectionManager;
+import io.github.muntashirakon.adb.AdbStream;
 
 public class UserMainActivity extends AppCompatActivity {
-    // ... (Rest of your code remains the same)
 
     private WebView webView;
     private ProgressBar loader;
-
-    // Active Connection
-    private static AdbConnection activeConnection = null;
-    private static AdbCrypto adbCrypto = null;
-
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private static MyAdbManager adbManager;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -79,8 +87,7 @@ public class UserMainActivity extends AppCompatActivity {
         webSettings.setAllowFileAccess(true);
         webView.setBackgroundColor(0x00000000);
 
-        // Load Keys (Generate if missing)
-        initAdbKeys();
+        initAdbManager();
 
         webView.addJavascriptInterface(new WebAppInterface(this), "AndroidNative");
 
@@ -96,34 +103,72 @@ public class UserMainActivity extends AppCompatActivity {
         webView.loadUrl("file:///android_asset/index.html");
     }
 
-    private void initAdbKeys() {
+    private void initAdbManager() {
         executor.execute(() -> {
             try {
-                File keyFile = new File(getFilesDir(), "adbkey");
-                File pubKeyFile = new File(getFilesDir(), "adbkey.pub");
+                // Ensure Bouncy Castle provider is registered
+                Security.removeProvider("BC");
+                Security.addProvider(new BouncyCastleProvider());
 
-                if (!keyFile.exists() || !pubKeyFile.exists()) {
-                    // Generate new keys
-                    adbCrypto = AdbCrypto.generateAdbKeyPair(new AdbBase64() {
-                        @Override
-                        public String encodeToString(byte[] data) {
-                            return android.util.Base64.encodeToString(data, android.util.Base64.NO_WRAP);
-                        }
-                    });
-                    adbCrypto.saveAdbKeyPair(keyFile, pubKeyFile);
-                } else {
-                    // Load existing keys
-                    adbCrypto = AdbCrypto.loadAdbKeyPair(new AdbBase64() {
-                        @Override
-                        public String encodeToString(byte[] data) {
-                            return android.util.Base64.encodeToString(data, android.util.Base64.NO_WRAP);
-                        }
-                    }, keyFile, pubKeyFile);
-                }
+                adbManager = new MyAdbManager();
             } catch (Exception e) {
-                Log.e("NEXUS", "Key Init Failed", e);
+                Log.e("NEXUS", "Failed to init ADB Manager", e);
             }
         });
+    }
+
+    // --- IMPLEMENTATION USING BOUNCY CASTLE ---
+    public static class MyAdbManager extends AbsAdbConnectionManager {
+        private PrivateKey mPrivateKey;
+        private Certificate mCertificate;
+
+        public MyAdbManager() throws Exception {
+            setApi(Build.VERSION.SDK_INT);
+            generateKeys();
+        }
+
+        private void generateKeys() throws Exception {
+            // 1. Generate RSA Key Pair
+            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+            keyGen.initialize(2048, new SecureRandom());
+            KeyPair pair = keyGen.generateKeyPair();
+
+            mPrivateKey = pair.getPrivate();
+            PublicKey publicKey = pair.getPublic();
+
+            // 2. Generate Self-Signed Certificate using Bouncy Castle
+            X500Name issuer = new X500Name("CN=NexusADB");
+            BigInteger serial = BigInteger.valueOf(System.currentTimeMillis());
+            Date notBefore = new Date();
+            Date notAfter = new Date(System.currentTimeMillis() + 1000L * 3600 * 24 * 365); // 1 Year validity
+            X500Name subject = new X500Name("CN=NexusADB");
+
+            JcaX509v3CertificateBuilder certBuilder = new JcaX509v3CertificateBuilder(
+                    issuer, serial, notBefore, notAfter, subject, publicKey
+            );
+
+            ContentSigner signer = new JcaContentSignerBuilder("SHA256WithRSA")
+                    .setProvider("BC")
+                    .build(mPrivateKey);
+
+            X509CertificateHolder certHolder = certBuilder.build(signer);
+
+            mCertificate = new JcaX509CertificateConverter()
+                    .setProvider("BC")
+                    .getCertificate(certHolder);
+        }
+
+        @NonNull
+        @Override
+        protected PrivateKey getPrivateKey() { return mPrivateKey; }
+
+        @NonNull
+        @Override
+        protected Certificate getCertificate() { return mCertificate; }
+
+        @NonNull
+        @Override
+        protected String getDeviceName() { return "NexusController"; }
     }
 
     public class WebAppInterface {
@@ -132,7 +177,7 @@ public class UserMainActivity extends AppCompatActivity {
         WebAppInterface(Context c) { mContext = c; }
 
         @JavascriptInterface
-        public String getNativeCoreVersion() { return "3.1.0-LIBADB"; }
+        public String getNativeCoreVersion() { return "3.1.0-BOUNCY"; }
 
         @JavascriptInterface
         public void hapticFeedback(String type) {
@@ -146,30 +191,19 @@ public class UserMainActivity extends AppCompatActivity {
         }
 
         @JavascriptInterface
-        public void shareText(String title, String content) {
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("text/plain");
-            intent.putExtra(Intent.EXTRA_TEXT, content);
-            mContext.startActivity(Intent.createChooser(intent, title));
-        }
-
-        @JavascriptInterface
         public void pairAdb(String ip, String portStr, String code) {
             executor.execute(() -> {
+                if (adbManager == null) {
+                    runOnUiThread(() -> showToast("Initializing Core..."));
+                    return;
+                }
                 try {
                     int port = Integer.parseInt(portStr);
-                    Log.d("NEXUS", "Pairing " + ip + ":" + port);
-
-                    // Note: Pairing logic differs by library version.
-                    // For simple connection, we rely on the keys we generated.
-                    // This simplified block just opens a socket to test connectivity.
-                    Socket socket = new Socket(ip, port);
-                    socket.close();
-
-                    runOnUiThread(() -> showToast("Pairing Signal Sent"));
+                    boolean success = adbManager.pair(ip, port, code);
+                    runOnUiThread(() -> showToast(success ? "Pairing Success!" : "Pairing Failed"));
                 } catch (Exception e) {
-                    Log.e("NEXUS", "Pairing Failed", e);
-                    runOnUiThread(() -> showToast("Pairing Failed: " + e.getMessage()));
+                    Log.e("NEXUS", "Pairing Error", e);
+                    runOnUiThread(() -> showToast("Error: " + e.getMessage()));
                 }
             });
         }
@@ -177,24 +211,21 @@ public class UserMainActivity extends AppCompatActivity {
         @JavascriptInterface
         public boolean connectAdb(String ip, String portStr) {
             executor.execute(() -> {
+                if (adbManager == null) return;
                 try {
                     int port = Integer.parseInt(portStr);
-                    if (activeConnection != null) activeConnection.close();
-
-                    Socket socket = new Socket(ip, port);
-                    // Create connection with our keys
-                    activeConnection = AdbConnection.create(socket, adbCrypto);
-
-                    // Connect triggers the handshake
-                    activeConnection.connect();
-
-                    runOnUiThread(() -> {
-                        showToast("Connected via LibADB!");
-                        getInstalledPackages();
-                    });
+                    boolean connected = adbManager.connect(ip, port);
+                    if (connected) {
+                        runOnUiThread(() -> {
+                            showToast("Connected to ADB!");
+                            getInstalledPackages();
+                        });
+                    } else {
+                        runOnUiThread(() -> showToast("Connection Refused"));
+                    }
                 } catch (Exception e) {
-                    Log.e("NEXUS", "Connect Failed", e);
-                    runOnUiThread(() -> showToast("Connection Failed: " + e.getMessage()));
+                    Log.e("NEXUS", "Connect Error", e);
+                    runOnUiThread(() -> showToast("Connect Error: " + e.getMessage()));
                 }
             });
             return true;
@@ -203,38 +234,24 @@ public class UserMainActivity extends AppCompatActivity {
         @JavascriptInterface
         public void getInstalledPackages() {
             executor.execute(() -> {
-                if (activeConnection == null) return;
                 try {
-                    // Open shell stream
-                    AdbStream stream = activeConnection.open("shell:pm list packages -3");
-
-                    StringBuilder output = new StringBuilder();
-                    while (!stream.isClosed()) {
-                        byte[] data = stream.read();
-                        if (data == null) break;
-                        output.append(new String(data));
-                    }
-
-                    String[] lines = output.toString().split("\n");
+                    PackageManager pm = getPackageManager();
+                    java.util.List<PackageInfo> packages = pm.getInstalledPackages(PackageManager.GET_PERMISSIONS);
                     JSONArray jsonArray = new JSONArray();
-                    for (String line : lines) {
-                        String pkg = line.replace("package:", "").trim();
-                        if (!pkg.isEmpty()) {
-                            JSONObject obj = new JSONObject();
-                            obj.put("name", pkg);
-                            obj.put("pkg", pkg);
-                            obj.put("category", "User");
-                            obj.put("risk", "safe");
-                            obj.put("permissions", new JSONArray());
-                            jsonArray.put(obj);
-                        }
+                    for (PackageInfo info : packages) {
+                        boolean isSystem = (info.applicationInfo.flags & android.content.pm.ApplicationInfo.FLAG_SYSTEM) != 0;
+                        JSONObject obj = new JSONObject();
+                        obj.put("name", info.applicationInfo.loadLabel(pm).toString());
+                        obj.put("pkg", info.packageName);
+                        obj.put("category", isSystem ? "System" : "User");
+                        obj.put("risk", "safe");
+                        obj.put("permissions", new JSONArray());
+                        jsonArray.put(obj);
                     }
-
                     String js = "if(window.receiveAppList) { window.receiveAppList('" + jsonArray.toString().replace("'", "\\'") + "'); }";
                     runOnUiThread(() -> webView.evaluateJavascript(js, null));
-
                 } catch (Exception e) {
-                    Log.e("NEXUS", "Shell Error", e);
+                    Log.e("NEXUS", "List Error", e);
                 }
             });
         }
@@ -242,9 +259,9 @@ public class UserMainActivity extends AppCompatActivity {
         @JavascriptInterface
         public void revokeInternet(String pkg) {
             executor.execute(() -> {
-                if (activeConnection == null) return;
+                if (adbManager == null) return;
                 try {
-                    activeConnection.open("shell:cmd appops set " + pkg + " INTERNET deny");
+                    adbManager.openStream("shell:cmd appops set " + pkg + " INTERNET deny");
                     runOnUiThread(() -> showToast("Revoked Net: " + pkg));
                 } catch (Exception e) {}
             });

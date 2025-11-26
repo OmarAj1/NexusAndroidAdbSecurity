@@ -312,17 +312,21 @@ export default function App() {
   const [coreVersion, setCoreVersion] = useState("Loading...");
 
   // --- Listen for Native Events ---
+  // ... inside App component
   useEffect(() => {
      (window as any).receiveAppList = (jsonString: string) => {
          try {
            const receivedApps = JSON.parse(jsonString);
            console.log("Apps received from Java:", receivedApps);
-           // To update the UI with real apps, you would call setApps(receivedApps);
+
+           // --- FIX: Update the state with the real data ---
+           setApps(receivedApps);
+           // ------------------------------------------------
+
          } catch(e) {
              console.error("Failed to parse app list from Java", e);
          }
      };
-     // Set Core Version on mount
      setCoreVersion(getCoreVersion());
   }, []);
 

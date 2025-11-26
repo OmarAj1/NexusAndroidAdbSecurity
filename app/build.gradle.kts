@@ -39,6 +39,13 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    packaging {
+        resources {
+            // This excludes the specific duplicate files causing the crash
+            excludes += "org/bouncycastle/x509/CertPathReviewerMessages_de.properties"
+            excludes += "org/bouncycastle/x509/CertPathReviewerMessages.properties"
+        }
+    }
 }
 
 dependencies {
@@ -46,8 +53,15 @@ dependencies {
     implementation(libs.material)
     implementation(libs.constraintlayout)
 
-    // Add the AdbLib dependency here
-    implementation(libs.adblib)
+    // --- ADB Dependencies ---
+
+    // --- ADB & Security Dependencies ---
+    implementation(libs.libadb.android)
+    implementation("org.conscrypt:conscrypt-android:2.5.3")
+
+    // --- UPDATE THIS LINE ---
+    // Changed from 'jdk15on:1.70' to 'jdk15to18:1.81' to match your project's other libs
+    implementation("org.bouncycastle:bcpkix-jdk15to18:1.81")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
