@@ -1,0 +1,26 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/browserslist/README.md</file>
+  <line>43</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/browserslist/README.md" />
+  <problem_class id="HtmlUnknownTarget" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Unresolved file in a link</problem_class>
+  <description>Cannot resolve directory 'img'</description>
+  <highlighted_element>img</highlighted_element>
+  <language>HTML</language>
+  <offset>13</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/browserslist/README.md</file>
+  <line>43</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/browserslist/README.md" />
+  <problem_class id="HtmlUnknownTarget" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Unresolved file in a link</problem_class>
+  <description>Cannot resolve file 'screenshot.webp'</description>
+  <highlighted_element>screenshot.webp</highlighted_element>
+  <language>HTML</language>
+  <offset>17</offset>
+  <length>15</length>
+</problem>
+</problems>

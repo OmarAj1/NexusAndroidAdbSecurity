@@ -1,0 +1,28 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml</file>
+  <line>8</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+  <problem_class id="AndroidLintOverdraw" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Overdraw: Painting regions more than once</problem_class>
+  <hints />
+  <description>&lt;html&gt;Possible overdraw: Root element paints background &lt;code&gt;#020617&lt;/code&gt; with a theme that also paints a background (inferred theme is &lt;code&gt;@style/Theme.MyApplication&lt;/code&gt;)&lt;/html&gt;</description>
+  <highlighted_element>android:background=&quot;#020617&quot;</highlighted_element>
+  <language>XML</language>
+  <offset>4</offset>
+  <length>28</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/res/layout-land/activity_main.xml</file>
+  <line>8</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/res/layout-land/activity_main.xml" />
+  <problem_class id="AndroidLintOverdraw" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Overdraw: Painting regions more than once</problem_class>
+  <hints />
+  <description>&lt;html&gt;Possible overdraw: Root element paints background &lt;code&gt;#020617&lt;/code&gt; with a theme that also paints a background (inferred theme is &lt;code&gt;@style/Theme.MyApplication&lt;/code&gt;)&lt;/html&gt;</description>
+  <highlighted_element>android:background=&quot;#020617&quot;</highlighted_element>
+  <language>XML</language>
+  <offset>4</offset>
+  <length>28</length>
+</problem>
+</problems>

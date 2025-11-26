@@ -1,0 +1,158 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/@webassemblyjs/floating-point-hex-parser/README.md</file>
+  <line>23</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/@webassemblyjs/floating-point-hex-parser/README.md" />
+  <problem_class id="MarkdownIncorrectlyNumberedListItem" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">Incorrectly numbered list item</problem_class>
+  <description>Item is not correctly numbered. Expected item number 2, but got 1.</description>
+  <highlighted_element>1.</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/@webassemblyjs/floating-point-hex-parser/README.md</file>
+  <line>24</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/@webassemblyjs/floating-point-hex-parser/README.md" />
+  <problem_class id="MarkdownIncorrectlyNumberedListItem" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">Incorrectly numbered list item</problem_class>
+  <description>Item is not correctly numbered. Expected item number 3, but got 1.</description>
+  <highlighted_element>1.</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv-formats/README.md</file>
+  <line>99</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv-formats/README.md" />
+  <problem_class id="MarkdownIncorrectlyNumberedListItem" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">Incorrectly numbered list item</problem_class>
+  <description>Item is not correctly numbered. Expected item number 1, but got 2.</description>
+  <highlighted_element>2.</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/regenerate-unicode-properties/README.md</file>
+  <line>54</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/regenerate-unicode-properties/README.md" />
+  <problem_class id="MarkdownIncorrectlyNumberedListItem" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">Incorrectly numbered list item</problem_class>
+  <description>Item is not correctly numbered. Expected item number 2, but got 1.</description>
+  <highlighted_element>1.</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/regexpu-core/README.md</file>
+  <line>207</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/regexpu-core/README.md" />
+  <problem_class id="MarkdownIncorrectlyNumberedListItem" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">Incorrectly numbered list item</problem_class>
+  <description>Item is not correctly numbered. Expected item number 2, but got 1.</description>
+  <highlighted_element>1.</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/regexpu-core/README.md</file>
+  <line>215</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/regexpu-core/README.md" />
+  <problem_class id="MarkdownIncorrectlyNumberedListItem" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">Incorrectly numbered list item</problem_class>
+  <description>Item is not correctly numbered. Expected item number 3, but got 1.</description>
+  <highlighted_element>1.</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/unicode-canonical-property-names-ecmascript/README.md</file>
+  <line>42</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/unicode-canonical-property-names-ecmascript/README.md" />
+  <problem_class id="MarkdownIncorrectlyNumberedListItem" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">Incorrectly numbered list item</problem_class>
+  <description>Item is not correctly numbered. Expected item number 2, but got 1.</description>
+  <highlighted_element>1.</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/unicode-match-property-ecmascript/README.md</file>
+  <line>53</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/unicode-match-property-ecmascript/README.md" />
+  <problem_class id="MarkdownIncorrectlyNumberedListItem" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">Incorrectly numbered list item</problem_class>
+  <description>Item is not correctly numbered. Expected item number 2, but got 1.</description>
+  <highlighted_element>1.</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/unicode-match-property-value-ecmascript/README.md</file>
+  <line>56</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/unicode-match-property-value-ecmascript/README.md" />
+  <problem_class id="MarkdownIncorrectlyNumberedListItem" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">Incorrectly numbered list item</problem_class>
+  <description>Item is not correctly numbered. Expected item number 2, but got 1.</description>
+  <highlighted_element>1.</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/unicode-property-aliases-ecmascript/README.md</file>
+  <line>44</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/unicode-property-aliases-ecmascript/README.md" />
+  <problem_class id="MarkdownIncorrectlyNumberedListItem" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">Incorrectly numbered list item</problem_class>
+  <description>Item is not correctly numbered. Expected item number 2, but got 1.</description>
+  <highlighted_element>1.</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-merge/README.md</file>
+  <line>270</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-merge/README.md" />
+  <problem_class id="MarkdownIncorrectlyNumberedListItem" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">Incorrectly numbered list item</problem_class>
+  <description>Item is not correctly numbered. Expected item number 2, but got 1.</description>
+  <highlighted_element>1.</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-merge/README.md</file>
+  <line>271</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-merge/README.md" />
+  <problem_class id="MarkdownIncorrectlyNumberedListItem" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">Incorrectly numbered list item</problem_class>
+  <description>Item is not correctly numbered. Expected item number 3, but got 1.</description>
+  <highlighted_element>1.</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-merge/README.md</file>
+  <line>272</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-merge/README.md" />
+  <problem_class id="MarkdownIncorrectlyNumberedListItem" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">Incorrectly numbered list item</problem_class>
+  <description>Item is not correctly numbered. Expected item number 4, but got 1.</description>
+  <highlighted_element>1.</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+</problems>

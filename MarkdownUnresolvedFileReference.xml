@@ -1,0 +1,2618 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/@xtuc/long/README.md</file>
+  <line>241</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/@xtuc/long/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'wasm.wat'</description>
+  <highlighted_element>wasm.wat</highlighted_element>
+  <language>Markdown</language>
+  <offset>129</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/@xtuc/long/README.md</file>
+  <line>253</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/@xtuc/long/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'tests'</description>
+  <highlighted_element>tests</highlighted_element>
+  <language>Markdown</language>
+  <offset>22</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/README.md</file>
+  <line>31</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'CONTRIBUTING.md'</description>
+  <highlighted_element>CONTRIBUTING.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>42</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/README.md</file>
+  <line>191</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'CODE_OF_CONDUCT.md'</description>
+  <highlighted_element>CODE_OF_CONDUCT.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>49</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/babel-plugin-polyfill-corejs3/README.md</file>
+  <line>32</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/babel-plugin-polyfill-corejs3/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'docs'</description>
+  <highlighted_element>docs</highlighted_element>
+  <language>Markdown</language>
+  <offset>17</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/babel-plugin-polyfill-corejs3/README.md</file>
+  <line>32</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/babel-plugin-polyfill-corejs3/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'usage.md'</description>
+  <highlighted_element>usage.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>22</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/baseline-browser-mapping/README.md</file>
+  <line>406</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/baseline-browser-mapping/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'src'</description>
+  <highlighted_element>src</highlighted_element>
+  <language>Markdown</language>
+  <offset>636</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/baseline-browser-mapping/README.md</file>
+  <line>406</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/baseline-browser-mapping/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'data'</description>
+  <highlighted_element>data</highlighted_element>
+  <language>Markdown</language>
+  <offset>640</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/baseline-browser-mapping/README.md</file>
+  <line>406</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/baseline-browser-mapping/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'downstream-browsers.json'</description>
+  <highlighted_element>downstream-browsers.json</highlighted_element>
+  <language>Markdown</language>
+  <offset>645</offset>
+  <length>24</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md</file>
+  <line>17</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'CHANGELOG.md'</description>
+  <highlighted_element>CHANGELOG.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>20</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md</file>
+  <line>23</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'www.gnu.org'</description>
+  <highlighted_element>www.gnu.org</highlighted_element>
+  <language>Markdown</language>
+  <offset>69</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md</file>
+  <line>23</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'software'</description>
+  <highlighted_element>software</highlighted_element>
+  <language>Markdown</language>
+  <offset>81</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md</file>
+  <line>23</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'bash'</description>
+  <highlighted_element>bash</highlighted_element>
+  <language>Markdown</language>
+  <offset>90</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md</file>
+  <line>23</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file ''</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>95</offset>
+  <length>0</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md</file>
+  <line>484</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'test'</description>
+  <highlighted_element>test</highlighted_element>
+  <language>Markdown</language>
+  <offset>80</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md</file>
+  <line>484</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'support'</description>
+  <highlighted_element>support</highlighted_element>
+  <language>Markdown</language>
+  <offset>85</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md</file>
+  <line>484</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'generate.js'</description>
+  <highlighted_element>generate.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>93</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md</file>
+  <line>532</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'issues'</description>
+  <highlighted_element>issues</highlighted_element>
+  <language>Markdown</language>
+  <offset>106</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md</file>
+  <line>532</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'new'</description>
+  <highlighted_element>new</highlighted_element>
+  <language>Markdown</language>
+  <offset>113</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md</file>
+  <line>550</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/braces/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file '.verb.md'</description>
+  <highlighted_element>.verb.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>196</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/chokidar/README.md</file>
+  <line>289</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/chokidar/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory '.github'</description>
+  <highlighted_element>.github</highlighted_element>
+  <language>Markdown</language>
+  <offset>55</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/chokidar/README.md</file>
+  <line>289</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/chokidar/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'full_changelog.md'</description>
+  <highlighted_element>full_changelog.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>63</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/clone-deep/README.md</file>
+  <line>47</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/clone-deep/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'issues'</description>
+  <highlighted_element>issues</highlighted_element>
+  <language>Markdown</language>
+  <offset>106</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/clone-deep/README.md</file>
+  <line>47</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/clone-deep/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'new'</description>
+  <highlighted_element>new</highlighted_element>
+  <language>Markdown</language>
+  <offset>113</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/clone-deep/README.md</file>
+  <line>65</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/clone-deep/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file '.verb.md'</description>
+  <highlighted_element>.verb.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>196</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md</file>
+  <line>265</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'changelogs'</description>
+  <highlighted_element>changelogs</highlighted_element>
+  <language>Markdown</language>
+  <offset>10</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md</file>
+  <line>265</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'CHANGELOG-3.md'</description>
+  <highlighted_element>CHANGELOG-3.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>21</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md</file>
+  <line>266</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'changelogs'</description>
+  <highlighted_element>changelogs</highlighted_element>
+  <language>Markdown</language>
+  <offset>10</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md</file>
+  <line>266</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'CHANGELOG-2.md'</description>
+  <highlighted_element>CHANGELOG-2.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>21</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md</file>
+  <line>267</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'changelogs'</description>
+  <highlighted_element>changelogs</highlighted_element>
+  <language>Markdown</language>
+  <offset>10</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md</file>
+  <line>267</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'CHANGELOG-1.md'</description>
+  <highlighted_element>CHANGELOG-1.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>21</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md</file>
+  <line>268</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'changelogs'</description>
+  <highlighted_element>changelogs</highlighted_element>
+  <language>Markdown</language>
+  <offset>10</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md</file>
+  <line>268</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/CHANGELOG.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'CHANGELOG-0.md'</description>
+  <highlighted_element>CHANGELOG-0.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>21</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>10</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'Readme_zh-CN.md'</description>
+  <highlighted_element>Readme_zh-CN.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>49</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>49</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'docs'</description>
+  <highlighted_element>docs</highlighted_element>
+  <language>Markdown</language>
+  <offset>71</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>49</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'terminology.md'</description>
+  <highlighted_element>terminology.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>76</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>93</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>36</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>93</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-common.js'</description>
+  <highlighted_element>options-common.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>45</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>131</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>38</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>131</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-defaults.js'</description>
+  <highlighted_element>options-defaults.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>47</offset>
+  <length>19</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>157</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>39</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>157</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-negatable.js'</description>
+  <highlighted_element>options-negatable.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>48</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>185</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>46</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>185</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-boolean-or-value.js'</description>
+  <highlighted_element>options-boolean-or-value.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>55</offset>
+  <length>27</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>207</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'docs'</description>
+  <highlighted_element>docs</highlighted_element>
+  <language>Markdown</language>
+  <offset>89</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>207</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-taking-varying-arguments.md'</description>
+  <highlighted_element>options-taking-varying-arguments.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>94</offset>
+  <length>35</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>218</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>47</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>218</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-custom-processing.js'</description>
+  <highlighted_element>options-custom-processing.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>56</offset>
+  <length>28</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>272</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>38</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>272</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-required.js'</description>
+  <highlighted_element>options-required.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>47</offset>
+  <length>19</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>293</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>38</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>293</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-variadic.js'</description>
+  <highlighted_element>options-variadic.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>47</offset>
+  <length>19</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>318</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'docs'</description>
+  <highlighted_element>docs</highlighted_element>
+  <language>Markdown</language>
+  <offset>89</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>318</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-taking-varying-arguments.md'</description>
+  <highlighted_element>options-taking-varying-arguments.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>94</offset>
+  <length>35</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>342</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>276</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>342</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'nestedCommands.js'</description>
+  <highlighted_element>nestedCommands.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>285</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>374</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>37</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>374</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'defaultCommand.js'</description>
+  <highlighted_element>defaultCommand.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>46</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>383</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>22</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>383</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'env'</description>
+  <highlighted_element>env</highlighted_element>
+  <language>Markdown</language>
+  <offset>31</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>466</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>21</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>466</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'pm'</description>
+  <highlighted_element>pm</highlighted_element>
+  <language>Markdown</language>
+  <offset>30</offset>
+  <length>2</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>486</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>24</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>486</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'pizza'</description>
+  <highlighted_element>pizza</highlighted_element>
+  <language>Markdown</language>
+  <offset>33</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>517</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>30</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>517</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'custom-help'</description>
+  <highlighted_element>custom-help</highlighted_element>
+  <language>Markdown</language>
+  <offset>39</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>645</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>53</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>645</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'storeOptionsAsProperties-action.js'</description>
+  <highlighted_element>storeOptionsAsProperties-action.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>62</offset>
+  <length>34</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>690</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>58</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>690</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'custom-command-class.js'</description>
+  <highlighted_element>custom-command-class.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>67</offset>
+  <length>23</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>690</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>109</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>690</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'custom-command-function.js'</description>
+  <highlighted_element>custom-command-function.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>118</offset>
+  <length>26</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>739</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>25</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md</file>
+  <line>739</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'deploy'</description>
+  <highlighted_element>deploy</highlighted_element>
+  <language>Markdown</language>
+  <offset>34</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md</file>
+  <line>20</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>21</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md</file>
+  <line>20</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'node'</description>
+  <highlighted_element>node</highlighted_element>
+  <language>Markdown</language>
+  <offset>30</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md</file>
+  <line>20</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'app.js'</description>
+  <highlighted_element>app.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>35</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md</file>
+  <line>43</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>24</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md</file>
+  <line>43</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'node'</description>
+  <highlighted_element>node</highlighted_element>
+  <language>Markdown</language>
+  <offset>33</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md</file>
+  <line>43</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'worker.js'</description>
+  <highlighted_element>worker.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>38</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md</file>
+  <line>252</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>24</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md</file>
+  <line>252</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'node'</description>
+  <highlighted_element>node</highlighted_element>
+  <language>Markdown</language>
+  <offset>33</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md</file>
+  <line>252</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/debug/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'stdout.js'</description>
+  <highlighted_element>stdout.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>38</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/es-module-lexer/README.md</file>
+  <line>25</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/es-module-lexer/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'src'</description>
+  <highlighted_element>src</highlighted_element>
+  <language>Markdown</language>
+  <offset>19</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/es-module-lexer/README.md</file>
+  <line>25</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/es-module-lexer/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'lexer.ts'</description>
+  <highlighted_element>lexer.ts</highlighted_element>
+  <language>Markdown</language>
+  <offset>23</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/fastest-levenshtein/README.md</file>
+  <line>54</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/fastest-levenshtein/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'images'</description>
+  <highlighted_element>images</highlighted_element>
+  <language>Markdown</language>
+  <offset>14</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/fastest-levenshtein/README.md</file>
+  <line>54</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/fastest-levenshtein/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'relaperf.png'</description>
+  <highlighted_element>relaperf.png</highlighted_element>
+  <language>Markdown</language>
+  <offset>21</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/fill-range/README.md</file>
+  <line>177</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/fill-range/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'issues'</description>
+  <highlighted_element>issues</highlighted_element>
+  <language>Markdown</language>
+  <offset>106</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/fill-range/README.md</file>
+  <line>177</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/fill-range/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'new'</description>
+  <highlighted_element>new</highlighted_element>
+  <language>Markdown</language>
+  <offset>113</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/fill-range/README.md</file>
+  <line>195</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/fill-range/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file '.verb.md'</description>
+  <highlighted_element>.verb.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>196</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/glob/README.md</file>
+  <line>10</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/glob/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'logo'</description>
+  <highlighted_element>logo</highlighted_element>
+  <language>Markdown</language>
+  <offset>46</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/glob/README.md</file>
+  <line>10</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/glob/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'glob.png'</description>
+  <highlighted_element>glob.png</highlighted_element>
+  <language>Markdown</language>
+  <offset>51</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/glob/README.md</file>
+  <line>378</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/glob/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'oh-my-glob.gif'</description>
+  <highlighted_element>oh-my-glob.gif</highlighted_element>
+  <language>Markdown</language>
+  <offset>4</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-extglob/README.md</file>
+  <line>73</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-extglob/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'issues'</description>
+  <highlighted_element>issues</highlighted_element>
+  <language>Markdown</language>
+  <offset>106</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-extglob/README.md</file>
+  <line>73</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-extglob/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'new'</description>
+  <highlighted_element>new</highlighted_element>
+  <language>Markdown</language>
+  <offset>113</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-extglob/README.md</file>
+  <line>77</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-extglob/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file '.verb.md'</description>
+  <highlighted_element>.verb.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>252</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-glob/README.md</file>
+  <line>144</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-glob/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'issues'</description>
+  <highlighted_element>issues</highlighted_element>
+  <language>Markdown</language>
+  <offset>106</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-glob/README.md</file>
+  <line>144</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-glob/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'new'</description>
+  <highlighted_element>new</highlighted_element>
+  <language>Markdown</language>
+  <offset>113</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-glob/README.md</file>
+  <line>162</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-glob/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file '.verb.md'</description>
+  <highlighted_element>.verb.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>196</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-number/README.md</file>
+  <line>34</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-number/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'test.js'</description>
+  <highlighted_element>test.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>18</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-number/README.md</file>
+  <line>99</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-number/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'benchmark'</description>
+  <highlighted_element>benchmark</highlighted_element>
+  <language>Markdown</language>
+  <offset>80</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-number/README.md</file>
+  <line>99</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-number/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'index.js'</description>
+  <highlighted_element>index.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>90</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-number/README.md</file>
+  <line>126</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-number/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'issues'</description>
+  <highlighted_element>issues</highlighted_element>
+  <language>Markdown</language>
+  <offset>106</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-number/README.md</file>
+  <line>126</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-number/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'new'</description>
+  <highlighted_element>new</highlighted_element>
+  <language>Markdown</language>
+  <offset>113</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-number/README.md</file>
+  <line>144</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-number/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file '.verb.md'</description>
+  <highlighted_element>.verb.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>196</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-plain-object/README.md</file>
+  <line>61</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-plain-object/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'issues'</description>
+  <highlighted_element>issues</highlighted_element>
+  <language>Markdown</language>
+  <offset>106</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-plain-object/README.md</file>
+  <line>61</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-plain-object/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'new'</description>
+  <highlighted_element>new</highlighted_element>
+  <language>Markdown</language>
+  <offset>113</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-plain-object/README.md</file>
+  <line>74</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/is-plain-object/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file '.verb.md'</description>
+  <highlighted_element>.verb.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>196</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/isobject/README.md</file>
+  <line>78</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/isobject/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'issues'</description>
+  <highlighted_element>issues</highlighted_element>
+  <language>Markdown</language>
+  <offset>106</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/isobject/README.md</file>
+  <line>78</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/isobject/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'new'</description>
+  <highlighted_element>new</highlighted_element>
+  <language>Markdown</language>
+  <offset>113</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/isobject/README.md</file>
+  <line>92</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/isobject/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file '.verb.md'</description>
+  <highlighted_element>.verb.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>196</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/json5/README.md</file>
+  <line>249</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/json5/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'SECURITY.md'</description>
+  <highlighted_element>SECURITY.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>37</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/kind-of/README.md</file>
+  <line>300</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/kind-of/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'issues'</description>
+  <highlighted_element>issues</highlighted_element>
+  <language>Markdown</language>
+  <offset>106</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/kind-of/README.md</file>
+  <line>300</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/kind-of/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'new'</description>
+  <highlighted_element>new</highlighted_element>
+  <language>Markdown</language>
+  <offset>113</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/kind-of/README.md</file>
+  <line>318</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/kind-of/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file '.verb.md'</description>
+  <highlighted_element>.verb.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>196</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/normalize-path/README.md</file>
+  <line>66</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/normalize-path/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'issues'</description>
+  <highlighted_element>issues</highlighted_element>
+  <language>Markdown</language>
+  <offset>106</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/normalize-path/README.md</file>
+  <line>66</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/normalize-path/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'new'</description>
+  <highlighted_element>new</highlighted_element>
+  <language>Markdown</language>
+  <offset>113</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/normalize-path/README.md</file>
+  <line>84</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/normalize-path/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file '.verb.md'</description>
+  <highlighted_element>.verb.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>196</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/picomatch/README.md</file>
+  <line>667</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/picomatch/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'issues'</description>
+  <highlighted_element>issues</highlighted_element>
+  <language>Markdown</language>
+  <offset>106</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/picomatch/README.md</file>
+  <line>667</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/picomatch/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'new'</description>
+  <highlighted_element>new</highlighted_element>
+  <language>Markdown</language>
+  <offset>113</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/picomatch/README.md</file>
+  <line>669</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/picomatch/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory '.github'</description>
+  <highlighted_element>.github</highlighted_element>
+  <language>Markdown</language>
+  <offset>37</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/picomatch/README.md</file>
+  <line>669</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/picomatch/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'contributing.md'</description>
+  <highlighted_element>contributing.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>45</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/picomatch/README.md</file>
+  <line>687</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/picomatch/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file '.verb.md'</description>
+  <highlighted_element>.verb.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>196</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/regexpu-core/README.md</file>
+  <line>91</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/regexpu-core/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'property-escapes.md'</description>
+  <highlighted_element>property-escapes.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>56</offset>
+  <length>19</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/SECURITY.md</file>
+  <line>11</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/SECURITY.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'THREAT_MODEL.md'</description>
+  <highlighted_element>THREAT_MODEL.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>24</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/schema-utils/README.md</file>
+  <line>300</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/schema-utils/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory '.github'</description>
+  <highlighted_element>.github</highlighted_element>
+  <language>Markdown</language>
+  <offset>17</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/schema-utils/README.md</file>
+  <line>300</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/schema-utils/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'CONTRIBUTING.md'</description>
+  <highlighted_element>CONTRIBUTING.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>25</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/shallow-clone/README.md</file>
+  <line>93</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/shallow-clone/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'issues'</description>
+  <highlighted_element>issues</highlighted_element>
+  <language>Markdown</language>
+  <offset>106</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/shallow-clone/README.md</file>
+  <line>93</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/shallow-clone/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'new'</description>
+  <highlighted_element>new</highlighted_element>
+  <language>Markdown</language>
+  <offset>113</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/shallow-clone/README.md</file>
+  <line>111</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/shallow-clone/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file '.verb.md'</description>
+  <highlighted_element>.verb.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>196</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/source-map/CHANGELOG.md</file>
+  <line>123</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/source-map/CHANGELOG.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'bugzil.la'</description>
+  <highlighted_element>bugzil.la</highlighted_element>
+  <language>Markdown</language>
+  <offset>43</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/source-map/CHANGELOG.md</file>
+  <line>123</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/source-map/CHANGELOG.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file '1090768'</description>
+  <highlighted_element>1090768</highlighted_element>
+  <language>Markdown</language>
+  <offset>53</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/terser/README.md</file>
+  <line>1395</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/terser/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'CONTRIBUTING.md'</description>
+  <highlighted_element>CONTRIBUTING.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>75</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/terser-webpack-plugin/README.md</file>
+  <line>917</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/terser-webpack-plugin/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory '.github'</description>
+  <highlighted_element>.github</highlighted_element>
+  <language>Markdown</language>
+  <offset>17</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/terser-webpack-plugin/README.md</file>
+  <line>917</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/terser-webpack-plugin/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'CONTRIBUTING.md'</description>
+  <highlighted_element>CONTRIBUTING.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>25</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/to-regex-range/README.md</file>
+  <line>62</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/to-regex-range/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'test'</description>
+  <highlighted_element>test</highlighted_element>
+  <language>Markdown</language>
+  <offset>64</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/to-regex-range/README.md</file>
+  <line>62</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/to-regex-range/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'test.js'</description>
+  <highlighted_element>test.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>69</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/to-regex-range/README.md</file>
+  <line>238</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/to-regex-range/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'issues'</description>
+  <highlighted_element>issues</highlighted_element>
+  <language>Markdown</language>
+  <offset>106</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/to-regex-range/README.md</file>
+  <line>238</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/to-regex-range/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'new'</description>
+  <highlighted_element>new</highlighted_element>
+  <language>Markdown</language>
+  <offset>113</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/to-regex-range/README.md</file>
+  <line>256</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/to-regex-range/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file '.verb.md'</description>
+  <highlighted_element>.verb.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>196</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack/README.md</file>
+  <line>302</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'GOVERNANCE.md'</description>
+  <highlighted_element>GOVERNANCE.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>83</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack/README.md</file>
+  <line>319</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'WORKING_GROUP.md'</description>
+  <highlighted_element>WORKING_GROUP.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>70</offset>
+  <length>16</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>10</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'Readme_zh-CN.md'</description>
+  <highlighted_element>Readme_zh-CN.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>49</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>57</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'docs'</description>
+  <highlighted_element>docs</highlighted_element>
+  <language>Markdown</language>
+  <offset>71</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>57</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'terminology.md'</description>
+  <highlighted_element>terminology.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>76</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>74</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>27</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>74</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'split.js'</description>
+  <highlighted_element>split.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>36</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>100</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>33</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>100</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'string-util.js'</description>
+  <highlighted_element>string-util.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>42</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>206</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>36</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>206</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-common.js'</description>
+  <highlighted_element>options-common.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>45</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>248</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>38</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>248</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-defaults.js'</description>
+  <highlighted_element>options-defaults.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>47</offset>
+  <length>19</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>274</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>39</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>274</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-negatable.js'</description>
+  <highlighted_element>options-negatable.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>48</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>303</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>46</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>303</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-boolean-or-value.js'</description>
+  <highlighted_element>options-boolean-or-value.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>55</offset>
+  <length>27</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>329</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'docs'</description>
+  <highlighted_element>docs</highlighted_element>
+  <language>Markdown</language>
+  <offset>89</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>329</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-taking-varying-arguments.md'</description>
+  <highlighted_element>options-taking-varying-arguments.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>94</offset>
+  <length>35</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>335</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>38</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>335</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-required.js'</description>
+  <highlighted_element>options-required.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>47</offset>
+  <length>19</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>356</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>38</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>356</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-variadic.js'</description>
+  <highlighted_element>options-variadic.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>47</offset>
+  <length>19</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>381</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'docs'</description>
+  <highlighted_element>docs</highlighted_element>
+  <language>Markdown</language>
+  <offset>89</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>381</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-taking-varying-arguments.md'</description>
+  <highlighted_element>options-taking-varying-arguments.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>94</offset>
+  <length>35</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>408</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>36</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>408</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-extra.js'</description>
+  <highlighted_element>options-extra.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>45</offset>
+  <length>16</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>408</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>83</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>408</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-env.js'</description>
+  <highlighted_element>options-env.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>92</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>408</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>134</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>408</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-conflicts.js'</description>
+  <highlighted_element>options-conflicts.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>143</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>408</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>189</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>408</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-implies.js'</description>
+  <highlighted_element>options-implies.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>198</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>455</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>47</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>455</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-custom-processing.js'</description>
+  <highlighted_element>options-custom-processing.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>56</offset>
+  <length>28</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>512</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>276</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>512</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'nestedCommands.js'</description>
+  <highlighted_element>nestedCommands.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>285</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>544</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>37</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>544</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'defaultCommand.js'</description>
+  <highlighted_element>defaultCommand.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>46</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>546</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>74</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>546</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'alias.js'</description>
+  <highlighted_element>alias.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>83</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>560</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>30</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>560</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'argument.js'</description>
+  <highlighted_element>argument.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>39</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>599</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>37</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>599</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'arguments-extra.js'</description>
+  <highlighted_element>arguments-extra.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>46</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>617</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>49</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>617</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'arguments-custom-processing.js'</description>
+  <highlighted_element>arguments-custom-processing.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>58</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>635</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>27</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>635</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'thank.js'</description>
+  <highlighted_element>thank.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>36</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>653</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>33</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>653</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'action-this.js'</description>
+  <highlighted_element>action-this.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>42</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>690</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>21</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>690</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'pm'</description>
+  <highlighted_element>pm</highlighted_element>
+  <language>Markdown</language>
+  <offset>30</offset>
+  <length>2</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>710</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>26</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>710</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'hook.js'</description>
+  <highlighted_element>hook.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>35</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>733</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'docs'</description>
+  <highlighted_element>docs</highlighted_element>
+  <language>Markdown</language>
+  <offset>78</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>733</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'parsing-and-hooks.md'</description>
+  <highlighted_element>parsing-and-hooks.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>83</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>740</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>24</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>740</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'pizza'</description>
+  <highlighted_element>pizza</highlighted_element>
+  <language>Markdown</language>
+  <offset>33</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>772</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>30</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>772</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'custom-help'</description>
+  <highlighted_element>custom-help</highlighted_element>
+  <language>Markdown</language>
+  <offset>39</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>928</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>36</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>928</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'configure-help.js'</description>
+  <highlighted_element>configure-help.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>45</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>974</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>40</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>974</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'positional-options.js'</description>
+  <highlighted_element>positional-options.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>49</offset>
+  <length>21</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>988</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>42</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>988</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'pass-through-options.js'</description>
+  <highlighted_element>pass-through-options.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>51</offset>
+  <length>23</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>1046</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>71</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>1046</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'custom-command-class.js'</description>
+  <highlighted_element>custom-command-class.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>80</offset>
+  <length>23</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>1097</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'examples'</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>38</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>1097</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'configure-output.js'</description>
+  <highlighted_element>configure-output.js</highlighted_element>
+  <language>Markdown</language>
+  <offset>47</offset>
+  <length>19</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>1119</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'docs'</description>
+  <highlighted_element>docs</highlighted_element>
+  <language>Markdown</language>
+  <offset>17</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>1119</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'deprecated.md'</description>
+  <highlighted_element>deprecated.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>22</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>1120</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'docs'</description>
+  <highlighted_element>docs</highlighted_element>
+  <language>Markdown</language>
+  <offset>39</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>1120</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'options-taking-varying-arguments.md'</description>
+  <highlighted_element>options-taking-varying-arguments.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>44</offset>
+  <length>35</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>1121</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve directory 'docs'</description>
+  <highlighted_element>docs</highlighted_element>
+  <language>Markdown</language>
+  <offset>35</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md</file>
+  <line>1121</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-cli/node_modules/commander/Readme.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'parsing-and-hooks.md'</description>
+  <highlighted_element>parsing-and-hooks.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>40</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-merge/README.md</file>
+  <line>286</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/webpack-merge/README.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved file references</problem_class>
+  <description>Cannot resolve file 'CONTRIBUTING.md'</description>
+  <highlighted_element>CONTRIBUTING.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>75</offset>
+  <length>15</length>
+</problem>
+</problems>

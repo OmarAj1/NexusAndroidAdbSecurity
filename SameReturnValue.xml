@@ -1,0 +1,16 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/example/myapplication/UserMainActivity.java</file>
+  <line>193</line>
+  <module>My_Application.app.main</module>
+  <package>com.example.myapplication</package>
+  <entry_point TYPE="method" FQNAME="com.example.myapplication.UserMainActivity.WebAppInterface boolean connectAdb(java.lang.String ip, java.lang.String port)" />
+  <problem_class id="SameReturnValue" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Method always returns the same value</problem_class>
+  <hints />
+  <description>Method &lt;code&gt;connectAdb()&lt;/code&gt; always returns &lt;code&gt;true&lt;/code&gt;</description>
+  <highlighted_element>connectAdb</highlighted_element>
+  <language>JAVA</language>
+  <offset>23</offset>
+  <length>10</length>
+</problem>
+</problems>

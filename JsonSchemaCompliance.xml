@@ -1,0 +1,3401 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json</file>
+  <line>21</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json</file>
+  <line>26</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json</file>
+  <line>32</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json</file>
+  <line>41</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/schemaArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json</file>
+  <line>42</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/schemaArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json</file>
+  <line>43</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/schemaArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json</file>
+  <line>48</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;array&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;type&quot;: &quot;string&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;type&quot;: &quot;string&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>33</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>33</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json</file>
+  <line>14</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;type&quot;: &quot;string&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>23</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json</file>
+  <line>14</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;type&quot;: &quot;string&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>23</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json</file>
+  <line>14</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>32</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json</file>
+  <line>14</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>32</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;uri-reference&quot;, &quot;$comment&quot;: &quot;Non-empty fragments no...</highlighted_element>
+  <language>JSON</language>
+  <offset>11</offset>
+  <length>147</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>18</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;uri&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>53</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>19</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>22</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot;, &quot;pattern&quot;: &quot;^[A-Za-z][-A-Za-z0-9.:_]*$&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>77</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>23</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>24</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>String violates the pattern: '^[A-Za-z][-A-Za-z0-9.:_]*$'</description>
+  <highlighted_element>&quot;^[A-Za-z][-A-Za-z0-9.:_]*$&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>28</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>26</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;uri-reference&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>12</offset>
+  <length>63</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>27</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>30</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;uri-reference&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>21</offset>
+  <length>63</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>31</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>34</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>35</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>39</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>41</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>45</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>48</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>49</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json</file>
+  <line>52</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/format.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/format.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;type&quot;: &quot;string&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/format.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/format.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>23</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>14</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>16</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>17</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>20</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>18</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>21</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>24</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>25</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>28</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>29</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>32</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: true }</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>33</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;array&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot;, &quot;exclusiveMinimum&quot;: 0 }</highlighted_element>
+  <language>JSON</language>
+  <offset>18</offset>
+  <length>59</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;number&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>16</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>17</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;number&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>19</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>20</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;number&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>22</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>23</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;number&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>25</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>26</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;number&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>28</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>29</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeIntegerDefault0&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>46</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>30</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;regex&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>31</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>34</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>35</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeIntegerDefault0&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>46</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>36</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>37</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>40</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>41</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{ &quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;, &quot;default&quot;: 1 }</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>70</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>43</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: boolean, object. Actual: integer.</description>
+  <highlighted_element>1</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>45</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>21</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>46</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeIntegerDefault0&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>21</offset>
+  <length>46</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>47</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/stringArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>49</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>55</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: true }</highlighted_element>
+  <language>JSON</language>
+  <offset>12</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>56</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;array&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>59</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Value should be one of: &quot;array&quot;, &quot;boolean&quot;, &quot;integer&quot;, &quot;null&quot;, &quot;number&quot;, &quot;object&quot;, &quot;string&quot;</description>
+  <highlighted_element>{ &quot;anyOf&quot;: [ {&quot;$ref&quot;: &quot;#/$defs/simpleTypes&quot;}, { &quot;type&quot;: &quot;array&quot;, ...</highlighted_element>
+  <language>JSON</language>
+  <offset>12</offset>
+  <length>227</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>60</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Value should be one of: &quot;array&quot;, &quot;boolean&quot;, &quot;integer&quot;, &quot;null&quot;, &quot;number&quot;, &quot;object&quot;, &quot;string&quot;</description>
+  <highlighted_element>[ {&quot;$ref&quot;: &quot;#/$defs/simpleTypes&quot;}, { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {...</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>204</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>73</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;integer&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>78</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: boolean, object. Actual: integer.</description>
+  <highlighted_element>0</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>84</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;array&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>85</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>87</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: boolean, object. Actual: array.</description>
+  <highlighted_element>[]</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>2</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/schema.json</file>
+  <line>27</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/schema.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/schema.json</file>
+  <line>33</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2019-09/schema.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/applicator.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/schemaArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/applicator.json</file>
+  <line>36</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/schemaArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/applicator.json</file>
+  <line>37</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/schemaArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/applicator.json</file>
+  <line>38</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/schemaArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/content.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;type&quot;: &quot;string&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>23</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/content.json</file>
+  <line>14</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;type&quot;: &quot;string&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;$ref&quot;: &quot;#/$defs/uriReferenceString&quot;, &quot;$comment&quot;: &quot;Non-empty fragments not allowed.&quot;, ...</highlighted_element>
+  <language>JSON</language>
+  <offset>11</offset>
+  <length>134</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json</file>
+  <line>17</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/uriString&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>29</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json</file>
+  <line>18</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/uriReferenceString&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>12</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json</file>
+  <line>19</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/anchorString&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>32</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json</file>
+  <line>20</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/uriReferenceString&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json</file>
+  <line>21</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/anchorString&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>22</offset>
+  <length>32</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json</file>
+  <line>29</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/format-annotation.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/format-annotation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;type&quot;: &quot;string&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/meta-data.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/meta-data.json</file>
+  <line>16</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/meta-data.json</file>
+  <line>20</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>18</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/meta-data.json</file>
+  <line>24</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/meta-data.json</file>
+  <line>28</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/meta-data.json</file>
+  <line>32</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: true }</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, string. Actual: object.</description>
+  <highlighted_element>{ &quot;anyOf&quot;: [ {&quot;$ref&quot;: &quot;#/$defs/simpleTypes&quot;}, { &quot;type&quot;: &quot;array&quot;, ...</highlighted_element>
+  <language>JSON</language>
+  <offset>12</offset>
+  <length>227</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>24</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: true }</highlighted_element>
+  <language>JSON</language>
+  <offset>12</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>28</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot;, &quot;exclusiveMinimum&quot;: 0 }</highlighted_element>
+  <language>JSON</language>
+  <offset>18</offset>
+  <length>59</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>32</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>35</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>38</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>41</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>44</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>45</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeIntegerDefault0&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>46</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>46</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;regex&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>50</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>51</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeIntegerDefault0&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>46</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>52</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>56</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>57</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{ &quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;, &quot;default&quot;: 1 }</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>70</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>59</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: boolean, object. Actual: integer.</description>
+  <highlighted_element>1</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>61</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>21</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>62</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeIntegerDefault0&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>21</offset>
+  <length>46</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>63</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/stringArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>78</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: boolean, object. Actual: integer.</description>
+  <highlighted_element>0</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>87</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: boolean, object. Actual: array.</description>
+  <highlighted_element>[]</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>2</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json</file>
+  <line>21</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json</file>
+  <line>26</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json</file>
+  <line>32</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json</file>
+  <line>41</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/schemaArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json</file>
+  <line>42</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/schemaArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json</file>
+  <line>43</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/schemaArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json</file>
+  <line>48</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;array&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/content.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;type&quot;: &quot;string&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/content.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>33</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/content.json</file>
+  <line>14</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;type&quot;: &quot;string&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>23</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/content.json</file>
+  <line>14</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>32</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;uri-reference&quot;, &quot;$comment&quot;: &quot;Non-empty fragments no...</highlighted_element>
+  <language>JSON</language>
+  <offset>11</offset>
+  <length>147</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>18</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;uri&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>53</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>19</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>22</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot;, &quot;pattern&quot;: &quot;^[A-Za-z][-A-Za-z0-9.:_]*$&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>77</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>23</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>24</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>String violates the pattern: '^[A-Za-z][-A-Za-z0-9.:_]*$'</description>
+  <highlighted_element>&quot;^[A-Za-z][-A-Za-z0-9.:_]*$&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>28</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>26</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;uri-reference&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>12</offset>
+  <length>63</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>27</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>30</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;uri-reference&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>21</offset>
+  <length>63</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>31</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>34</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>35</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>39</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>41</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>45</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>48</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>49</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json</file>
+  <line>52</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/format.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/format.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;type&quot;: &quot;string&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/format.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/format.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>23</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>14</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>14</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>16</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>16</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>17</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>17</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>20</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>18</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>20</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>18</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>21</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>21</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>24</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>24</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>25</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>25</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>28</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>28</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>29</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>29</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>32</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: true }</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>32</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: true }</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>33</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;array&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json</file>
+  <line>33</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;array&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot;, &quot;exclusiveMinimum&quot;: 0 }</highlighted_element>
+  <language>JSON</language>
+  <offset>18</offset>
+  <length>59</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;number&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>14</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Less than the exclusive minimum 0</description>
+  <highlighted_element>0</highlighted_element>
+  <language>JSON</language>
+  <offset>26</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>16</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>17</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;number&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>19</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>20</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;number&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>22</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>23</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;number&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>25</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>26</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;number&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>28</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>29</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeIntegerDefault0&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>46</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>30</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;regex&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>31</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>34</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>35</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeIntegerDefault0&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>46</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>36</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>37</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;boolean&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>40</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>41</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{ &quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;, &quot;default&quot;: 1 }</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>70</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>43</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: boolean, object. Actual: integer.</description>
+  <highlighted_element>1</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>45</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>21</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>46</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeIntegerDefault0&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>21</offset>
+  <length>46</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>47</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/stringArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>49</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>55</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: true }</highlighted_element>
+  <language>JSON</language>
+  <offset>12</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>56</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;array&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>59</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Value should be one of: &quot;array&quot;, &quot;boolean&quot;, &quot;integer&quot;, &quot;null&quot;, &quot;number&quot;, &quot;object&quot;, &quot;string&quot;</description>
+  <highlighted_element>{ &quot;anyOf&quot;: [ {&quot;$ref&quot;: &quot;#/$defs/simpleTypes&quot;}, { &quot;type&quot;: &quot;array&quot;, ...</highlighted_element>
+  <language>JSON</language>
+  <offset>12</offset>
+  <length>227</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>60</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Value should be one of: &quot;array&quot;, &quot;boolean&quot;, &quot;integer&quot;, &quot;null&quot;, &quot;number&quot;, &quot;object&quot;, &quot;string&quot;</description>
+  <highlighted_element>[ {&quot;$ref&quot;: &quot;#/$defs/simpleTypes&quot;}, { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {...</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>204</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>73</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;integer&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>78</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: boolean, object. Actual: integer.</description>
+  <highlighted_element>0</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>84</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;array&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>85</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;string&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json</file>
+  <line>87</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: boolean, object. Actual: array.</description>
+  <highlighted_element>[]</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>2</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/schema.json</file>
+  <line>27</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/schema.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/schema.json</file>
+  <line>33</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2019-09/schema.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, boolean, object. Actual: string.</description>
+  <highlighted_element>&quot;object&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/applicator.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/schemaArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/applicator.json</file>
+  <line>36</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/schemaArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/applicator.json</file>
+  <line>37</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/schemaArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/applicator.json</file>
+  <line>38</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/applicator.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/schemaArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/content.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;type&quot;: &quot;string&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>23</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/content.json</file>
+  <line>14</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/content.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;type&quot;: &quot;string&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;$ref&quot;: &quot;#/$defs/uriReferenceString&quot;, &quot;$comment&quot;: &quot;Non-empty fragments not allowed.&quot;, ...</highlighted_element>
+  <language>JSON</language>
+  <offset>11</offset>
+  <length>134</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json</file>
+  <line>17</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/uriString&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>29</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json</file>
+  <line>18</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/uriReferenceString&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>12</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json</file>
+  <line>19</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/anchorString&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>32</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json</file>
+  <line>20</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/uriReferenceString&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json</file>
+  <line>21</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/anchorString&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>22</offset>
+  <length>32</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json</file>
+  <line>29</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/format-annotation.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/format-annotation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{&quot;type&quot;: &quot;string&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/meta-data.json</file>
+  <line>13</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>13</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/meta-data.json</file>
+  <line>16</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/meta-data.json</file>
+  <line>20</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>18</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/meta-data.json</file>
+  <line>24</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/meta-data.json</file>
+  <line>28</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/meta-data.json</file>
+  <line>32</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/meta-data.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: true }</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>12</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: array, string. Actual: object.</description>
+  <highlighted_element>{ &quot;anyOf&quot;: [ {&quot;$ref&quot;: &quot;#/$defs/simpleTypes&quot;}, { &quot;type&quot;: &quot;array&quot;, ...</highlighted_element>
+  <language>JSON</language>
+  <offset>12</offset>
+  <length>227</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>24</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: true }</highlighted_element>
+  <language>JSON</language>
+  <offset>12</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>28</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot;, &quot;exclusiveMinimum&quot;: 0 }</highlighted_element>
+  <language>JSON</language>
+  <offset>18</offset>
+  <length>59</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>32</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>35</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>38</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>41</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: number. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;number&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>24</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>44</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>45</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeIntegerDefault0&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>46</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>46</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;regex&quot; }</highlighted_element>
+  <language>JSON</language>
+  <offset>15</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>50</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>51</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeIntegerDefault0&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>46</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>52</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: boolean. Actual: object.</description>
+  <highlighted_element>{ &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: false }</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>55</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>56</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>57</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{ &quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;, &quot;default&quot;: 1 }</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>70</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>59</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: boolean, object. Actual: integer.</description>
+  <highlighted_element>1</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>61</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeInteger&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>21</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>62</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: integer. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/nonNegativeIntegerDefault0&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>21</offset>
+  <length>46</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>63</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: object.</description>
+  <highlighted_element>{&quot;$ref&quot;: &quot;#/$defs/stringArray&quot;}</highlighted_element>
+  <language>JSON</language>
+  <offset>16</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>78</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: boolean, object. Actual: integer.</description>
+  <highlighted_element>0</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json</file>
+  <line>87</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required one of: boolean, object. Actual: array.</description>
+  <highlighted_element>[]</highlighted_element>
+  <language>JSON</language>
+  <offset>17</offset>
+  <length>2</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/lodash.debounce/package.json</file>
+  <line>8</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/lodash.debounce/package.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: array. Actual: string.</description>
+  <highlighted_element>&quot;lodash-modularized, debounce&quot;</highlighted_element>
+  <language>JSON</language>
+  <offset>14</offset>
+  <length>30</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/test/resolver/false_main/package.json</file>
+  <line>3</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/test/resolver/false_main/package.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: boolean.</description>
+  <highlighted_element>false</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/test/resolver/invalid_main/package.json</file>
+  <line>3</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/test/resolver/invalid_main/package.json" />
+  <problem_class id="JsonSchemaCompliance" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Compliance with JSON schema</problem_class>
+  <description>Incompatible types.
+ Required: string. Actual: array.</description>
+  <highlighted_element>[ &quot;why is this a thing&quot;, &quot;srsly omg wtf&quot; ]</highlighted_element>
+  <language>JSON</language>
+  <offset>10</offset>
+  <length>52</length>
+</problem>
+</problems>

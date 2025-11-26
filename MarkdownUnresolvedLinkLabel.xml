@@ -1,0 +1,88 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/json5/README.md</file>
+  <line>3</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/json5/README.md" />
+  <problem_class id="MarkdownUnresolvedLinkLabel" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved link label</problem_class>
+  <description>Cannot resolve link label [Build
+Status]</description>
+  <highlighted_element>[Build Status]</highlighted_element>
+  <language>Markdown</language>
+  <offset>72</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/json5/README.md</file>
+  <line>5</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/json5/README.md" />
+  <problem_class id="MarkdownUnresolvedLinkLabel" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved link label</problem_class>
+  <description>Cannot resolve link label [Coverage
+Status]</description>
+  <highlighted_element>[Coverage Status]</highlighted_element>
+  <language>Markdown</language>
+  <offset>65</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/.github/THREAT_MODEL.md</file>
+  <line>34</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/.github/THREAT_MODEL.md" />
+  <problem_class id="MarkdownUnresolvedLinkLabel" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved link label</problem_class>
+  <description>Cannot resolve link label [3]</description>
+  <highlighted_element>[3]</highlighted_element>
+  <language>Markdown</language>
+  <offset>99</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/.github/THREAT_MODEL.md</file>
+  <line>47</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/.github/THREAT_MODEL.md" />
+  <problem_class id="MarkdownUnresolvedLinkLabel" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved link label</problem_class>
+  <description>Cannot resolve link label [4]</description>
+  <highlighted_element>[4]</highlighted_element>
+  <language>Markdown</language>
+  <offset>116</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/.github/THREAT_MODEL.md</file>
+  <line>56</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/.github/THREAT_MODEL.md" />
+  <problem_class id="MarkdownUnresolvedLinkLabel" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved link label</problem_class>
+  <description>Cannot resolve link label [4]</description>
+  <highlighted_element>[4]</highlighted_element>
+  <language>Markdown</language>
+  <offset>145</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/.github/THREAT_MODEL.md</file>
+  <line>57</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/.github/THREAT_MODEL.md" />
+  <problem_class id="MarkdownUnresolvedLinkLabel" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved link label</problem_class>
+  <description>Cannot resolve link label [4]</description>
+  <highlighted_element>[4]</highlighted_element>
+  <language>Markdown</language>
+  <offset>152</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/.github/THREAT_MODEL.md</file>
+  <line>74</line>
+  <module>My_Application.app.main</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/assets/node_modules/resolve/.github/THREAT_MODEL.md" />
+  <problem_class id="MarkdownUnresolvedLinkLabel" severity="WARNING" attribute_key="INFO_ATTRIBUTES">Unresolved link label</problem_class>
+  <description>Cannot resolve link label [3]</description>
+  <highlighted_element>[3]</highlighted_element>
+  <language>Markdown</language>
+  <offset>67</offset>
+  <length>3</length>
+</problem>
+</problems>

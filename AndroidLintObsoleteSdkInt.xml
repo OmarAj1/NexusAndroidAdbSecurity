@@ -1,0 +1,16 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/src/main/java/com/example/myapplication/UserMainActivity.java</file>
+  <line>69</line>
+  <module>My_Application.app.main</module>
+  <package>com.example.myapplication</package>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/src/main/java/com/example/myapplication/UserMainActivity.java" />
+  <problem_class id="AndroidLintObsoleteSdkInt" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">Obsolete SDK_INT Version Check</problem_class>
+  <hints />
+  <description>&lt;html&gt;Unnecessary; &lt;code&gt;SDK_INT&lt;/code&gt; is always &gt;= 24&lt;/html&gt;</description>
+  <highlighted_element>Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT</highlighted_element>
+  <language>JAVA</language>
+  <offset>12</offset>
+  <length>51</length>
+</problem>
+</problems>
