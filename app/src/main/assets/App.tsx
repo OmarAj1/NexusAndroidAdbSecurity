@@ -1,91 +1,65 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import {
-  Shield,
-  Trash2,
-  Activity,
-  Power,
-  Smartphone,
-  Wifi,
-  Terminal,
-  Zap,
-  Lock,
-  Globe,
-  Brain,
-  Sparkles,
-  CheckCircle,
-  XCircle,
-  ScanEye,
-  AlertTriangle,
-  Fingerprint,
-  User as UserIcon,
-  Trophy,
-  Target,
-  TrendingUp,
-  Share2,
-  Download,
-  Plus,
-  Minus,
-  Info,
-  Database,
-  Clock,
-  LayoutGrid,
-  Cpu,
-  LogOut,
-  Key,
-  ChevronRight,
-  RotateCcw,
-  ArrowRight,
-  DownloadCloud,
-  Filter
+  Shield, Trash2, Power, Smartphone, Wifi, Zap, Brain, User as UserIcon,
+  Target, TrendingUp, Key, ArrowRight, DownloadCloud, Filter, Search,
+  AlertTriangle, LogOut, CheckCircle, XCircle, Database, Activity, RefreshCw
 } from 'lucide-react';
 
-// --- Native Interfaces ---
-
-const isNative = () => typeof (window as any).AndroidNative !== 'undefined';
-
-const triggerHaptic = (type: 'light' | 'heavy' | 'success' = 'light') => {
-  if (isNative()) {
-    (window as any).AndroidNative.hapticFeedback(type);
-  }
-};
-
-const showToast = (msg: string) => {
-  if (isNative()) {
-    (window as any).AndroidNative.showToast(msg);
-  } else {
-    console.log(`[Toast] ${msg}`);
-  }
-};
-
-const shareData = (title: string, content: string) => {
-  if (isNative()) {
-    (window as any).AndroidNative.shareText(title, content);
-  } else {
-    console.log(`[Share] ${title}:`, content);
-  }
-};
-
-// --- Types ---
+// --- TYPES ---
 interface AppData {
   name: string;
   pkg: string;
   type: 'System' | 'User';
   status: 'Enabled' | 'Disabled' | 'Unknown';
-  iconBase64?: string;
 }
 
-// --- Components ---
+interface AiSuggestion {
+    domain: string;
+    type: 'SAFE' | 'TRACKER' | 'UNKNOWN';
+    reason: string;
+}
 
-const GlassCard = ({ children, className = "", highlight = false, borderColor = "white" }: any) => {
+interface AndroidNativeInterface {
+    getNativeCoreVersion: () => string;
+    hapticFeedback: (type: 'light' | 'heavy' | 'success') => void;
+    showToast: (msg: string) => void;
+    shareText: (title: string, content: string) => void;
+    pairAdb: (ip: string, portStr: string, code: string) => void;
+    connectAdb: (ip: string, portStr: string) => boolean;
+    executeCommand: (action: 'uninstall' | 'disable' | 'restore' | 'enable', pkg: string) => void;
+    getInstalledPackages: () => void;
+    startMdnsDiscovery: () => void;
+    stopMdnsDiscovery: () => void;
+    retrieveConnectionInfo: () => void;
+    startVpn: () => void;
+    stopVpn: () => void;
+}
+
+// --- NATIVE BRIDGE ---
+const NATIVE_INTERFACE: AndroidNativeInterface = (window as any).AndroidNative;
+const isNative = () => typeof NATIVE_INTERFACE !== 'undefined';
+
+const triggerHaptic = (type: 'light' | 'heavy' | 'success' = 'light') => {
+  if (isNative()) NATIVE_INTERFACE.hapticFeedback(type);
+};
+
+const showToast = (msg: string) => {
+  if (isNative()) NATIVE_INTERFACE.showToast(msg);
+  else console.log(`[Toast] ${msg}`);
+};
+
+// --- UI COMPONENTS ---
+
+const GlassCard = ({ children, className = "", borderColor = "white" }: any) => {
   const borderColors: any = {
     white: "border-white/[0.05]",
     purple: "border-purple-500/20 shadow-[0_0_30px_rgba(168,85,247,0.1)]",
     green: "border-green-500/10 shadow-[0_0_30px_rgba(74,222,128,0.05)]",
     red: "border-red-500/10 shadow-[0_0_30px_rgba(239,68,68,0.05)]",
     amber: "border-amber-500/10 shadow-[0_0_30px_rgba(245,158,11,0.05)]",
-    cyan: "border-cyan-500/10 shadow-[0_0_30px_rgba(6,182,212,0.05)]"
+    cyan: "border-cyan-500/10 shadow-[0_0_40px_rgba(6,182,212,0.1)]",
+    gray: "border-gray-500/10 shadow-[0_0_10px_rgba(107,114,128,0.05)]"
   };
-
   return (
     <div className={`backdrop-blur-xl bg-[#0f172a]/80 rounded-xl p-5 border ${borderColors[borderColor] || borderColors.white} shadow-2xl ${className}`}>
       {children}
@@ -99,7 +73,9 @@ const Badge = ({ text }: { text: string }) => {
     User: "bg-blue-500/20 text-blue-300 border-blue-500/30",
     Enabled: "bg-green-500/20 text-green-300 border-green-500/30",
     Disabled: "bg-red-500/20 text-red-300 border-red-500/30",
-    Unknown: "bg-gray-500/20 text-gray-400 border-gray-500/30"
+    Unknown: "bg-gray-500/20 text-gray-400 border-gray-500/30",
+    SAFE: "bg-green-500/20 text-green-300 border-green-500/30",
+    TRACKER: "bg-red-500/20 text-red-300 border-red-500/30",
   };
   return (
     <span className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded border ${styles[text] || styles.Unknown}`}>
@@ -118,7 +94,6 @@ const NeonButton = ({ onClick, active, icon: Icon, label, color = "green", loadi
     cyan: "from-cyan-500/90 to-blue-600/90 shadow-cyan-500/20",
     gray: "from-gray-700/90 to-gray-800/90 shadow-gray-500/10"
   };
-
   const pad = size === "sm" ? "py-2 px-3 text-xs" : "py-4 px-4 text-sm";
   const widthClass = fullWidth ? "w-full" : "w-auto";
 
@@ -182,7 +157,7 @@ const TabBar = ({ active, onChange }: any) => {
     );
 };
 
-// --- Main Application ---
+// --- MAIN APPLICATION ---
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('purge');
@@ -202,47 +177,51 @@ export default function App() {
   const [connectPort, setConnectPort] = useState('');
   const [code, setCode] = useState('');
   const [status, setStatus] = useState('Initializing...');
-  const [purgeTabState, setPurgeTabState] = useState<'connect' | 'apps'>('connect'); // Sub-tab for Purge
+  const [purgeTabState, setPurgeTabState] = useState<'connect' | 'apps'>('connect');
   const [filterType, setFilterType] = useState('All');
   const [search, setSearch] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedApp, setSelectedApp] = useState<AppData | null>(null);
   const [actionType, setActionType] = useState<'uninstall' | 'disable' | 'restore' | 'enable' | null>(null);
+  const [isLoadingApps, setIsLoadingApps] = useState(false);
 
-  // Shield & Other States
+  // Shield & Insights State
+  const [vpnActive, setVpnActive] = useState(false);
+  const [analysisResult, setAnalysisResult] = useState<AiSuggestion[]>([]);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [stats, setStats] = useState({ blocked: 124, saved: 4.2 });
-  const [coreVersion, setCoreVersion] = useState("Loading...");
+  const [coreVersion, setCoreVersion] = useState("4.0.0-ULTIMATE");
+  const [trafficCount, setTrafficCount] = useState(1240);
 
   // --- Initialize & Listeners ---
   useEffect(() => {
-       // Modified to accept Base64 string
+       // Callback for receiving app list
        (window as any).receiveAppList = (base64Json: string) => {
+         setIsLoadingApps(false);
          try {
-           // Decode Base64 and parse JSON
            const jsonStr = atob(base64Json);
-           const json = JSON.parse(jsonStr);
-
+           const json = JSON.parse(jsonStr) as AppData[];
            setApps(json);
-           setActiveTab('apps');
-           Native.haptic();
+           // Force transition to app list if we got data (even empty)
+           setPurgeTabState('apps');
+           triggerHaptic('success');
            setStatus("Shell Active");
          } catch (e) {
            console.error("Failed to parse app list", e);
-           Native.toast("Data Parse Error");
+           showToast("Data Parse Error");
+           // Even on error, stop loading
+           setPurgeTabState('connect');
          }
        };
 
-     // --- FIXED CALLBACKS FOR RETRIEVE BUTTON ---
      (window as any).onPairingServiceFound = (ip: string, port: number | string) => {
-         console.log("Pairing Found:", ip, port);
          setPairIp(ip);
          setPairPort(port.toString());
-         setStatus('Pairing Info Found');
+         setStatus('Pairing Found');
          triggerHaptic('success');
      };
 
      (window as any).onConnectServiceFound = (ip: string, port: number | string) => {
-         console.log("Connect Found:", ip, port);
          setConnectIp(ip);
          setConnectPort(port.toString());
          setStatus('Ready to Connect');
@@ -253,21 +232,32 @@ export default function App() {
           if (newStatus === 'Connected') {
               setStatus('Shell Active');
               triggerHaptic('success');
+              setIsLoadingApps(true);
+              // Connection successful, ensure we fetch
+              if (isNative()) NATIVE_INTERFACE.getInstalledPackages();
+          } else {
+              setStatus(newStatus);
+              setIsLoadingApps(false);
           }
       };
 
+     if (isNative()) {
+         NATIVE_INTERFACE.startMdnsDiscovery();
+         setCoreVersion(NATIVE_INTERFACE.getNativeCoreVersion());
+     }
+
      return () => {
-         if (isNative()) (window as any).AndroidNative.stopMdnsDiscovery();
+         if (isNative()) NATIVE_INTERFACE.stopMdnsDiscovery();
      };
-  }, []); // Run ONCE on mount
+  }, []);
 
   // --- Handlers ---
 
   const handleLogin = async () => {
     setIsAuthenticating(true); triggerHaptic('light'); setAuthError('');
-    await new Promise(r => setTimeout(r, 1000));
+    await new Promise(r => setTimeout(r, 800));
     if (username === 'admin' && password === 'admin') {
-      setIsLoggedIn(true); triggerHaptic('success'); showToast('Welcome back, Operative.');
+      setIsLoggedIn(true); triggerHaptic('success');
     } else {
       setAuthError('Invalid credentials.'); triggerHaptic('heavy');
     }
@@ -276,25 +266,39 @@ export default function App() {
 
   const handleRetrieve = () => {
       triggerHaptic('light');
-      if (isNative()) (window as any).AndroidNative.retrieveConnectionInfo();
+      if (isNative()) NATIVE_INTERFACE.retrieveConnectionInfo();
       else showToast("Simulated Retrieve");
   };
 
   const handlePair = () => {
     if (!pairIp || !pairPort || !code) return showToast("All fields required");
-    if (isNative()) (window as any).AndroidNative.pairAdb(pairIp, pairPort, code);
+    setStatus("Attempting Pair...");
+    if (isNative()) NATIVE_INTERFACE.pairAdb(pairIp, pairPort, code);
   };
 
   const handleConnect = () => {
+    // Optimistic usage of known IPs
     const targetIp = connectIp || pairIp;
     const targetPort = connectPort;
-    if (!targetPort) { showToast("Waiting for Port..."); return; }
-    if (isNative()) (window as any).AndroidNative.connectAdb(targetIp, targetPort);
+    // Allow connection attempt even if port is missing, Java will handle fallback
+    setStatus("Connecting...");
+    setIsLoadingApps(true);
+    if (isNative()) NATIVE_INTERFACE.connectAdb(targetIp, targetPort);
   };
 
   const handleConfirmAction = () => {
     if (selectedApp && actionType) {
-        if (isNative()) (window as any).AndroidNative.executeCommand(actionType, selectedApp.pkg);
+        if (isNative()) NATIVE_INTERFACE.executeCommand(actionType, selectedApp.pkg);
+        // Optimistic update for UI
+        setApps(prevApps => prevApps.map(app => {
+            if (app.pkg === selectedApp.pkg) {
+                let newStatus = app.status;
+                if (actionType === 'disable') newStatus = 'Disabled';
+                if (actionType === 'enable') newStatus = 'Enabled';
+                return { ...app, status: newStatus };
+            }
+            return app;
+        }));
         setModalOpen(false); setSelectedApp(null);
     }
   };
@@ -305,15 +309,38 @@ export default function App() {
 
   // --- Renderers ---
 
+  const AppRow = ({ app }: { app: AppData }) => (
+      <div key={app.pkg} className="bg-[#1e293b]/40 border border-white/[0.05] rounded-lg p-3 hover:bg-[#1e293b]/60 transition-colors group">
+          <div className="flex justify-between items-start mb-2">
+              <div className="flex items-center overflow-hidden">
+                  <div className="w-8 h-8 rounded-md mr-3 shrink-0 bg-gray-600/50 flex items-center justify-center">
+                      <Smartphone size={16} className="text-gray-400" />
+                  </div>
+                  <div className="overflow-hidden pr-2">
+                      <h3 className="font-semibold text-white text-sm truncate">{app.name}</h3>
+                      <p className="text-[10px] text-gray-500 font-mono truncate">{app.pkg}</p>
+                  </div>
+              </div>
+              <div className="flex flex-col items-end gap-1 shrink-0">
+                  <Badge text={app.type} />
+                  <Badge text={app.status} />
+              </div>
+          </div>
+          <div className="flex gap-2 mt-2 pt-2 border-t border-white/5 justify-end">
+              {app.status === 'Disabled' ? (
+                  <button onClick={() => openModal(app, 'enable')} className="p-1.5 bg-green-500/10 text-green-400 rounded hover:bg-green-500/20"><Zap size={14}/></button>
+              ) : (
+                  <button onClick={() => openModal(app, 'disable')} className="p-1.5 bg-amber-500/10 text-amber-400 rounded hover:bg-amber-500/20"><Power size={14}/></button>
+              )}
+              <button onClick={() => openModal(app, 'uninstall')} className="p-1.5 bg-red-500/10 text-red-400 rounded hover:bg-red-500/20"><Trash2 size={14}/></button>
+          </div>
+      </div>
+  );
+
   const renderLogin = () => (
     <div className="w-full max-w-sm mx-auto flex flex-col justify-center h-screen p-8">
-        <div className="flex justify-center mb-8">
-            <Shield size={64} className="text-cyan-400/80" strokeWidth={1} />
-        </div>
         <GlassCard borderColor="cyan">
             <h2 className="text-2xl font-bold text-center text-white mb-2">NEXUS CORE</h2>
-            <p className="text-center text-cyan-300/60 mb-6 text-sm">Secure Access Required</p>
-            {authError && <div className="bg-red-500/20 border border-red-500/30 text-red-300 p-3 rounded-lg mb-4 text-xs">{authError}</div>}
             <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} className="bg-slate-800/60 border border-white/10 rounded-lg w-full p-3 mb-4 text-white focus:outline-none focus:border-cyan-500" />
             <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} className="bg-slate-800/60 border border-white/10 rounded-lg w-full p-3 mb-6 text-white focus:outline-none focus:border-cyan-500" />
             <NeonButton label="Authenticate" color="cyan" icon={Key} onClick={handleLogin} loading={isAuthenticating} />
@@ -321,63 +348,54 @@ export default function App() {
     </div>
   );
 
-  const renderPurgeConnection = () => (
-    <div className="flex flex-col h-full justify-center space-y-6 animate-in fade-in duration-500">
-      <div className="text-center space-y-4">
-          <div className="w-20 h-20 bg-cyan-500/10 rounded-full flex items-center justify-center mx-auto ring-2 ring-cyan-500/20 shadow-[0_0_40px_rgba(6,182,212,0.2)]">
-            <Wifi size={40} className="text-cyan-400" />
+  const renderPurgeConnection = () => {
+    const statusColor = status.includes('Found') || status.includes('Ready') || status.includes('Active') ? 'text-green-400' : 'text-amber-400';
+    return (
+      <div className="flex flex-col h-full justify-center space-y-6 animate-in fade-in duration-500">
+        <GlassCard className="space-y-4" borderColor="cyan">
+          <div className="flex justify-between items-center pb-2 border-b border-white/10">
+              <span className="text-xs font-mono text-gray-400">STATUS</span>
+              <span className={`text-xs font-bold ${statusColor}`}>{status.toUpperCase()}</span>
           </div>
-          <h2 className="text-2xl font-bold text-white">Universal Android Debloater</h2>
-          <p className="text-gray-400 text-sm max-w-xs mx-auto">
-             1. Enable <b>Wireless Debugging</b>.<br/>
-             2. Tap <b>Pair with Code</b>.<br/>
-             3. Fill info & Connect.
-          </p>
+          <div className="space-y-2">
+              <label className="text-xs text-gray-500 font-bold uppercase">Manual Info</label>
+              <div className="flex gap-2">
+                  <input value={pairIp} onChange={e=>setPairIp(e.target.value)} placeholder="IP Address" className="flex-1 bg-black/20 border border-white/10 rounded-lg p-3 text-white text-sm focus:border-cyan-500 outline-none font-mono" />
+                  <input value={pairPort} onChange={e=>setPairPort(e.target.value)} placeholder="Port" className="w-20 bg-black/20 border border-white/10 rounded-lg p-3 text-white text-sm focus:border-cyan-500 outline-none font-mono text-center" />
+              </div>
+              <button onClick={handleRetrieve} className="w-full bg-white/5 hover:bg-cyan-500/20 text-cyan-400 p-2 rounded-lg border border-white/10 flex items-center justify-center gap-2 transition-all font-bold text-xs uppercase tracking-wider">
+                  <DownloadCloud size={16} /> Retrieve IP & Port
+              </button>
+          </div>
+          <div className="space-y-2">
+              <label className="text-xs text-gray-500 font-bold uppercase">Pairing Code</label>
+              <input value={code} onChange={e=>setCode(e.target.value)} placeholder="PAIRING CODE" className="w-full bg-black/20 border border-white/10 rounded-lg p-3 text-white text-center tracking-[0.5em] font-mono focus:border-cyan-500 outline-none" maxLength={6} inputMode="numeric" />
+              <button onClick={handlePair} disabled={!pairIp || !pairPort || !code} className="w-full bg-cyan-600 hover:bg-cyan-500 text-white p-3 rounded-lg text-sm font-bold transition-all disabled:opacity-30 flex items-center justify-center gap-2">
+                  <Zap size={16} fill="currentColor"/> PAIR DEVICE
+              </button>
+          </div>
+          <div className="pt-2">
+               <button onClick={handleConnect} disabled={isLoadingApps} className="w-full p-3 rounded-lg font-bold text-white shadow-lg bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center gap-2">
+                  {isLoadingApps ? <div className="animate-spin w-4 h-4 border-2 border-white rounded-full border-t-transparent" /> : <ArrowRight size={16}/>}
+                  {isLoadingApps ? "CONNECTING..." : "CONNECT TO SHELL"}
+              </button>
+          </div>
+        </GlassCard>
       </div>
-
-      <GlassCard className="space-y-4" borderColor="cyan">
-        <div className="flex justify-between items-center pb-2 border-b border-white/10">
-            <span className="text-xs font-mono text-gray-400">STATUS</span>
-            <span className={`text-xs font-bold ${status.includes('Found') || status.includes('Ready') || status.includes('Active') ? 'text-green-400' : 'text-amber-400'}`}>
-                {status.toUpperCase()}
-            </span>
-        </div>
-
-        <div className="space-y-2">
-            <label className="text-xs text-gray-500 font-bold uppercase">Manual Info</label>
-            <div className="flex gap-2">
-                <input value={pairIp} onChange={e=>setPairIp(e.target.value)} placeholder="IP Address" className="flex-1 bg-black/20 border border-white/10 rounded-lg p-3 text-white text-sm focus:border-cyan-500 outline-none font-mono" />
-                <input value={pairPort} onChange={e=>setPairPort(e.target.value)} placeholder="Port" className="w-20 bg-black/20 border border-white/10 rounded-lg p-3 text-white text-sm focus:border-cyan-500 outline-none font-mono text-center" />
-            </div>
-            {/* RETRIEVE BUTTON */}
-            <button onClick={handleRetrieve} className="w-full bg-white/5 hover:bg-cyan-500/20 text-cyan-400 p-2 rounded-lg border border-white/10 flex items-center justify-center gap-2 transition-all font-bold text-xs uppercase tracking-wider">
-                <DownloadCloud size={16} /> Retrieve IP & Port
-            </button>
-        </div>
-
-        <div className="space-y-2">
-            <input value={code} onChange={e=>setCode(e.target.value)} placeholder="PAIRING CODE" className="w-full bg-black/20 border border-white/10 rounded-lg p-3 text-white text-center tracking-[0.5em] font-mono focus:border-cyan-500 outline-none" maxLength={6} inputMode="numeric" />
-            <button onClick={handlePair} className="w-full bg-cyan-600 hover:bg-cyan-500 text-white p-3 rounded-lg text-sm font-bold transition-all mt-2 flex items-center justify-center gap-2">
-                <Zap size={16} fill="currentColor"/> PAIR DEVICE
-            </button>
-        </div>
-
-        <div className={`space-y-2 pt-2 transition-all duration-500 ${connectPort ? 'opacity-100' : 'opacity-60'}`}>
-             <button onClick={handleConnect} className={`w-full p-3 rounded-lg font-bold text-white shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2 ${connectPort ? 'bg-gradient-to-r from-blue-600 to-indigo-600' : 'bg-white/10 text-gray-400'}`}>
-                <ArrowRight size={16}/> {connectPort ? "CONNECT TO SHELL" : "Connect (Requires Port)"}
-            </button>
-        </div>
-      </GlassCard>
-    </div>
-  );
+    );
+  };
 
   const renderAppManager = () => {
-      const filteredApps = apps.filter(app => {
-          if (filterType === 'Disabled') return app.status === 'Disabled';
-          if (filterType === 'Enabled') return app.status === 'Enabled';
-          if (filterType !== 'All') return app.type === filterType;
-          return true;
-      }).filter(app => app.name.toLowerCase().includes(search.toLowerCase()) || app.pkg.toLowerCase().includes(search.toLowerCase()));
+      const filteredApps = useMemo(() => {
+        let result = apps;
+        if (filterType !== 'All') {
+          if (filterType === 'Disabled') result = result.filter(a => a.status === 'Disabled');
+          else if (filterType === 'Enabled') result = result.filter(a => a.status === 'Enabled');
+          else result = result.filter(a => a.type === filterType);
+        }
+        const lower = search.toLowerCase();
+        return result.filter(a => a.name.toLowerCase().includes(lower) || a.pkg.toLowerCase().includes(lower));
+      }, [apps, filterType, search]);
 
       return (
         <div className="flex flex-col h-full pt-2 animate-in slide-in-from-right-10 duration-300 min-h-screen">
@@ -386,11 +404,8 @@ export default function App() {
                 <Search className="absolute left-3 top-2.5 text-gray-500" size={16} />
                 <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search packages..." className="w-full bg-[#1e293b] border border-white/10 rounded-lg py-2 pl-9 text-sm text-white focus:ring-1 focus:ring-cyan-500 outline-none" />
               </div>
-              <button className="bg-[#1e293b] p-2 rounded-lg border border-white/10 text-gray-400" onClick={() => triggerHaptic('light')}>
-                 <Filter size={18} />
-              </button>
+              <button onClick={() => setPurgeTabState('connect')} className="bg-red-500/10 border border-red-500/30 text-red-400 p-2 rounded-lg" title="Disconnect"><LogOut size={18} /></button>
           </div>
-
           <div className="flex flex-1 overflow-hidden">
               <div className="w-24 flex flex-col gap-1 pr-2 border-r border-white/5 overflow-y-auto shrink-0">
                  {['All', 'System', 'User', 'Enabled', 'Disabled'].map(f => (
@@ -400,72 +415,56 @@ export default function App() {
                  ))}
                  <div className="mt-auto pt-4 pb-2 text-[10px] text-gray-600 font-mono text-center">{apps.length} APPS</div>
               </div>
-
               <div className="flex-1 pl-2 overflow-y-auto space-y-2 pb-20">
-                {filteredApps.map((app) => {
-                    const iconSrc = app.iconBase64 ? `data:image/png;base64,${app.iconBase64}` : null;
-                    return (
-                        <div key={app.pkg} className="bg-[#1e293b]/40 border border-white/[0.05] rounded-lg p-3 hover:bg-[#1e293b]/60 transition-colors group">
-                            <div className="flex justify-between items-start mb-2">
-                                <div className="flex items-center overflow-hidden">
-                                    {iconSrc ? (
-                                        <img src={iconSrc} alt="icon" className="w-8 h-8 rounded-md mr-3 shrink-0 bg-transparent" />
-                                    ) : (
-                                        <div className="w-8 h-8 rounded-md mr-3 shrink-0 bg-gray-600/50 flex items-center justify-center"><Smartphone size={16} className="text-gray-400" /></div>
-                                    )}
-                                    <div className="overflow-hidden pr-2">
-                                        <h3 className="font-semibold text-white text-sm truncate">{app.name}</h3>
-                                        <p className="text-[10px] text-gray-500 font-mono truncate">{app.pkg}</p>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col items-end gap-1 shrink-0">
-                                    <Badge text={app.type} />
-                                    <Badge text={app.status} />
-                                </div>
-                            </div>
-                            <div className="flex gap-2 mt-2 pt-2 border-t border-white/5 justify-end">
-                                {app.status === 'Disabled' ? (
-                                    <button onClick={() => openModal(app, 'enable')} className="p-1.5 bg-green-500/10 text-green-400 rounded hover:bg-green-500/20"><Zap size={14}/></button>
-                                ) : (
-                                    <button onClick={() => openModal(app, 'disable')} className="p-1.5 bg-amber-500/10 text-amber-400 rounded hover:bg-amber-500/20"><Power size={14}/></button>
-                                )}
-                                <button onClick={() => openModal(app, 'uninstall')} className="p-1.5 bg-red-500/10 text-red-400 rounded hover:bg-red-500/20"><Trash2 size={14}/></button>
-                                <button onClick={() => openModal(app, 'restore')} className="p-1.5 bg-blue-500/10 text-blue-400 rounded hover:bg-blue-500/20"><RotateCcw size={14}/></button>
-                            </div>
-                        </div>
-                    );
-                })}
+                {filteredApps.length === 0 && <div className="text-center text-gray-500 text-sm mt-10">No packages found</div>}
+                {filteredApps.map((app) => <AppRow key={app.pkg} app={app} />)}
               </div>
           </div>
         </div>
       );
   };
 
+  const renderShield = () => (
+    <div className="space-y-6 pt-2 animate-in fade-in duration-500">
+        <GlassCard borderColor={vpnActive ? "green" : "blue"} className="p-4">
+            <div className="flex items-center justify-between">
+                <div>
+                    <h2 className="text-2xl font-bold text-white">Nexus Shield</h2>
+                    <p className={`text-sm font-medium ${vpnActive ? 'text-green-400' : 'text-blue-400'}`}>
+                        {vpnActive ? 'Active & Protected' : 'Protection Disabled'}
+                    </p>
+                </div>
+                <div className={`w-16 h-16 rounded-full flex items-center justify-center transition-all ${vpnActive ? 'bg-green-500/20 ring-2 ring-green-500/50' : 'bg-blue-500/20'}`}>
+                    <Shield size={32} className={`${vpnActive ? 'text-green-400' : 'text-blue-400'}`} />
+                </div>
+            </div>
+            <div className="mt-4">
+                <NeonButton onClick={() => setVpnActive(!vpnActive)} label={vpnActive ? "DEACTIVATE" : "ACTIVATE"} icon={Power} color={vpnActive ? "red" : "green"} />
+            </div>
+        </GlassCard>
+    </div>
+  );
+
   const renderModal = () => {
     if (!modalOpen || !selectedApp || !actionType) return null;
     const config: any = {
-      uninstall: { color: 'red', title: 'Uninstall Package', desc: 'Removes the package for user 0. Data is cleared.' },
-      disable: { color: 'amber', title: 'Disable Package', desc: 'Freezes the app. Data preserved.' },
-      enable: { color: 'green', title: 'Enable Package', desc: 'Re-enables the application.' },
-      restore: { color: 'blue', title: 'Restore Package', desc: 'Reinstalls package for current user.' }
+      uninstall: { title: 'Uninstall', desc: 'Remove package? Data cleared.', color: 'text-red-400' },
+      disable: { title: 'Disable', desc: 'Freeze app? Data saved.', color: 'text-amber-400' },
+      enable: { title: 'Enable', desc: 'Re-enable app?', color: 'text-green-400' },
+      restore: { title: 'Restore', desc: 'Reinstall package?', color: 'text-blue-400' }
     };
     const info = config[actionType];
-
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
         <div className="bg-[#0f172a] border border-white/10 rounded-2xl p-6 w-full max-w-sm shadow-2xl">
            <div className="flex items-center gap-3 mb-4">
-               <AlertTriangle className={`text-${info.color}-400`} size={24} />
+               <AlertTriangle className={info.color} size={24} />
                <h3 className="text-lg font-bold text-white">{info.title}</h3>
-           </div>
-           <div className="bg-white/5 p-3 rounded-lg mb-4">
-               <p className="font-mono text-xs text-cyan-300 mb-1">{selectedApp.pkg}</p>
-               <p className="text-sm text-gray-300">{selectedApp.name}</p>
            </div>
            <p className="text-sm text-gray-400 mb-6">{info.desc}</p>
            <div className="flex gap-3">
-               <button onClick={() => setModalOpen(false)} className="flex-1 py-3 rounded-xl bg-white/5 text-gray-300 font-medium hover:bg-white/10">Cancel</button>
-               <button onClick={handleConfirmAction} className={`flex-1 py-3 rounded-xl font-bold bg-${info.color}-600 text-white shadow-lg`}>Confirm</button>
+               <button onClick={() => setModalOpen(false)} className="flex-1 py-3 rounded-xl bg-white/5 text-gray-300">Cancel</button>
+               <button onClick={handleConfirmAction} className="flex-1 py-3 rounded-xl font-bold text-white bg-white/10 hover:bg-white/20">Confirm</button>
            </div>
         </div>
       </div>
@@ -475,26 +474,12 @@ export default function App() {
   if (!isLoggedIn) return <div className="w-full bg-slate-900 text-white min-h-screen">{renderLogin()}</div>;
 
   return (
-    <div className="bg-[#020617] text-white min-h-screen font-sans">
+    <div className="bg-[#020617] text-white min-h-screen font-sans select-none">
       <main className="p-6 pb-48">
-        {activeTab === 'purge' && (purgeTabState === 'connect' ? renderPurgeConnection() : renderAppManager())}
-        {activeTab === 'shield' && <div className="p-4 text-center text-gray-500">Shield Module Loading...</div>}
-        {activeTab === 'insights' && <div className="p-4 text-center text-gray-500">AI Analysis Module Loading...</div>}
-        {activeTab === 'user' && (
-            <div className="space-y-6">
-                <GlassCard borderColor="amber">
-                    <div className="flex items-center space-x-4">
-                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-500/30 to-orange-500/30 flex items-center justify-center"><UserIcon size={40} className="text-amber-300" /></div>
-                        <div><h2 className="text-2xl font-bold text-white">Operative: {username}</h2><p className="text-sm text-amber-300/60">Privacy Warlord</p><p className="text-xs text-gray-500 mt-2">Core Version: {coreVersion}</p></div>
-                    </div>
-                    <div className="mt-4"><NeonButton onClick={() => setIsLoggedIn(false)} label="Log Out" icon={LogOut} color="gray" size="sm" fullWidth={false} /></div>
-                </GlassCard>
-                <div className="grid grid-cols-2 gap-4">
-                    <GlassCard><h3 className="font-bold text-white flex items-center"><Target size={18} className="mr-2 text-red-400" />Blocked</h3><p className="text-3xl font-bold text-white mt-2">{stats.blocked}</p></GlassCard>
-                    <GlassCard><h3 className="font-bold text-white flex items-center"><TrendingUp size={18} className="mr-2 text-green-400" />Saved</h3><p className="text-3xl font-bold text-white mt-2">{stats.saved} MB</p></GlassCard>
-                </div>
-            </div>
-        )}
+        {activeTab === 'purge' ? (purgeTabState === 'connect' ? renderPurgeConnection() : renderAppManager()) : null}
+        {activeTab === 'shield' && renderShield()}
+        {activeTab === 'insights' && <div className="p-10 text-center text-gray-500">Insights Module Offline</div>}
+        {activeTab === 'user' && <div className="p-10 text-center text-gray-500">Profile Module Offline</div>}
       </main>
       <TabBar active={activeTab} onChange={setActiveTab} />
       {renderModal()}
