@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -72,8 +71,6 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import io.github.muntashirakon.adb.AbsAdbConnectionManager;
 import io.github.muntashirakon.adb.AdbStream;
@@ -90,13 +87,11 @@ public class UserMainActivity extends AppCompatActivity {
     private static final int VPN_REQUEST_CODE = 0x0F;
     private static final int NOTIFICATION_REQUEST_CODE = 0x10;
 
-    // --- INTERFACES ---
-
     public class CommonInterface {
         private final Context mContext;
         public CommonInterface(Context context) { this.mContext = context; }
 
-        @JavascriptInterface public String getNativeCoreVersion() { return "5.1.3-STABLE"; }
+        @JavascriptInterface public String getNativeCoreVersion() { return "5.2.1-STABLE"; }
 
         @JavascriptInterface
         public void hapticFeedback(String type) {
@@ -108,9 +103,8 @@ public class UserMainActivity extends AppCompatActivity {
 
         @JavascriptInterface
         public void showToast(String toast) {
-            // Use Handler to ensure toast runs on UI thread even if activity is weird
             new Handler(Looper.getMainLooper()).post(() ->
-                    Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(mContext, toast, Toast.LENGTH_LONG).show()
             );
         }
 
@@ -166,8 +160,6 @@ public class UserMainActivity extends AppCompatActivity {
         }
     }
 
-    // --- LIFECYCLE ---
-
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,8 +169,6 @@ public class UserMainActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.webview);
         loader = findViewById(R.id.loader);
-
-        // Fix background color flicker
         webView.setBackgroundColor(0xFF020617);
 
         ViewCompat.setOnApplyWindowInsetsListener(webView, (v, windowInsets) -> {
@@ -192,7 +182,6 @@ public class UserMainActivity extends AppCompatActivity {
         webSettings.setDomStorageEnabled(true);
         webSettings.setAllowFileAccess(true);
 
-        // INITIALIZE ADB SINGLETON
         AdbSingleton.getInstance().init(getApplicationContext());
 
         nsdHelper = new NsdHelper(this);
@@ -205,8 +194,6 @@ public class UserMainActivity extends AppCompatActivity {
                 mainHandler.postDelayed(() -> {
                     if (loader != null) loader.setVisibility(View.GONE);
                     view.setAlpha(1.0f);
-
-                    // Check connection status on load
                     MyAdbManager manager = AdbSingleton.getInstance().getManager();
                     if (manager != null && manager.isConnected()) {
                         webView.evaluateJavascript("window.adbStatus('Connected');", null);
@@ -216,7 +203,14 @@ public class UserMainActivity extends AppCompatActivity {
             }
         });
 
-        // Use the new folder path
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onConsoleMessage(ConsoleMessage cm) {
+                Log.d("NEXUS_WEB", cm.message());
+                return true;
+            }
+        });
+
         webView.loadUrl("file:///android_asset/web/index.html");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -238,8 +232,6 @@ public class UserMainActivity extends AppCompatActivity {
     @Override protected void onPause() { super.onPause(); if (nsdHelper != null) nsdHelper.stopMdnsDiscoveryInternal(); }
     @Override protected void onDestroy() { super.onDestroy(); if (nsdHelper != null) nsdHelper.stopMdnsDiscoveryInternal(); }
 
-    // --- ADB MANAGER (NOW WITH PERSISTENCE) ---
-
     public static class AdbSingleton {
         private static AdbSingleton instance;
         private MyAdbManager adbManager;
@@ -257,7 +249,6 @@ public class UserMainActivity extends AppCompatActivity {
                 try {
                     Security.removeProvider("BC");
                     Security.addProvider(new BouncyCastleProvider());
-                    // Pass context to constructor
                     adbManager = new MyAdbManager(context);
                 } catch (Exception e) {
                     Log.e("NEXUS", "Failed to init ADB", e);
@@ -277,15 +268,21 @@ public class UserMainActivity extends AppCompatActivity {
         private final File certFile;
 
         public MyAdbManager(Context context) throws Exception {
-            // Set up persistent files
             keyFile = new File(context.getFilesDir(), "adb_key.pk8");
             certFile = new File(context.getFilesDir(), "adb_key.pem");
             setApi(Build.VERSION.SDK_INT);
 
-            // Load existing or generate new
+            // NUCLEAR OPTION: If keys exist, try to load them. If that fails, delete and regen.
             if (keyFile.exists() && certFile.exists()) {
-                try { loadKeys(); }
-                catch (Exception e) { generateAndSaveKeys(); }
+                try {
+                    loadKeys();
+                    Log.d("NEXUS", "Keys loaded successfully.");
+                } catch (Exception e) {
+                    Log.e("NEXUS", "Corrupted keys found. Deleting and regenerating.", e);
+                    keyFile.delete();
+                    certFile.delete();
+                    generateAndSaveKeys();
+                }
             } else {
                 generateAndSaveKeys();
             }
@@ -294,17 +291,21 @@ public class UserMainActivity extends AppCompatActivity {
         private void loadKeys() throws Exception {
             byte[] keyBytes = new byte[(int) keyFile.length()];
             try (FileInputStream fis = new FileInputStream(keyFile)) { fis.read(keyBytes); }
-            KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+
+            // --- CRITICAL FIX: ADD "BC" HERE ---
+            KeyFactory keyFactory = KeyFactory.getInstance("RSA", "BC");
             mPrivateKey = keyFactory.generatePrivate(new PKCS8EncodedKeySpec(keyBytes));
 
             try (FileInputStream fis = new FileInputStream(certFile)) {
-                CertificateFactory certFactory = CertificateFactory.getInstance("X.509");
+                // --- CRITICAL FIX: ADD "BC" HERE ---
+                CertificateFactory certFactory = CertificateFactory.getInstance("X.509", "BC");
                 mCertificate = certFactory.generateCertificate(fis);
             }
         }
 
         private void generateAndSaveKeys() throws Exception {
-            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+            // --- CRITICAL FIX: ADD "BC" HERE ---
+            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA", "BC");
             keyGen.initialize(2048, new SecureRandom());
             KeyPair pair = keyGen.generateKeyPair();
             mPrivateKey = pair.getPrivate();
@@ -345,9 +346,6 @@ public class UserMainActivity extends AppCompatActivity {
             }
         }
     }
-
-    // --- HELPERS (NSD & INTERFACE) ---
-
     private class NsdHelper {
         private NsdManager nsdManager;
         private NsdManager.DiscoveryListener pairingListener, connectListener;
@@ -430,7 +428,6 @@ public class UserMainActivity extends AppCompatActivity {
             if (autoPairIp != null) sendToJs("onPairingServiceFound", autoPairIp, autoPairPort);
             if (autoConnectIp != null) sendToJs("onConnectServiceFound", autoConnectIp, autoConnectPort);
         }
-
         public String getAutoPairIp() { return autoPairIp; }
         public int getAutoPairPort() { return autoPairPort; }
         public String getAutoConnectIp() { return autoConnectIp; }
@@ -454,7 +451,6 @@ public class UserMainActivity extends AppCompatActivity {
             this.shield = new ShieldInterface(activity, common);
         }
 
-        // Bridge methods
         @JavascriptInterface public String getNativeCoreVersion() { return common.getNativeCoreVersion(); }
         @JavascriptInterface public void hapticFeedback(String type) { common.hapticFeedback(type); }
         @JavascriptInterface public void showToast(String toast) { common.showToast(toast); }
@@ -481,6 +477,9 @@ public class UserMainActivity extends AppCompatActivity {
                     try { targetPort = Integer.parseInt(portStr); } catch (Exception e) { targetPort = nsdHelper.getAutoPairPort(); }
                     if (targetIp == null || targetPort == -1) { common.showToast("Missing Pairing Info"); return; }
 
+                    // If pairing locally, ensure we use loopback if needed
+                    if(targetIp == null) targetIp = "127.0.0.1";
+
                     boolean success = manager.pair(targetIp, targetPort, code);
                     common.showToast(success ? "Pairing Success!" : "Pairing Failed. Check Code.");
                 } catch (Exception e) { common.showToast("Pair Error: " + e.getMessage()); }
@@ -493,12 +492,17 @@ public class UserMainActivity extends AppCompatActivity {
                 if (manager == null) return;
                 try {
                     String targetIp = (ip != null && !ip.isEmpty()) ? ip : nsdHelper.getAutoConnectIp();
-                    if (targetIp == null) targetIp = nsdHelper.getAutoPairIp();
                     int targetPort = -1;
                     try { targetPort = Integer.parseInt(portStr); } catch (Exception e) { targetPort = nsdHelper.getAutoConnectPort(); }
 
                     if (targetIp == null || targetPort == -1) { common.showToast("Connection Info Missing"); return; }
-                    common.showToast("Attempting: " + targetIp + ":" + targetPort);
+
+                    // FORCE LOCALHOST: This bypasses firewall issues on the device itself
+                    if(targetIp.startsWith("192") || targetIp.startsWith("10.") || targetIp.equals(nsdHelper.getAutoConnectIp())) {
+                        targetIp = "127.0.0.1";
+                    }
+
+                    common.showToast("Connecting to: " + targetIp + ":" + targetPort);
                     boolean connected = manager.connect(targetIp, targetPort);
                     if (connected) {
                         common.showToast("Connected to Shell");
@@ -508,8 +512,8 @@ public class UserMainActivity extends AppCompatActivity {
                         activity.runOnUiThread(() -> webView.evaluateJavascript("window.adbStatus('Connection Failed');", null));
                     }
                 } catch (Exception e) {
-                    common.showToast("Connect Error: " + e.getMessage());
-                    Log.e("NEXUS_DEBUG", "Connection Failed", e); // Log full stack trace
+                    common.showToast("Err: " + e.toString());
+                    Log.e("NEXUS_DEBUG", "Connection Failed", e);
                     activity.runOnUiThread(() -> webView.evaluateJavascript("window.adbStatus('Connect Error');", null));
                 }
             });
