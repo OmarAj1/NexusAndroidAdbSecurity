@@ -108,23 +108,36 @@ public class ConsolidatedWebAppInterface {
             String base64Data = Base64.encodeToString("[]".getBytes(), Base64.NO_WRAP);
             try {
                 PackageManager pm = activity.getPackageManager();
-                List<PackageInfo> packages = pm.getInstalledPackages(PackageManager.MATCH_UNINSTALLED_PACKAGES);
+                // 1. Get apps (flags=0 is faster)
+                List<PackageInfo> packages = pm.getInstalledPackages(0);
+
                 JSONArray jsonArray = new JSONArray();
                 for (PackageInfo pInfo : packages) {
                     if (pInfo.packageName.equals(activity.getPackageName())) continue;
-                    boolean isSystem = (pInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
+
                     JSONObject obj = new JSONObject();
                     obj.put("pkg", pInfo.packageName);
-                    obj.put("type", isSystem ? "System" : "User");
+                    obj.put("type", (pInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0 ? "System" : "User");
                     obj.put("status", pInfo.applicationInfo.enabled ? "Enabled" : "Disabled");
-                    CharSequence label = pInfo.applicationInfo.loadLabel(pm);
-                    obj.put("name", label != null ? label.toString() : pInfo.packageName);
+
+                    // 2. OPTIMIZATION: Use package name directly. DO NOT use loadLabel(pm).
+                    String simpleName = pInfo.packageName;
+                    if (simpleName.contains(".")) {
+                        simpleName = simpleName.substring(simpleName.lastIndexOf('.') + 1);
+                        if (simpleName.length() > 0) {
+                            simpleName = simpleName.substring(0, 1).toUpperCase() + simpleName.substring(1);
+                        }
+                    }
+                    obj.put("name", simpleName);
+
                     jsonArray.put(obj);
                 }
                 base64Data = Base64.encodeToString(jsonArray.toString().getBytes("UTF-8"), Base64.NO_WRAP);
-            } catch (Exception e) {}
+            } catch (Exception e) {
+                Log.e("NEXUS", "Error fetching apps", e);
+            }
+
             final String finalData = base64Data;
             activity.runOnUiThread(() -> webView.evaluateJavascript("if(window.receiveAppList) window.receiveAppList('" + finalData + "');", null));
         });
-    }
-}
+    }}

@@ -27,10 +27,9 @@ export default function App() {
         pairingData, connectData
     } = useNativeBridge();
 
-  // --- NEW: Action Handler to fix "Dead Buttons" ---
+  // --- Action Handler to fix "Dead Buttons" ---
   const handleAppAction = (action: string, pkg: string, userId: number) => {
       // Calls the native bridge function exposed in useNativeBridge
-      // This sends the command (uninstall/disable) to the Java layer
       if ((window as any).AndroidNative) {
           (window as any).AndroidNative.executeCommand(action, pkg, userId);
       } else {
@@ -91,31 +90,33 @@ export default function App() {
             allApps={apps}
             users={users}
             onDisconnect={actions.disconnect}
-            onAction={handleAppAction} // <--- Critical Fix: Passing the handler
+            onAction={handleAppAction}
         />
       );
     };
 
   return (
-    <div className="relative w-full min-h-screen font-sans select-none overflow-hidden bg-[#020617] text-white">
+    <div className="relative w-full h-screen font-sans select-none overflow-hidden bg-[#020617] text-white flex flex-col">
 
-      {/* 1. The Dynamic Background Layer */}
+      {/* 1. Background Layer */}
       <AtmosphericBackground theme={theme} />
 
-      <main className="relative z-10 p-6 pb-48 min-h-screen">
+      {/* 2. Main Content Area - FIXED LAYOUT */}
+      {/* Changed min-h-screen to h-screen and added flex/overflow-hidden */}
+      <main className="relative z-10 flex flex-col flex-1 h-full overflow-hidden p-4 pb-24 md:p-6 md:pb-28">
 
-        {/* 2. Login Check */}
         {!isLoggedIn ? (
            <LoginView onLogin={(user) => { setUsername(user); setIsLoggedIn(true); }} />
         ) : (
-          // 3. Page Transition Wrapper
           <AnimatePresence mode="wait">
              <motion.div
-                key={activeTab} // Changing this key triggers the exit/enter animation
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -10 }}
-                transition={{ duration: 0.2 }}
+                key={activeTab}
+                initial={{ opacity: 0, x: 10, filter: 'blur(10px)' }}
+                animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, x: -10, filter: 'blur(10px)' }}
+                transition={{ duration: 0.3 }}
+                // CRITICAL FIX: Ensure this container takes full height
+                className="flex flex-col h-full overflow-hidden"
              >
                 {activeTab === 'purge' && renderPurgeContent()}
 
@@ -148,9 +149,8 @@ export default function App() {
         )}
       </main>
 
-      {/* 4. Tab Bar (Only show if logged in) */}
+      {/* 3. Tab Bar */}
       {isLoggedIn && <TabBar active={activeTab} onChange={setActiveTab} />}
-
     </div>
   );
 }

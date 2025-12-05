@@ -7,7 +7,23 @@ android {
     namespace = "com.example.myapplication"
     compileSdk = 36
 
+    // 1. Task to install dependencies
+    tasks.register("npmInstall", Exec::class) {
+        workingDir = rootProject.file("nexus-web")
+        inputs.file(rootProject.file("nexus-web/package.json"))
+        outputs.dir(rootProject.file("nexus-web/node_modules"))
+
+        // CHANGED: Added "--legacy-peer-deps" to ignore the React version conflict
+        commandLine(
+            if (System.getProperty("os.name").toLowerCase().contains("windows")) "npm.cmd" else "npm",
+            "install",
+            "--legacy-peer-deps"
+        )
+    }
+
+    // 2. Task to build the React app (Keep this as is)
     tasks.register("buildReactApp", Exec::class) {
+        dependsOn("npmInstall")
         workingDir = rootProject.file("nexus-web")
         commandLine(if (System.getProperty("os.name").toLowerCase().contains("windows")) "npm.cmd" else "npm", "run", "build")
     }

@@ -58,6 +58,14 @@ export const useNativeBridge = () => {
     }
   };
 
+  // --- FIX: AUTO-FETCH APPS ON CONNECT ---
+  useEffect(() => {
+    // When status hits "Connected", immediately ask Java for the package list.
+    if (status === 'Connected' && isNative()) {
+        (window as any).AndroidNative.getInstalledPackages();
+    }
+  }, [status]);
+
   useEffect(() => {
     // Poll VPN Status
     const interval = setInterval(() => {
@@ -68,10 +76,12 @@ export const useNativeBridge = () => {
 
     // Setup Global Listeners
     (window as any).adbStatus = (s: string) => setStatus(s);
+
     (window as any).receiveAppList = (b64: string) => {
         try {
             const json = JSON.parse(atob(b64));
             setApps(json);
+            // Update status to indicate data is ready (and prevent loop)
             setStatus("Shell Active");
         } catch(e) { console.error(e); }
     };
