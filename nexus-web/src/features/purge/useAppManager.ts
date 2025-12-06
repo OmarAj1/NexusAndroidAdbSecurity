@@ -1,70 +1,91 @@
 import { useState, useMemo } from 'react';
-// Adjust this import path based on where you put your types
 import { AppData } from '../../types';
+import { identifyApp } from '../../utils/appIdentifier';
 
-export const useAppManager = (apps: AppData[]) => {
-  // 1. Search State
+interface FilterState {
+  search: string;
+  userId: number;
+  safety: string;
+  status: string;
+  category: string;
+}
+
+export const useAppManager = (rawApps: AppData[]) => {
   const [search, setSearch] = useState('');
 
-  // 2. Filter State
-  const [filters, setFilters] = useState({
-    category: 'All',   // e.g. 'Google', 'OEM'
-    safety: 'All',     // e.g. 'Recommended', 'Unsafe'
-    status: 'All',     // e.g. 'Enabled', 'Disabled'
-    userId: 0          // e.g. 0 (Owner), 10 (Work)
+  const [filters, setFilters] = useState<Omit<FilterState, 'search'>>({
+    userId: 0,
+    safety: 'All',
+    status: 'All',
+    category: 'All'
   });
 
-  // 3. The Logic Engine (Memoized for performance)
+  const updateFilter = (key: keyof typeof filters, value: any) => {
+    setFilters(prev => ({ ...prev, [key]: value }));
+  };
+
+  // 1. ENRICHMENT LAYER
+  // We process the raw Java list to add Safety ratings and fix Statuses
+  const processedApps = useMemo(() => {
+    if (!rawApps) return [];
+
+    return rawApps.map(app => {
+      // Add Safety & Category info
+      const { safety, listCategory } = identifyApp(app.pkg);
+
+      // LOGIC FIX: If a System App is "Disabled", it is effectively "Uninstalled" (Debloated)
+      // This ensures it shows up when you filter by "Uninstalled"
+      let effectiveStatus = app.status;
+      if (app.type === 'System' && app.status === 'Disabled') {
+          effectiveStatus = 'Uninstalled';
+      }
+
+      return {
+        ...app,
+        safety,
+        listCategory,
+        status: effectiveStatus,
+        userId: app.userId !== undefined ? app.userId : 0 // Default to User 0 if missing
+      };
+    });
+  }, [rawApps]);
+
+  // 2. FILTERING LAYER
   const filteredApps = useMemo(() => {
-    return apps.filter(app => {
-      // --- Search Check ---
+    return processedApps.filter(app => {
+      // Search
       const searchLower = search.toLowerCase();
-      const matchesSearch =
-        app.name.toLowerCase().includes(searchLower) ||
-        app.pkg.toLowerCase().includes(searchLower);
+      if (!app.name.toLowerCase().includes(searchLower) &&
+          !app.pkg.toLowerCase().includes(searchLower)) {
+        return false;
+      }
 
-      if (!matchesSearch) return false;
+      // User
+      if (app.userId !== filters.userId) return false;
 
-      // --- Category Check ---
-      // Note: If filter is 'User', we check app.type, otherwise we check listCategory
+      // Status
+      // Now 'Uninstalled' filter will catch the apps we re-labeled above
+      if (filters.status !== 'All' && app.status !== filters.status) return false;
+
+      // Safety
+      if (filters.safety !== 'All' && app.safety !== filters.safety) return false;
+
+      // Category
       if (filters.category !== 'All') {
-        if (filters.category === 'User') {
-           if (app.type !== 'User') return false;
-        } else {
-           if (app.listCategory !== filters.category) return false;
-        }
+         if (filters.category === 'User') { if (app.type !== 'User') return false; }
+         else if (filters.category === 'System') { if (app.type !== 'System') return false; }
+         else if (app.listCategory !== filters.category) return false;
       }
-
-      // --- Safety Check ---
-      if (filters.safety !== 'All' && app.safety !== filters.safety) {
-        return false;
-      }
-
-      // --- Status Check ---
-      if (filters.status !== 'All' && app.status !== filters.status) {
-        return false;
-      }
-
-      // --- User Check ---
-      // (Optional: If your app data doesn't have userId attached to the app object yet,
-      // you might need to handle this differently in the native bridge)
-      // if (app.userId !== filters.userId) return false;
 
       return true;
     });
-  }, [apps, search, filters]);
-
-  // 4. Helper functions to make updating easier
-  const updateFilter = (key: keyof typeof filters, value: string | number) => {
-    setFilters(prev => ({ ...prev, [key]: value }));
-  };
+  }, [processedApps, search, filters]);
 
   return {
     search,
     setSearch,
     filters,
     updateFilter,
-    filteredApps,
-    count: filteredApps.length
+    filteredApps
   };
 };

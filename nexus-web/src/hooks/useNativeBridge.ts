@@ -62,6 +62,7 @@ export const useNativeBridge = () => {
   useEffect(() => {
     // When status hits "Connected", immediately ask Java for the package list.
     if (status === 'Connected' && isNative()) {
+        console.log("Status Connected -> Fetching Packages");
         (window as any).AndroidNative.getInstalledPackages();
     }
   }, [status]);
@@ -75,15 +76,19 @@ export const useNativeBridge = () => {
     }, 2000);
 
     // Setup Global Listeners
-    (window as any).adbStatus = (s: string) => setStatus(s);
+    (window as any).adbStatus = (s: string) => {
+        console.log("ADB Status:", s);
+        setStatus(s);
+    };
 
     (window as any).receiveAppList = (b64: string) => {
         try {
+            console.log("App List Received. Length:", b64.length);
             const json = JSON.parse(atob(b64));
             setApps(json);
             // Update status to indicate data is ready (and prevent loop)
             setStatus("Shell Active");
-        } catch(e) { console.error(e); }
+        } catch(e) { console.error("JSON Parse Error:", e); }
     };
 
     // --- PAIRING FOUND ---
@@ -106,6 +111,19 @@ export const useNativeBridge = () => {
 
         setStatus('Ready to Connect');
     };
+
+    // --- CRITICAL FIX FOR REAL DEVICES ---
+    // If the View loads AFTER Java has already initialized, we missed the initial events.
+    // We must manually request the state immediately.
+    if (isNative()) {
+        console.log("Mounting: Requesting initial data sync...");
+        (window as any).AndroidNative.retrieveConnectionInfo();
+
+        // Slight delay to ensure connection is ready before asking for packages
+        setTimeout(() => {
+             (window as any).AndroidNative.getInstalledPackages();
+        }, 1000);
+    }
 
     return () => clearInterval(interval);
   }, []);

@@ -3,45 +3,25 @@
 @tailwind utilities;
 
 :root {
-  --app-bg: #fdfbf7;
+  /* THEME: Neon on Void */
+  --bg-void: #020617;       /* App Background */
+  --bg-card: #1e293b;       /* Card/Tile Background */
+  --accent: #8b5cf6;        /* Primary Action (Purple) */
+  --safe: #06b6d4;          /* Cyan (Protected) */
+  --danger: #ef4444;        /* Red (Unprotected) */
 }
 
+/* NATIVE APP RESETS */
 html, body, #root {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: var(--app-bg);
-  transition: background-color 0.5s ease-in-out; /* Smooth theme transition */
-  overflow: hidden;
-}
-
-/* Define CSS Keyframes for "Cute" movements
-  These run on the compositor thread (GPU) -> Very fast on old phones.
-*/
-@layer utilities {
-  .animate-blob {
-    animation: blob 10s infinite;
-  }
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
-}
-
-@keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
+  background-color: var(--bg-void);
+  color: #f1f5f9;
+  overflow: hidden; /* CRITICAL: Prevents entire page scrolling */
+  overscroll-behavior: none; /* Disables pull-to-refresh effects */
+  user-select: none; /* Disables text highlighting */
+  -webkit-tap-highlight-color: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }

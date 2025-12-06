@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { DownloadCloud, Zap, ArrowRight, Wifi } from 'lucide-react';
-import { GlassCard } from '../../components/ui/GlassCard';
+import { DownloadCloud, Zap, Wifi, Terminal } from 'lucide-react';
 
 interface ConnectionViewProps {
     status: string;
@@ -11,95 +10,76 @@ interface ConnectionViewProps {
     connectData: { ip: string, port: string };
 }
 
-export const ConnectionView = ({
-    status, onPair, onConnect, onRetrieve, pairingData, connectData
-}: ConnectionViewProps) => {
-
+export const ConnectionView = ({ status, onPair, onConnect, onRetrieve, pairingData, connectData }: ConnectionViewProps) => {
   const [ip, setIp] = useState('');
   const [port, setPort] = useState('');
   const [code, setCode] = useState('');
 
-  // Auto-fill fields when data comes in
   useEffect(() => {
-      if (pairingData.ip) {
-          // Priority 1: If pairing info is found, show that (so user can pair)
-          setIp(pairingData.ip);
-          setPort(pairingData.port);
-      } else if (connectData.ip) {
-          // Priority 2: If main info is found, show that
-          setIp(connectData.ip);
-          setPort(connectData.port);
-      }
+      if (pairingData.ip) { setIp(pairingData.ip); setPort(pairingData.port); }
+      else if (connectData.ip) { setIp(connectData.ip); setPort(connectData.port); }
   }, [pairingData, connectData]);
 
   return (
-    <div className="flex flex-col h-full justify-center space-y-6 animate-in fade-in duration-500">
-      <GlassCard className="space-y-4" borderColor="cyan">
+    <div className="flex flex-col h-full pt-10 px-2">
 
-        {/* Header Status */}
-        <div className="flex justify-between items-center pb-2 border-b border-white/10">
-            <div className="flex items-center gap-2">
-                <Wifi size={14} className={status.includes('Connect') ? "text-green-400" : "text-gray-400"} />
-                <span className="text-xs font-mono text-gray-400">STATUS</span>
-            </div>
-            <span className="text-xs font-bold text-cyan-400 animate-pulse">{status}</span>
-        </div>
+      {/* HEADER GRAPHIC */}
+      <div className="flex flex-col items-center mb-10">
+          <div className="w-20 h-20 rounded-full bg-surface border border-white/5 flex items-center justify-center mb-4 shadow-2xl shadow-accent/10">
+              <Terminal size={32} className="text-slate-500" />
+          </div>
+          <h2 className="text-xl font-bold text-white">ADB Wireless</h2>
+          <div className="flex items-center gap-2 mt-2">
+            <span className={`w-2 h-2 rounded-full ${status.includes('Connect') ? 'bg-green-500 shadow-green-500/50' : 'bg-red-500'}`} />
+            <span className="text-xs font-mono text-slate-500 uppercase">{status}</span>
+          </div>
+      </div>
 
-        {/* Inputs */}
-        <div className="space-y-2">
-            <div className="flex gap-2">
-                <input
-                    value={ip}
-                    onChange={e=>setIp(e.target.value)}
-                    placeholder="192.168.x.x"
-                    className="flex-1 bg-black/20 border border-white/10 rounded-lg p-3 text-white text-sm focus:border-cyan-500 outline-none font-mono transition-all"
-                />
-                <input
-                    value={port}
-                    onChange={e=>setPort(e.target.value)}
-                    placeholder="PORT"
-                    className="w-24 bg-black/20 border border-white/10 rounded-lg p-3 text-white text-sm focus:border-cyan-500 outline-none font-mono text-center transition-all"
-                />
-            </div>
+      {/* FORM AREA */}
+      <div className="space-y-4">
 
-            <button
-                onClick={onRetrieve}
-                className="w-full bg-white/5 text-cyan-400 p-2 rounded-lg border border-white/10 flex items-center justify-center gap-2 text-xs uppercase hover:bg-white/10 hover:border-cyan-500/50 transition-all"
-            >
-                <DownloadCloud size={14} /> Auto-Detect IP/Port
-            </button>
-        </div>
+          {/* IP & Port Row */}
+          <div className="flex gap-3">
+              <input
+                  value={ip} onChange={e=>setIp(e.target.value)} placeholder="192.168.x.x"
+                  className="flex-1 bg-surface border border-white/5 rounded-2xl p-4 text-white font-mono text-sm placeholder-slate-600 focus:border-accent outline-none"
+              />
+              <input
+                  value={port} onChange={e=>setPort(e.target.value)} placeholder="5555"
+                  className="w-24 bg-surface border border-white/5 rounded-2xl p-4 text-white font-mono text-sm text-center placeholder-slate-600 focus:border-accent outline-none"
+              />
+          </div>
 
-        {/* Pairing Section */}
-        <div className="space-y-2 pt-2 border-t border-white/5">
-            <input
-                value={code}
-                onChange={e=>setCode(e.target.value)}
-                placeholder="PAIRING CODE"
-                className="w-full bg-black/20 border border-white/10 rounded-lg p-3 text-white text-center tracking-[0.5em] font-mono focus:border-yellow-500/50 outline-none transition-all"
+          <button onClick={onRetrieve} className="w-full py-3 text-xs font-bold text-accent bg-accent/10 rounded-xl border border-accent/20 flex items-center justify-center gap-2 active:scale-95 transition-transform">
+              <DownloadCloud size={14} /> AUTO-DETECT
+          </button>
+
+          <div className="h-px bg-white/5 my-6" />
+
+          {/* Pairing Input */}
+          <div className="relative">
+             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                <span className="text-slate-600 font-mono text-xs">PAIRING CODE</span>
+             </div>
+             <input
+                value={code} onChange={e=>setCode(e.target.value)} placeholder="------"
+                className="w-full bg-surface border border-white/5 rounded-2xl py-4 pl-32 pr-4 text-white text-right font-mono tracking-widest focus:border-safe outline-none"
                 maxLength={6}
-            />
-            <button
-                onClick={() => onPair(ip, port, code)}
-                className="w-full bg-yellow-600/20 text-yellow-400 border border-yellow-600/50 p-3 rounded-lg text-sm font-bold flex items-center justify-center gap-2 hover:bg-yellow-600/30 transition-all"
-            >
-                <Zap size={16}/> PAIR DEVICE
-            </button>
-        </div>
+             />
+          </div>
 
-        {/* Connect Button - The "Smart" Button */}
-        <button
-            onClick={() => onConnect(ip, port)}
-            className="w-full p-4 rounded-lg font-bold text-white bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 shadow-lg shadow-cyan-900/20 flex items-center justify-center gap-2 transition-all active:scale-95"
-        >
-            <ArrowRight size={18}/> CONNECT TO SHELL
-        </button>
-
-      </GlassCard>
-
-      <p className="text-center text-[10px] text-gray-500 max-w-xs mx-auto">
-          Use 'Auto-Detect' first. Then enter pairing code. Finally click Connect (Auto-switches to correct port).
-      </p>
+          {/* ACTION BUTTONS */}
+          <div className="grid grid-cols-2 gap-3 pt-2">
+             <button onClick={() => onPair(ip, port, code)} className="p-4 rounded-2xl bg-surface border border-white/5 text-slate-300 font-bold text-sm flex flex-col items-center gap-2 active:scale-95 transition-transform">
+                 <Zap size={20} className="text-amber-400" />
+                 Pair
+             </button>
+             <button onClick={() => onConnect(ip, port)} className="p-4 rounded-2xl bg-white text-black font-bold text-sm flex flex-col items-center gap-2 active:scale-95 transition-transform shadow-lg shadow-white/10">
+                 <Wifi size={20} className="text-black" />
+                 Connect
+             </button>
+          </div>
+      </div>
     </div>
   );
 };

@@ -6,25 +6,25 @@ interface NeonButtonProps {
   active?: boolean;
   icon?: LucideIcon;
   label: string;
-  color?: "green" | "cyan" | "red" | "gray";
+  color?: "safe" | "accent" | "danger" | "void"; // Updated types
   loading?: boolean;
-  small?: boolean;
 }
 
-export const NeonButton = ({ onClick, active, icon: Icon, label, color = "green", loading = false, small=false }: NeonButtonProps) => {
-  // New Pastel/Vibrant Gradient Mapping
-  const colors: Record<string, string> = {
-    green: "bg-green-100 text-green-700 hover:bg-green-200 border-green-200",
-    cyan: "bg-cyan-100 text-cyan-700 hover:bg-cyan-200 border-cyan-200",
-    red: "bg-red-100 text-red-700 hover:bg-red-200 border-red-200",
-    gray: "bg-slate-100 text-slate-700 hover:bg-slate-200 border-slate-200"
+export const NeonButton = ({ onClick, active, icon: Icon, label, color = "safe", loading = false }: NeonButtonProps) => {
+
+  // Tailwind class mapping based on new config
+  const styles = {
+    safe:   "bg-safe/10 text-safe border-safe/20 hover:bg-safe/20",
+    accent: "bg-accent/10 text-accent border-accent/20 hover:bg-accent/20",
+    danger: "bg-danger/10 text-danger border-danger/20 hover:bg-danger/20",
+    void:   "bg-surface text-slate-400 border-white/5 hover:bg-white/5"
   };
 
-  const activeColors: Record<string, string> = {
-     green: "bg-green-400 text-white shadow-green-200 shadow-lg border-green-400",
-     cyan: "bg-cyan-400 text-white shadow-cyan-200 shadow-lg border-cyan-400",
-     red: "bg-red-400 text-white shadow-red-200 shadow-lg border-red-400",
-     gray: "bg-slate-700 text-white shadow-slate-200 shadow-lg border-slate-700"
+  const activeStyles = {
+    safe:   "bg-safe text-white border-safe shadow-[0_0_20px_rgba(6,182,212,0.4)]",
+    accent: "bg-accent text-white border-accent shadow-[0_0_20px_rgba(139,92,246,0.4)]",
+    danger: "bg-danger text-white border-danger shadow-[0_0_20px_rgba(239,68,68,0.4)]",
+    void:   "bg-white text-black border-white"
   };
 
   return (
@@ -32,28 +32,17 @@ export const NeonButton = ({ onClick, active, icon: Icon, label, color = "green"
       onClick={onClick}
       disabled={loading}
       className={`
-        relative overflow-hidden group
-        ${small ? 'p-2 rounded-2xl' : 'w-full py-4 px-6 rounded-3xl'}
-        text-sm font-bold tracking-wide
+        relative w-full py-4 px-6 rounded-2xl
+        flex items-center justify-center gap-2
+        text-sm font-bold tracking-wide border
         transition-all duration-200 active:scale-95
-        border
-        ${active
-            ? activeColors[color]
-            : colors[color]
-        }
-        ${loading ? 'opacity-80 cursor-wait' : ''}
+        ${active ? activeStyles[color] : styles[color]}
+        ${loading ? 'opacity-50 cursor-not-allowed' : ''}
       `}
     >
-      <div className="flex items-center justify-center space-x-2 relative z-10">
-        {loading ? (
-          <div className="animate-spin w-4 h-4 border-2 border-current border-t-transparent rounded-full" />
-        ) : (
-          <>
-            {Icon && <Icon size={small ? 18 : 20} strokeWidth={2.5} />}
-            {!small && <span>{label}</span>}
-          </>
-        )}
-      </div>
+        {loading && <div className="animate-spin w-4 h-4 border-2 border-current border-t-transparent rounded-full" />}
+        {Icon && <Icon size={18} />}
+        <span>{label}</span>
     </button>
   );
 };
