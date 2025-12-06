@@ -2,12 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add this to ensure the root div fills the screen */
+:root {
+  --app-bg: #fdfbf7;
+}
+
 html, body, #root {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #020617; /* Dark background default */
-  overflow: hidden; /* Prevents scrollbars on the main window */
+  background-color: var(--app-bg);
+  transition: background-color 0.5s ease-in-out; /* Smooth theme transition */
+  overflow: hidden;
+}
+
+/* Define CSS Keyframes for "Cute" movements
+  These run on the compositor thread (GPU) -> Very fast on old phones.
+*/
+@layer utilities {
+  .animate-blob {
+    animation: blob 10s infinite;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
 }
