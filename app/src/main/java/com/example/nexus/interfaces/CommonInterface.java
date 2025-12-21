@@ -50,7 +50,6 @@ public class CommonInterface {
 
     @JavascriptInterface
     public void shareText(String title, String content) {
-        // Run on UI Thread to safely launch Activities
         new Handler(Looper.getMainLooper()).post(() -> {
             try {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);

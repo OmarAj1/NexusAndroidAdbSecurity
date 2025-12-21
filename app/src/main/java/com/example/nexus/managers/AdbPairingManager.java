@@ -19,12 +19,10 @@ public class AdbPairingManager {
     private final NsdManager nsdManager;
     private final ExecutorService executor = Executors.newCachedThreadPool();
 
-    // State
     private String autoPairIp, autoConnectIp;
     private int autoPairPort = -1, autoConnectPort = -1;
     private boolean isDiscoveryActive = false;
 
-    // Listeners
     private NsdManager.DiscoveryListener pairingListener;
     private NsdManager.DiscoveryListener connectListener;
 
@@ -67,7 +65,6 @@ public class AdbPairingManager {
 
     public void pairAdb(String ip, String portStr, String code) {
         executor.execute(() -> {
-            // FIX: Removed "UserMainActivity." prefix
             AdbSingleton singleton = AdbSingleton.getInstance();
             MyAdbManager manager = singleton.getAdbManager();
 
@@ -125,7 +122,6 @@ public class AdbPairingManager {
 
     public void connectAdb(String ip, String portStr) {
         executor.execute(() -> {
-            // FIX: Removed "UserMainActivity." prefix
             AdbSingleton singleton = AdbSingleton.getInstance();
             MyAdbManager manager = singleton.getAdbManager();
 

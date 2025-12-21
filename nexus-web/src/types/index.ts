@@ -4,9 +4,10 @@ export interface AppData {
   type: 'User' | 'System';
   status: 'Enabled' | 'Disabled' | 'Uninstalled';
   userId: number;
-  category?: string; // Optional: for future categorization
+  category?: string;
   safety?: 'Unknown' | 'Expert' | 'Advanced' | 'Recommended' | 'Unsafe';
   listCategory?: 'Google' | 'OEM' | 'AOSP' | 'Third Party' | 'Other';
+  description?: string; 
 }
 
 export interface ActionLog {
@@ -21,7 +22,6 @@ export interface UserData {
   name:string;
 }
 
-// Global Window Interface for the Native Bridge
 declare global {
   interface Window {
     AndroidNative?: {
@@ -29,7 +29,6 @@ declare global {
       getInstalledPackages: () => void;
       toggleVpn: () => void;
     };
-    // Callbacks exposed to Java
     updateAppList?: (json: string) => void;
     adbStatus?: (status: string) => void;
   }

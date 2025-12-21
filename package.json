@@ -1,0 +1,12 @@
+{
+  "name": "nexus-project-root",
+  "version": "1.0.0",
+  "description": "Root configuration to manage Nexus Web Interface",
+  "private": true,
+  "scripts": {
+    "start": "cd nexus-web && npm start",
+    "install-deps": "cd nexus-web && npm install",
+    "build": "cd nexus-web && npm run build",
+    "dev": "cd nexus-web && npm run dev"
+  }
+}

@@ -13,13 +13,11 @@ public class AdbSingleton {
     private MyAdbManager adbManager;
     private final AtomicBoolean isInitializing = new AtomicBoolean(false);
 
-    // Callback interface
     public interface AdbInitListener {
         void onInitComplete();
     }
 
     private AdbSingleton() {
-        // Private constructor to enforce Singleton pattern
     }
 
     public static synchronized AdbSingleton getInstance() {
@@ -36,12 +34,11 @@ public class AdbSingleton {
     public void init(Context context, AdbInitListener listener) {
         if (adbManager != null) {
             if (listener != null) {
-                listener.onInitComplete(); // Already initialized
+                listener.onInitComplete();
             }
             return;
         }
 
-        // Prevent multiple init threads
         if (isInitializing.get()) {
             return;
         }
@@ -49,12 +46,10 @@ public class AdbSingleton {
         isInitializing.set(true);
         new Thread(() -> {
             try {
-                // Register BouncyCastle for crypto operations if needed
                 if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null) {
                     Security.addProvider(new BouncyCastleProvider());
                 }
 
-                // Initialize your custom manager
                 adbManager = new MyAdbManager(context);
 
                 if (listener != null) {

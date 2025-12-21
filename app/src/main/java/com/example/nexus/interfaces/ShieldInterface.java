@@ -23,7 +23,6 @@ public class ShieldInterface {
     public void startVpn() {
         Intent prepareIntent = VpnService.prepare(mCommon.mContext);
         if (prepareIntent != null) {
-            // This calls back to UserMainActivity.onActivityResult
             mActivity.startActivityForResult(prepareIntent, UserMainActivity.VPN_REQUEST_CODE);
         } else {
             startShieldServiceInternal();
@@ -42,8 +41,6 @@ public class ShieldInterface {
 
     @JavascriptInterface
     public boolean getVpnStatus() {
-        // Implement logic to check if ShieldVpnService is actually running
-        // For now, returning false as default
         return false;
     }
 

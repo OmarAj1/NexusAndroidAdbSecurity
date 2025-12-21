@@ -34,30 +34,25 @@ public class ConsolidatedWebAppInterface {
         this.webView = webView;
         this.pairingManager = pairingManager;
 
-        // Initialize sub-interfaces
         this.common = new CommonInterface(activity);
         this.shield = new ShieldInterface(activity, common);
     }
 
-    // --- Bridge Methods ---
     @JavascriptInterface public String getNativeCoreVersion() { return common.getNativeCoreVersion(); }
     @JavascriptInterface public void hapticFeedback(String type) { common.hapticFeedback(type); }
     @JavascriptInterface public void showToast(String toast) { common.showToast(toast); }
     @JavascriptInterface public void shareText(String t, String c) { common.shareText(t, c); }
 
-    // --- ADB Pairing Methods ---
     @JavascriptInterface public void pairAdb(String ip, String p, String c) { pairingManager.pairAdb(ip, p, c); }
     @JavascriptInterface public boolean connectAdb(String ip, String p) { pairingManager.connectAdb(ip, p); return true; }
     @JavascriptInterface public void startMdnsDiscovery() { pairingManager.startMdnsDiscovery(); }
     @JavascriptInterface public void stopMdnsDiscovery() { pairingManager.stopMdnsDiscovery(); }
     @JavascriptInterface public void retrieveConnectionInfo() { pairingManager.retrieveConnectionInfo(); }
 
-    // --- Shield Methods ---
     @JavascriptInterface public void startVpn() { shield.startVpn(); }
     @JavascriptInterface public void stopVpn() { shield.stopVpn(); }
     @JavascriptInterface public boolean getVpnStatus() { return shield.getVpnStatus(); }
 
-    // --- App Management Methods ---
     @JavascriptInterface public void executeCommand(String a, String p, int userId) { executeCommandInternal(a, p, userId); }
     @JavascriptInterface public void getInstalledPackages() { fetchRealPackageListInternal(); }
     @JavascriptInterface public void getUsers() { fetchUsersInternal(); }
@@ -77,7 +72,6 @@ public class ConsolidatedWebAppInterface {
                     String output = manager.runShellCommand(cmd);
                     String cleanOutput = output != null ? output.trim().toLowerCase() : "";
 
-                    // LOGIC FIX: Check for "success" OR "installed" (for restore)
                     if (cleanOutput.contains("success") || cleanOutput.contains("installed")) {
                         common.showToast(action + " Success");
                     } else {
@@ -108,7 +102,6 @@ public class ConsolidatedWebAppInterface {
             String base64Data = Base64.encodeToString("[]".getBytes(), Base64.NO_WRAP);
             try {
                 PackageManager pm = activity.getPackageManager();
-                // 1. Get apps (flags=0 is faster)
                 List<PackageInfo> packages = pm.getInstalledPackages(0);
 
                 JSONArray jsonArray = new JSONArray();
@@ -120,7 +113,6 @@ public class ConsolidatedWebAppInterface {
                     obj.put("type", (pInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0 ? "System" : "User");
                     obj.put("status", pInfo.applicationInfo.enabled ? "Enabled" : "Disabled");
 
-                    // 2. OPTIMIZATION: Use package name directly. DO NOT use loadLabel(pm).
                     String simpleName = pInfo.packageName;
                     if (simpleName.contains(".")) {
                         simpleName = simpleName.substring(simpleName.lastIndexOf('.') + 1);

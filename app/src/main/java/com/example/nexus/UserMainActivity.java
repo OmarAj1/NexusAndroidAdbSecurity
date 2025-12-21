@@ -47,7 +47,6 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     private ConsolidatedWebAppInterface mInterface;
     private AdbPairingManager pairingManager;
 
-    // Constants shared with Interfaces
     public static final int VPN_REQUEST_CODE = 0x0F;
     private static final int NOTIFICATION_REQUEST_CODE = 0x10;
 
@@ -56,16 +55,12 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // --- CRITICAL FIX: Fix BouncyCastle Provider for Android P+ ---
-        // Android's internal "BC" provider is deprecated/restricted. We must remove it
-        // and register our own full BouncyCastle implementation to generate ADB keys successfully.
         try {
             Security.removeProvider("BC");
             Security.addProvider(new BouncyCastleProvider());
         } catch (Exception e) {
             Log.e("NEXUS", "Error setting up Security Provider", e);
         }
-        // -------------------------------------------------------------
 
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         setContentView(R.layout.activity_main);
@@ -75,15 +70,11 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
 
         setupWebViewUI();
 
-        // 1. Init ADB Singleton with Callback
-        // We pass 'this' context, and handle the completion in the callback
         AdbSingleton.getInstance().init(getApplicationContext(), new AdbSingleton.AdbInitListener() {
             @Override
             public void onInitComplete() {
-                // This might run on a background thread, so we post to Main Thread for any UI updates
                 mainHandler.post(() -> {
                     Log.d("NEXUS", "ADB Initialization Sequence Complete");
-                    // Optional: If you needed to enable buttons or notify the webview immediately
                     if (webView != null) {
                         webView.evaluateJavascript("console.log('ADB Native Init Complete');", null);
                     }
@@ -91,15 +82,11 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
             }
         });
 
-        // 2. Init Managers
-        // Note: Ensure pairingManager doesn't require the internal 'adbManager' immediately in its constructor
         pairingManager = new AdbPairingManager(this, this);
 
-        // 3. Init Web Interface (Pass dependencies)
         mInterface = new ConsolidatedWebAppInterface(this, executor, webView, pairingManager);
         webView.addJavascriptInterface(mInterface, "AndroidNative");
 
-        // 4. Load Web Page
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
@@ -107,8 +94,6 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
                     if (loader != null) loader.setVisibility(View.GONE);
                     view.setAlpha(1.0f);
 
-                    // Check initial connection state
-                    // Updated to use .getAdbManager() to match the Singleton definition
                     MyAdbManager manager = AdbSingleton.getInstance().getAdbManager();
 
                     if (manager != null && manager.isConnected()) {
@@ -156,7 +141,6 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // Delegate VPN result to the interface logic
         if (requestCode == VPN_REQUEST_CODE && resultCode == RESULT_OK) {
             mInterface.shield.startShieldServiceInternal();
         }
@@ -166,11 +150,8 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     @Override protected void onPause() { super.onPause(); if (pairingManager != null) pairingManager.stopMdnsDiscovery(); }
     @Override protected void onDestroy() { super.onDestroy(); if (pairingManager != null) pairingManager.stopMdnsDiscovery(); }
 
-    // --- PAIRING LISTENER IMPLEMENTATION ---
-
     @Override
     public void onPairingServiceFound(String ip, int port) {
-        // Run on UI Thread to ensure WebView thread safety
         runOnUiThread(() -> {
             webView.evaluateJavascript(String.format("if(window.onPairingServiceFound) window.onPairingServiceFound('%s', '%d');", ip, port), null);
         });
@@ -178,7 +159,6 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
 
     @Override
     public void onConnectServiceFound(String ip, int port) {
-        // Run on UI Thread to ensure WebView thread safety
         runOnUiThread(() -> {
             webView.evaluateJavascript(String.format("if(window.onConnectServiceFound) window.onConnectServiceFound('%s', '%d');", ip, port), null);
         });
@@ -186,7 +166,6 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
 
     @Override
     public void onPairingResult(boolean success, String message) {
-        // Run on UI Thread to prevent "Toast already killed" and threading errors
         runOnUiThread(() -> {
             if (mInterface != null && mInterface.common != null) {
                 mInterface.common.showToast(message);
@@ -196,7 +175,6 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
 
     @Override
     public void onConnectionResult(boolean success, String message) {
-        // Run on UI Thread to prevent "Toast already killed" and threading errors
         runOnUiThread(() -> {
             if (mInterface != null && mInterface.common != null) {
                 mInterface.common.showToast(message);
