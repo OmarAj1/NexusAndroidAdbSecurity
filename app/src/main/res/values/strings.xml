@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Nexus</string>
     <string name="failed_to_init_adb_manager">Failed to init ADB Manager</string>
     <string name="nexus_controller">NexusController</string>
     <string name="initializing_core">Initializing Core...</string>
