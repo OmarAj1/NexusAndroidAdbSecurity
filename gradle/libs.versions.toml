@@ -1,5 +1,5 @@
 [versions]
-agp = "8.13.1"
+agp = "8.13.2"
 bcpkixJdk15on = "1.70"
 conscryptAndroid = "2.5.3"
 kotlin = "2.2.21"

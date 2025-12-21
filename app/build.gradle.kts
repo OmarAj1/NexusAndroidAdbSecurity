@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.myapplication"
+    namespace = "com.example.nexus"
     compileSdk = 36
 
     // 1. Task to install dependencies
@@ -33,7 +33,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.myapplication"
+        applicationId = "com.example.nexus"
         minSdk = 26
         targetSdk = 36
         versionCode = 1
