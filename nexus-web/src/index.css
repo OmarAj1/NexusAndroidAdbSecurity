@@ -4,11 +4,11 @@
 
 :root {
   /* THEME: Neon on Void */
-  --bg-void: #020617;       /* App Background */
-  --bg-card: #1e293b;       /* Card/Tile Background */
-  --accent: #8b5cf6;        /* Primary Action (Purple) */
-  --safe: #06b6d4;          /* Cyan (Protected) */
-  --danger: #ef4444;        /* Red (Unprotected) */
+  --bg-void: #020617;
+  --bg-card: #1e293b;
+  --accent: #8b5cf6;
+  --safe: #06b6d4;
+  --danger: #ef4444;
 }
 
 /* NATIVE APP RESETS */
@@ -17,11 +17,11 @@ html, body, #root {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: var(--bg-void);
-  color: #f1f5f9;
-  overflow: hidden; /* CRITICAL: Prevents entire page scrolling */
-  overscroll-behavior: none; /* Disables pull-to-refresh effects */
-  user-select: none; /* Disables text highlighting */
+  /* background-color: var(--bg-void);  <--- REMOVE OR COMMENT OUT THIS LINE */
+  /* color: #f1f5f9;                    <--- REMOVE OR COMMENT OUT THIS LINE */
+  overflow: hidden;
+  overscroll-behavior: none;
+  user-select: none;
   -webkit-tap-highlight-color: transparent;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }

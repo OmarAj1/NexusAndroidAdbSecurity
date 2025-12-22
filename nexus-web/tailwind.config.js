@@ -3,21 +3,21 @@ module.exports = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
-      // 1. Custom Color Palette (Neon on Void)
       colors: {
-        void: '#020617',    // Deep Navy/Black Background
-        surface: '#1e293b', // Card Background (Slate 800)
-        accent: '#8b5cf6',  // Purple Glow (Primary Action)
-        safe: '#06b6d4',    // Cyan (Secure State)
-        danger: '#ef4444',  // Red (Unsafe State/Action)
+        void: '#020617',
+        surface: '#1e293b',
+        accent: '#8b5cf6',
+        safe: '#06b6d4',
+        danger: '#ef4444',
       },
-      // 2. Custom Safe Area Spacing (for Phones with Notches)
+      // UPDATED SPACING WITH LARGER DEFAULTS
       spacing: {
-        'safe': 'env(safe-area-inset-bottom, 20px)',
+        'safe-top': 'env(safe-area-inset-top, 5px)',      // Clears Status Bar
+        'safe-bottom': 'env(safe-area-inset-bottom, 5px)', // Clears Nav Buttons
       },
-      // 3. Button Press Animation
       animation: {
         'press': 'press 0.1s ease-out',
       },

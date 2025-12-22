@@ -2,7 +2,10 @@ package com.example.nexus;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,20 +19,18 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.nexus.interfaces.AdbPairingListener;
 import com.example.nexus.interfaces.ConsolidatedWebAppInterface;
 import com.example.nexus.managers.AdbPairingManager;
 import com.example.nexus.managers.AdbSingleton;
 import com.example.nexus.managers.MyAdbManager;
+import com.example.nexus.services.ShieldVpnService;
 
 import java.security.Security;
 import java.util.concurrent.ExecutorService;
@@ -49,6 +50,19 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
 
     public static final int VPN_REQUEST_CODE = 0x0F;
     private static final int NOTIFICATION_REQUEST_CODE = 0x10;
+
+    // NEW RECEIVER
+    private final BroadcastReceiver blockReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (ShieldVpnService.ACTION_VPN_BLOCK.equals(intent.getAction())) {
+                String domain = intent.getStringExtra(ShieldVpnService.EXTRA_BLOCKED_DOMAIN);
+                if (domain != null && webView != null) {
+                    webView.evaluateJavascript("if(window.onShieldBlock) window.onShieldBlock('" + domain + "');", null);
+                }
+            }
+        }
+    };
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -118,11 +132,7 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
 
     private void setupWebViewUI() {
         webView.setBackgroundColor(0xFF020617);
-        ViewCompat.setOnApplyWindowInsetsListener(webView, (v, windowInsets) -> {
-            androidx.core.graphics.Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(insets.left, 0, insets.right, insets.bottom);
-            return WindowInsetsCompat.CONSUMED;
-        });
+        // NOTE: Insets Listener removed for Edge-to-Edge effect
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -146,9 +156,37 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
         }
     }
 
-    @Override protected void onResume() { super.onResume(); if (pairingManager != null) pairingManager.startMdnsDiscovery(); }
-    @Override protected void onPause() { super.onPause(); if (pairingManager != null) pairingManager.stopMdnsDiscovery(); }
-    @Override protected void onDestroy() { super.onDestroy(); if (pairingManager != null) pairingManager.stopMdnsDiscovery(); }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (pairingManager != null) pairingManager.startMdnsDiscovery();
+
+        // REGISTER RECEIVER
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(blockReceiver, new IntentFilter(ShieldVpnService.ACTION_VPN_BLOCK), Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(blockReceiver, new IntentFilter(ShieldVpnService.ACTION_VPN_BLOCK));
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (pairingManager != null) pairingManager.stopMdnsDiscovery();
+
+        // UNREGISTER RECEIVER
+        try {
+            unregisterReceiver(blockReceiver);
+        } catch (IllegalArgumentException e) {
+            // Receiver not registered
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (pairingManager != null) pairingManager.stopMdnsDiscovery();
+    }
 
     @Override
     public void onPairingServiceFound(String ip, int port) {

@@ -8,6 +8,9 @@ export const useNativeBridge = () => {
   const [vpnActive, setVpnActive] = useState(false);
   const [history, setHistory] = useState<ActionLog[]>([]);
 
+  // NEW STATE: Live Shield Logs
+  const [shieldLogs, setShieldLogs] = useState<{time: string, domain: string}[]>([]);
+
   // Connection UI State
   const [pairingData, setPairingData] = useState({ ip: '', port: '' });
   const [connectData, setConnectData] = useState({ ip: '', port: '' });
@@ -42,14 +45,6 @@ export const useNativeBridge = () => {
              if (vpnActive) (window as any).AndroidNative.stopVpn();
              else (window as any).AndroidNative.startVpn();
              setVpnActive(!vpnActive);
-        }
-    },
-    // Triggers the system-wide cache trim (pm trim-caches)
-    trimCaches: () => {
-        if (isNative() && (window as any).AndroidNative.trimCaches) {
-             (window as any).AndroidNative.trimCaches();
-        } else {
-             console.log("Mock: Trimming System Caches");
         }
     },
     exportHistory: () => {
@@ -97,6 +92,15 @@ export const useNativeBridge = () => {
         setStatus((prev) => prev.includes('Active') ? prev : 'Ready to Connect');
     };
 
+    // NEW LISTENER: Blocked Domains
+    (window as any).onShieldBlock = (domain: string) => {
+        const time = new Date().toLocaleTimeString('en-US', { hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit" });
+        setShieldLogs(prev => {
+            const newLog = { time, domain };
+            return [newLog, ...prev].slice(0, 20); // Keep last 20 items
+        });
+    };
+
     // MOUNT LOGIC
     if (isNative()) {
         // Only ask for connection info ONCE at startup
@@ -115,5 +119,5 @@ export const useNativeBridge = () => {
     }
   }, [status]);
 
-  return { apps, users, status, vpnActive, history, actions, pairingData, connectData };
+  return { apps, users, status, vpnActive, history, actions, pairingData, connectData, shieldLogs };
 };

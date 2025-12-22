@@ -1,66 +1,87 @@
 import React from 'react';
-import { Power, ShieldCheck, Globe, Activity } from 'lucide-react';
+import { Power, ShieldCheck, Globe, Activity, Terminal } from 'lucide-react';
 
-export const ShieldView = ({ isActive, onToggle }: { isActive: boolean, onToggle: () => void }) => {
+export const ShieldView = ({ isActive, onToggle, logs = [] }: any) => {
   const statusColor = isActive ? 'text-safe' : 'text-slate-500';
   const statusBorder = isActive ? 'border-safe shadow-[0_0_30px_rgba(6,182,212,0.2)]' : 'border-surface';
 
   return (
-    <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-500 w-full max-w-md mx-auto">
 
       {/* HEADER */}
-      <div className="w-full mb-8">
-        <h1 className="text-3xl font-bold text-white">Shield</h1>
-        <p className="text-slate-400 text-sm">System Protection</p>
+      <div className="w-full mb-8 text-center">
+        <h1 className="text-3xl font-bold text-slate-800 dark:text-white">Shield</h1>
+        <p className="text-slate-500 text-sm">Active Threat Mitigation</p>
       </div>
 
       {/* MAIN TOGGLE BUTTON */}
-      <div className="relative mb-10 group">
+      <div className="relative mb-8 group">
          {/* Glow Effect */}
          <div className={`absolute inset-0 rounded-full blur-2xl transition-all duration-700 ${isActive ? 'bg-safe/20' : 'bg-transparent'}`} />
 
          <button
             onClick={onToggle}
-            className={`relative w-48 h-48 rounded-full border-[3px] flex flex-col items-center justify-center bg-void transition-all duration-300 active:scale-95 ${statusBorder}`}
+            className={`relative w-48 h-48 rounded-full border-[3px] flex flex-col items-center justify-center bg-white dark:bg-void transition-all duration-300 active:scale-95 ${statusBorder}`}
          >
             <Power size={48} className={`mb-2 transition-colors duration-300 ${statusColor}`} />
             <span className={`text-xs font-bold tracking-widest ${isActive ? 'text-safe' : 'text-slate-600'}`}>
-                {isActive ? 'ACTIVE' : 'OFF'}
+                {isActive ? 'ARMED' : 'DISARMED'}
             </span>
          </button>
       </div>
 
-      <div className="text-center mb-8">
-          <h2 className={`text-xl font-bold transition-colors ${isActive ? 'text-white' : 'text-slate-500'}`}>
-              {isActive ? 'System Secured' : 'Protection Disabled'}
-          </h2>
-      </div>
-
       {/* STATS GRID */}
-      <div className="grid grid-cols-2 gap-3 w-full">
+      <div className="grid grid-cols-2 gap-3 w-full mb-6 px-4">
         <StatCard
             icon={Globe}
-            label="Region"
-            value={isActive ? "Nexus-1" : "---"}
+            label="Network"
+            value={isActive ? "Protected" : "Exposed"}
             active={isActive}
         />
         <StatCard
             icon={Activity}
-            label="Protocol"
-            value="ADB-SEC"
+            label="Threats"
+            value={logs.length.toString()}
             active={isActive}
         />
       </div>
+
+      {/* LIVE ATTACK LOG */}
+      <div className="w-full px-4 mb-24">
+        <div className="bg-slate-900 rounded-xl border border-white/10 overflow-hidden flex flex-col h-48 shadow-lg">
+            {/* Terminal Header */}
+            <div className="bg-white/5 px-3 py-2 flex items-center gap-2 border-b border-white/5">
+                <Terminal size={12} className="text-slate-400" />
+                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Live Threat Interception</span>
+            </div>
+
+            {/* Log Content */}
+            <div className="flex-1 p-3 overflow-y-auto font-mono text-xs space-y-1 scrollbar-thin scrollbar-thumb-slate-700">
+                {logs.length === 0 ? (
+                    <div className="text-slate-600 italic text-center mt-8">No active threats detected...</div>
+                ) : (
+                    logs.map((log: any, i: number) => (
+                        <div key={i} className="flex gap-3 animate-in slide-in-from-left-2 duration-300">
+                            <span className="text-slate-500">[{log.time}]</span>
+                            <span className="text-danger font-bold">BLOCKED</span>
+                            <span className="text-slate-300 truncate">{log.domain}</span>
+                        </div>
+                    ))
+                )}
+            </div>
+        </div>
+      </div>
+
     </div>
   );
 };
 
 const StatCard = ({ icon: Icon, label, value, active }: any) => (
-  <div className="bg-surface rounded-2xl p-4 flex flex-col items-start border border-white/5">
+  <div className="bg-white dark:bg-surface rounded-2xl p-4 flex flex-col items-start border border-slate-200 dark:border-white/5 shadow-sm">
      <div className="flex items-center gap-2 mb-2">
         <Icon size={14} className={active ? 'text-safe' : 'text-slate-600'} />
         <span className="text-[10px] uppercase text-slate-500 font-bold">{label}</span>
      </div>
-     <span className="text-lg font-mono font-semibold text-slate-200">{value}</span>
+     <span className="text-lg font-mono font-semibold text-slate-800 dark:text-slate-200">{value}</span>
   </div>
 );

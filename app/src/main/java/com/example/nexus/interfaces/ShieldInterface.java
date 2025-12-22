@@ -41,7 +41,7 @@ public class ShieldInterface {
 
     @JavascriptInterface
     public boolean getVpnStatus() {
-        return false;
+        return ShieldVpnService.IS_RUNNING;
     }
 
     public void startShieldServiceInternal() {

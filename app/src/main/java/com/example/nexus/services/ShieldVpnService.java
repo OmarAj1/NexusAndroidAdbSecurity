@@ -34,8 +34,14 @@ public class ShieldVpnService extends VpnService {
     private static final String CHANNEL_ID = "NexusShieldChannel";
 
     public static final String ACTION_VPN_STATUS = "com.example.nexus.VPN_STATUS";
+    public static final String ACTION_VPN_BLOCK = "com.example.nexus.VPN_BLOCK"; // NEW
+
     public static final String EXTRA_IS_RUNNING = "isRunning";
     public static final String EXTRA_BLOCKED_COUNT = "blockedCount";
+    public static final String EXTRA_BLOCKED_DOMAIN = "blockedDomain"; // NEW
+
+    // Global flag for UI Sync
+    public static boolean IS_RUNNING = false;
 
     private final AtomicBoolean isRunning = new AtomicBoolean(false);
     private final AtomicLong blockedCount = new AtomicLong(0);
@@ -171,6 +177,7 @@ public class ShieldVpnService extends VpnService {
             vpnOutput = new FileOutputStream(vpnInterface.getFileDescriptor());
 
             isRunning.set(true);
+            IS_RUNNING = true; // SYNC FLAG
             blockedCount.set(0);
             broadcastStatus(true);
 
@@ -221,6 +228,10 @@ public class ShieldVpnService extends VpnService {
                     blockedCount.incrementAndGet();
                     updateNotification();
                     broadcastStatus(true);
+
+                    // NEW: Notify UI
+                    broadcastBlock(queryDomain);
+
                     return;
                 }
 
@@ -276,6 +287,14 @@ public class ShieldVpnService extends VpnService {
             if (clean.contains(keyword)) return true;
         }
         return false;
+    }
+
+    // NEW HELPER METHOD
+    private void broadcastBlock(String domain) {
+        Intent intent = new Intent(ACTION_VPN_BLOCK);
+        intent.putExtra(EXTRA_BLOCKED_DOMAIN, domain);
+        intent.setPackage(getPackageName());
+        sendBroadcast(intent);
     }
 
     private byte[] buildResponsePacket(byte[] original, int ipLen, byte[] dnsData, int dnsLen) {
@@ -349,6 +368,7 @@ public class ShieldVpnService extends VpnService {
     private void stopVpn() {
         Log.i(TAG, "Stopping VPN Service...");
         isRunning.set(false);
+        IS_RUNNING = false; // SYNC FLAG
         broadcastStatus(false);
 
         if (dnsThreadPool != null) {
