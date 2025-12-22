@@ -59,7 +59,7 @@ export const useNativeBridge = () => {
   const executeCommand = async (command: string): Promise<string> => {
     if (isNative()) {
       // Execute the shell command via the Java interface
-      (window as any).AndroidNative.executeCommand(command);
+      (window as any).AndroidNative.executeShell(command);
       return "Command Sent";
     } else {
       console.warn("Native Bridge not found. Command ignored:", command);
