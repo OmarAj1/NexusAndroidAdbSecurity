@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Trash2 } from 'lucide-react';
+import { Trash2, Eraser } from 'lucide-react';
 import { useAppManager } from './useAppManager';
 import { FilterBar } from './FilterBar';
 import { AppList } from './AppList';
@@ -12,9 +12,10 @@ interface PurgeViewProps {
   users: { id: number; name: string }[];
   onDisconnect: () => void;
   onAction: (action: string, pkg: string, userId: number) => void;
+  onTrimCaches?: () => void;
 }
 
-export const PurgeView = ({ allApps, users, onDisconnect, onAction }: PurgeViewProps) => {
+export const PurgeView = ({ allApps, users, onDisconnect, onAction, onTrimCaches }: PurgeViewProps) => {
   const {
     search, setSearch, filters, updateFilter,
     filteredApps, selectedApps,
@@ -84,6 +85,23 @@ export const PurgeView = ({ allApps, users, onDisconnect, onAction }: PurgeViewP
         onToggle={toggleSelection}
         onAction={handleActionRequest}
       />
+
+      {/* FORCE CACHE CLEAN BUTTON (Bottom Left) */}
+      <div className="fixed bottom-24 left-6 z-50">
+        <button
+          onClick={() => {
+            if (confirm("Force remove temporary cache files for ALL apps? This does not delete user data.")) {
+              onTrimCaches?.();
+            }
+          }}
+          className="flex items-center justify-center w-14 h-14 bg-slate-800 hover:bg-slate-700
+                   text-emerald-400 shadow-[0_0_20px_rgba(0,0,0,0.3)] rounded-2xl
+                   border border-white/10 transition-all active:scale-95"
+          title="Nuke System Cache"
+        >
+          <Eraser size={24} />
+        </button>
+      </div>
 
       {selectedApps.size > 0 && (
         <div className="fixed bottom-24 right-6 z-50 animate-in fade-in slide-in-from-bottom-4">

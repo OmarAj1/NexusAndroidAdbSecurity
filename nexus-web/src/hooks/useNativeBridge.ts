@@ -44,6 +44,14 @@ export const useNativeBridge = () => {
              setVpnActive(!vpnActive);
         }
     },
+    // Triggers the system-wide cache trim (pm trim-caches)
+    trimCaches: () => {
+        if (isNative() && (window as any).AndroidNative.trimCaches) {
+             (window as any).AndroidNative.trimCaches();
+        } else {
+             console.log("Mock: Trimming System Caches");
+        }
+    },
     exportHistory: () => {
         const text = history.map(h => `[${h.timestamp}] ${h.action} -> ${h.pkg}`).join('\n');
         if (isNative()) (window as any).AndroidNative.shareText("UAD Export", text);

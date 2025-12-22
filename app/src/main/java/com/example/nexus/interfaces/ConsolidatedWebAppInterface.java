@@ -55,6 +55,30 @@ public class ConsolidatedWebAppInterface {
     @JavascriptInterface public void getInstalledPackages() { fetchRealPackageListInternal(); }
     @JavascriptInterface public void getUsers() { fetchUsersInternal(); }
 
+    /**
+     * Forces the system to clear caches for all apps by requesting an impossible amount of free space.
+     * This triggers the PackageManager's aggressive cache trimming mechanism.
+     */
+    @JavascriptInterface
+    public void trimCaches() {
+        executor.execute(() -> {
+            MyAdbManager manager = AdbSingleton.getInstance().getAdbManager();
+            if (manager == null || !manager.isConnected()) {
+                common.showToast("Not Connected");
+                return;
+            }
+            try {
+                // pm trim-caches <DESIRED_FREE_SPACE>
+                // Asking for 999GB forces the system to delete everything it possibly can to free up space.
+                String cmd = "pm trim-caches 999G";
+                manager.runShellCommand(cmd);
+                common.showToast("System Cache Wipe Executed");
+            } catch (Exception e) {
+                common.showToast("Cache Wipe Failed: " + e.getMessage());
+            }
+        });
+    }
+
     private void executeCommandInternal(String action, String pkg, int userId) {
         executor.execute(() -> {
             MyAdbManager manager = AdbSingleton.getInstance().getAdbManager();

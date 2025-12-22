@@ -39,6 +39,7 @@ export default function App() {
           users={users}
           onDisconnect={actions.disconnect}
           onAction={handleAppAction}
+          onTrimCaches={actions.trimCaches} // PASSED HERE
         />
       );
     }
