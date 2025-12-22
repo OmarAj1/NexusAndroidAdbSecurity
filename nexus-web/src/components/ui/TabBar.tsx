@@ -1,5 +1,5 @@
 import React from 'react';
-import { Smartphone, Shield, History as HistoryIcon, User as UserIcon } from 'lucide-react';
+import { Smartphone, Shield, History as HistoryIcon } from 'lucide-react';
 
 interface TabBarProps {
   active: string;
@@ -19,8 +19,7 @@ const TabBar = ({ active, onChange }: TabBarProps) => (
 
         {[{id:'purge',icon:Smartphone, color: 'text-blue-500 bg-blue-50'},
           {id:'shield',icon:Shield, color: 'text-green-500 bg-green-50'},
-          {id:'history',icon:HistoryIcon, color: 'text-purple-500 bg-purple-50'},
-          {id:'user',icon:UserIcon, color: 'text-orange-500 bg-orange-50'}
+          {id:'history',icon:HistoryIcon, color: 'text-purple-500 bg-purple-50'}
          ].map((tab) => {
           const isActive = active === tab.id;
           return (

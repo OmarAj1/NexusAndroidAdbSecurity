@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, Zap, FileText, User } from 'lucide-react';
+import { Shield, Zap, FileText, Loader2 } from 'lucide-react';
 import { useNativeBridge } from './hooks/useNativeBridge';
 
 // Views
@@ -7,12 +7,9 @@ import { PurgeView } from './features/purge/PurgeView';
 import { ConnectionView } from './features/connection/ConnectionView';
 import { ShieldView } from './features/shield/ShieldView';
 import { HistoryView } from './features/history/HistoryView';
-import { LoginView } from './features/auth/LoginView';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('shield');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState('admin');
 
   // Hook into the native Android bridge
   const {
@@ -30,40 +27,53 @@ export default function App() {
   };
 
   const renderPurgeContent = () => {
-    const isConnected = status === 'Shell Active' || status === 'Connected';
+    // STRICT CHECK: Only show App Manager if Shell is fully active.
+    const isReady = status === 'Shell Active';
+    const isHandshaking = status === 'Connected';
 
-    if (!isConnected) {
+    // 1. If fully ready (Root/Shell Active), show the App Manager
+    if (isReady) {
       return (
-        <ConnectionView
-          status={status}
-          onPair={actions.pair}
-          onConnect={actions.connect}
-          onRetrieve={actions.retrieve}
-          pairingData={pairingData}
-          connectData={connectData}
+        <PurgeView
+          allApps={apps}
+          users={users}
+          onDisconnect={actions.disconnect}
+          onAction={handleAppAction}
         />
       );
     }
+
+    // 2. If connected but waiting for Shell/Data (Transitional State)
+    if (isHandshaking) {
+      return (
+        <div className="flex flex-col items-center justify-center h-[60vh] space-y-4 animate-in fade-in">
+          <Loader2 size={48} className="text-accent animate-spin" />
+          <div className="text-center">
+            <h2 className="text-xl font-bold text-white">Establishing Shell</h2>
+            <p className="text-slate-500">Retrieving package list...</p>
+          </div>
+        </div>
+      );
+    }
+
+    // 3. Otherwise, show Connection/Pairing View
     return (
-      <PurgeView
-        allApps={apps}
-        users={users}
-        onDisconnect={actions.disconnect}
-        onAction={handleAppAction}
+      <ConnectionView
+        status={status}
+        onPair={actions.pair}
+        onConnect={actions.connect}
+        onRetrieve={actions.retrieve}
+        pairingData={pairingData}
+        connectData={connectData}
       />
     );
   };
 
   // --- RENDER ---
 
-  // 1. Full Screen Login
-  if (!isLoggedIn) {
-    return <LoginView onLogin={(user) => { setUsername(user); setIsLoggedIn(true); }} />;
-  }
-
-  // 2. Main App Shell
+  // Main App Shell
   return (
-    <div className="flex flex-col h-full w-full bg-void text-slate-200 font-sans select-none overflow-hidden">
+    <div className="flex flex-col h-full w-full bg-void text-slate-200 font-sans select-none overflow-hidden relative">
 
       {/* SCROLLABLE CONTENT AREA */}
       <main className="flex-1 overflow-y-auto p-4 pb-24 scroll-smooth">
@@ -77,25 +87,6 @@ export default function App() {
 
           {activeTab === 'history' && (
             <HistoryView history={history} onExport={actions.exportHistory} />
-          )}
-
-          {/* Simple User/Profile View directly inline for performance */}
-          {activeTab === 'user' && (
-            <div className="flex flex-col items-center justify-center h-[60vh] text-center space-y-6">
-               <div className="w-24 h-24 rounded-full bg-surface border-2 border-accent/20 flex items-center justify-center">
-                  <User size={40} className="text-accent" />
-               </div>
-               <div>
-                 <h2 className="text-2xl font-bold text-white">Hi, {username}</h2>
-                 <p className="text-slate-500 text-sm mt-1">System Administrator</p>
-               </div>
-               <button
-                 onClick={() => setIsLoggedIn(false)}
-                 className="px-6 py-3 rounded-xl bg-surface border border-white/5 text-danger font-medium active:scale-95 transition-transform"
-               >
-                 Log Out
-               </button>
-            </div>
           )}
 
         </div>
@@ -120,12 +111,6 @@ export default function App() {
           onClick={() => setActiveTab('history')}
           icon={FileText}
           label="Logs"
-        />
-        <NavButton
-          active={activeTab === 'user'}
-          onClick={() => setActiveTab('user')}
-          icon={User}
-          label="User"
         />
       </nav>
 

@@ -1,9 +1,11 @@
-import React, { useState, memo } from 'react';
-import { Trash2, Power, Box, Cpu, AlertTriangle, AlertCircle } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { Trash2 } from 'lucide-react';
 import { useAppManager } from './useAppManager';
 import { FilterBar } from './FilterBar';
+import { AppList } from './AppList';
+import { SafetyModal } from './SafetyModal';
 import { AppData } from '../../types';
+import { getUadData } from '../../data/uadApps';
 
 interface PurgeViewProps {
   allApps: AppData[];
@@ -13,136 +15,89 @@ interface PurgeViewProps {
 }
 
 export const PurgeView = ({ allApps, users, onDisconnect, onAction }: PurgeViewProps) => {
-  const { search, setSearch, filters, updateFilter, filteredApps } = useAppManager(allApps);
+  const {
+    search, setSearch, filters, updateFilter,
+    filteredApps, selectedApps,
+    toggleSelection, selectRecommended, clearSelection
+  } = useAppManager(allApps);
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [pendingAction, setPendingAction] = useState<{action: string, pkg: string} | null>(null);
+
+  const handleActionRequest = (action: string, pkg: string) => {
+    const uadData = getUadData(pkg);
+    const level = uadData?.removal;
+    const isDestructive = action === 'uninstall' || action === 'disable';
+    const isSafePkg = level === 'Recommended';
+
+    if (isDestructive && !isSafePkg) {
+        setPendingAction({ action, pkg });
+        setModalOpen(true);
+    } else {
+        onAction(action, pkg, filters.userId);
+    }
+  };
+
+  const confirmAction = () => {
+    if (pendingAction) {
+        onAction(pendingAction.action, pendingAction.pkg, filters.userId);
+        setModalOpen(false);
+        setPendingAction(null);
+    }
+  };
+
+  const handleBulkUninstall = () => {
+    if (confirm(`Uninstall ${selectedApps.size} apps for User ${filters.userId}? This will happen sequentially.`)) {
+      // Loop through and fire individual actions (Old Stable Method)
+      selectedApps.forEach(pkg => {
+        onAction('uninstall', pkg, filters.userId);
+      });
+      clearSelection();
+    }
+  };
 
   return (
-    <div className="flex flex-col gap-4 min-h-full">
+    <div className="flex flex-col gap-4 min-h-full relative">
 
-      {/* STICKY HEADER: Keeps filters accessible while scrolling */}
+      <SafetyModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onConfirm={confirmAction}
+        pkg={pendingAction?.pkg || ''}
+        action={pendingAction?.action || ''}
+        app={pendingAction ? getUadData(pendingAction.pkg) : undefined}
+      />
+
       <div className="sticky top-0 z-30 -mx-4 px-4 pt-2 pb-4 bg-void/95 backdrop-blur-xl border-b border-white/5 shadow-2xl shadow-black/50">
         <FilterBar
           search={search} setSearch={setSearch}
           filters={filters} updateFilter={updateFilter}
-          users={users} onDisconnect={onDisconnect}
+          onMagicSelect={selectRecommended}
+          onClearSelect={clearSelection}
+          selectionCount={selectedApps.size}
         />
       </div>
 
-      {/* CONTENT AREA */}
-      <div className="flex-1 pb-safe">
-        {filteredApps.length === 0 ? (
-          <EmptyState />
-        ) : (
-          <div className="grid grid-cols-1 gap-3">
-             <AnimatePresence mode="popLayout">
-              {filteredApps.map((app) => (
-                <MemoizedAppCard
-                  key={app.pkg}
-                  app={app}
-                  onAction={onAction}
-                />
-              ))}
-             </AnimatePresence>
-          </div>
-        )}
-      </div>
+      <AppList
+        apps={filteredApps}
+        selectedApps={selectedApps}
+        onToggle={toggleSelection}
+        onAction={handleActionRequest}
+      />
+
+      {selectedApps.size > 0 && (
+        <div className="fixed bottom-24 right-6 z-50 animate-in fade-in slide-in-from-bottom-4">
+          <button
+            onClick={handleBulkUninstall}
+            className="flex items-center gap-3 px-6 py-4 bg-rose-600 hover:bg-rose-500
+                     text-white shadow-[0_0_30px_rgba(225,29,72,0.4)] rounded-2xl
+                     font-bold tracking-wide transition-all active:scale-95"
+          >
+            <Trash2 size={20} />
+            <span>PURGE ({selectedApps.size})</span>
+          </button>
+        </div>
+      )}
     </div>
   );
 };
-
-// --- SUB-COMPONENTS ---
-
-const EmptyState = () => (
-    <motion.div
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-        className="flex flex-col items-center justify-center py-20 opacity-50"
-    >
-        <div className="relative">
-            <Box size={48} className="text-slate-600" />
-            <AlertCircle size={20} className="absolute -top-1 -right-1 text-accent" />
-        </div>
-        <p className="mt-4 text-sm font-mono text-slate-500 uppercase tracking-widest">No Packages</p>
-    </motion.div>
-);
-
-const AppCard = ({ app, onAction }: { app: AppData, onAction: (a: string, p: string, u: number) => void }) => {
-    const isSystem = app.type === 'System';
-    const isDisabled = app.status === 'Disabled';
-
-    return (
-        <motion.div
-            layout
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className={`
-                group relative overflow-hidden rounded-2xl border transition-all duration-200
-                ${isDisabled
-                    ? 'bg-red-950/10 border-danger/30'
-                    : 'bg-surface border-white/5 hover:border-white/10'
-                }
-            `}
-        >
-            {/* Native Touch Ripple Area (Conceptual) */}
-            <div className="flex items-center p-4 gap-4">
-
-                {/* ICON */}
-                <div className={`
-                    w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 text-lg
-                    ${isSystem ? 'bg-purple-500/10 text-accent' : 'bg-cyan-500/10 text-safe'}
-                `}>
-                    {isSystem ? <Cpu size={22} /> : <Box size={22} />}
-                </div>
-
-                {/* TEXT */}
-                <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-slate-200 text-sm truncate pr-2">
-                        {app.name}
-                    </h3>
-                    <p className="text-[11px] font-mono text-slate-500 truncate mt-0.5">
-                        {app.pkg}
-                    </p>
-                    {isDisabled && (
-                        <span className="inline-flex items-center gap-1 mt-1 text-[10px] font-bold text-danger bg-danger/10 px-2 py-0.5 rounded-full">
-                           DISABLED
-                        </span>
-                    )}
-                </div>
-
-                {/* ACTIONS */}
-                <div className="flex items-center gap-2">
-                    {/* Toggle Button */}
-                    <button
-                        onClick={() => onAction(isDisabled ? 'enable' : 'disable', app.pkg, 0)}
-                        className={`p-3 rounded-xl transition-all active:scale-90 ${isDisabled ? 'bg-green-500/10 text-green-400' : 'bg-slate-800 text-slate-400'}`}
-                    >
-                        <Power size={18} />
-                    </button>
-
-                    {/* Delete Button */}
-                    <DestructiveButton onClick={() => onAction('uninstall', app.pkg, 0)} />
-                </div>
-            </div>
-        </motion.div>
-    );
-};
-
-const DestructiveButton = ({ onClick }: { onClick: () => void }) => {
-    const [confirm, setConfirm] = useState(false);
-
-    return (
-        <button
-            onClick={() => {
-                if (confirm) { onClick(); setConfirm(false); }
-                else { setConfirm(true); setTimeout(() => setConfirm(false), 3000); }
-            }}
-            className={`
-                flex items-center justify-center p-3 rounded-xl transition-all duration-300 active:scale-90
-                ${confirm ? 'bg-danger text-white w-20' : 'bg-slate-800 text-danger hover:bg-danger/10 w-12'}
-            `}
-        >
-             {confirm ? <span className="text-[10px] font-bold">SURE?</span> : <Trash2 size={18} />}
-        </button>
-    );
-};
-
-const MemoizedAppCard = memo(AppCard);

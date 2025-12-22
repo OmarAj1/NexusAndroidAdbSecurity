@@ -8,13 +8,9 @@ export const useNativeBridge = () => {
   const [vpnActive, setVpnActive] = useState(false);
   const [history, setHistory] = useState<ActionLog[]>([]);
 
-  // These update the UI text fields
+  // Connection UI State
   const [pairingData, setPairingData] = useState({ ip: '', port: '' });
   const [connectData, setConnectData] = useState({ ip: '', port: '' });
-
-  // --- NEW: THE CONSTANT MEMORY ---
-  // This stores the "Main" Wireless Debugging IP/Port permanently once found.
-  // It will NOT be overwritten by the pairing port.
   const [mainEndpoint, setMainEndpoint] = useState<{ ip: string, port: string } | null>(null);
 
   const isNative = () => typeof (window as any).AndroidNative !== 'undefined';
@@ -24,11 +20,7 @@ export const useNativeBridge = () => {
         if (isNative()) (window as any).AndroidNative.pairAdb(ip, port, code);
     },
 
-    // --- UPDATED CONNECT LOGIC ---
     connect: (uiIp: string, uiPort: string) => {
-        // SMART CONNECT:
-        // If we have a saved "Main" endpoint (from Retrieve IP), use that.
-        // This effectively ignores the Pairing Port currently sitting in the input fields.
         const finalIp = mainEndpoint ? mainEndpoint.ip : uiIp;
         const finalPort = mainEndpoint ? mainEndpoint.port : uiPort;
 
@@ -58,15 +50,7 @@ export const useNativeBridge = () => {
     }
   };
 
-  // --- FIX: AUTO-FETCH APPS ON CONNECT ---
-  useEffect(() => {
-    // When status hits "Connected", immediately ask Java for the package list.
-    if (status === 'Connected' && isNative()) {
-        console.log("Status Connected -> Fetching Packages");
-        (window as any).AndroidNative.getInstalledPackages();
-    }
-  }, [status]);
-
+  // --- EFFECT 1: SETUP (Runs Once) ---
   useEffect(() => {
     // Poll VPN Status
     const interval = setInterval(() => {
@@ -84,49 +68,44 @@ export const useNativeBridge = () => {
     (window as any).receiveAppList = (b64: string) => {
         try {
             console.log("App List Received. Length:", b64.length);
+            if (!b64) return;
+
             const json = JSON.parse(atob(b64));
             setApps(json);
-            // Update status to indicate data is ready (and prevent loop)
+            // Update status to indicate data is ready
             setStatus("Shell Active");
         } catch(e) { console.error("JSON Parse Error:", e); }
     };
 
-    // --- PAIRING FOUND ---
-    // Just updates the UI fields for the user to click "Pair"
     (window as any).onPairingServiceFound = (ip: string, port: any) => {
         setPairingData({ ip, port: port.toString() });
-        setStatus('Pairing Info Found');
+        setStatus((prev) => prev.includes('Active') ? prev : 'Pairing Info Found');
     };
 
-    // --- CONNECT (MAIN) FOUND ---
-    // This is the Golden Source. We save this to 'mainEndpoint'.
     (window as any).onConnectServiceFound = (ip: string, port: any) => {
         const portStr = port.toString();
-
-        // 1. Update UI
         setConnectData({ ip, port: portStr });
-
-        // 2. LOCK IT IN MEMORY
         setMainEndpoint({ ip, port: portStr });
-
-        setStatus('Ready to Connect');
+        setStatus((prev) => prev.includes('Active') ? prev : 'Ready to Connect');
     };
 
-    // --- CRITICAL FIX FOR REAL DEVICES ---
-    // If the View loads AFTER Java has already initialized, we missed the initial events.
-    // We must manually request the state immediately.
+    // MOUNT LOGIC
     if (isNative()) {
-        console.log("Mounting: Requesting initial data sync...");
+        // Only ask for connection info ONCE at startup
         (window as any).AndroidNative.retrieveConnectionInfo();
-
-        // Slight delay to ensure connection is ready before asking for packages
-        setTimeout(() => {
-             (window as any).AndroidNative.getInstalledPackages();
-        }, 1000);
     }
 
     return () => clearInterval(interval);
-  }, []);
+  }, []); // Empty dependency array = Runs once
+
+  // --- EFFECT 2: REACTION (Runs on Status Change) ---
+  useEffect(() => {
+    // Auto-fetch ONLY when status explicitly changes to connected
+    if (status === 'Connected' && isNative()) {
+        console.log("Status Connected -> Fetching Packages");
+        (window as any).AndroidNative.getInstalledPackages();
+    }
+  }, [status]);
 
   return { apps, users, status, vpnActive, history, actions, pairingData, connectData };
 };

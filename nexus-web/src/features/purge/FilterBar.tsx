@@ -1,90 +1,113 @@
 import React from 'react';
-import { Search, LogOut, Filter } from 'lucide-react';
+import { Search, Sparkles, XCircle, Layers, AlertTriangle, Activity } from 'lucide-react';
 
 interface FilterBarProps {
   search: string;
   setSearch: (value: string) => void;
-  filters: { safety: string; status: string; userId: number; category: string };
-  updateFilter: (key: "status" | "category" | "safety" | "userId", value: any) => void;
-  users: { id: number; name: string }[];
-  onDisconnect: () => void;
+  filters: any;
+  updateFilter: (key: any, value: any) => void;
+  onMagicSelect: () => void;
+  onClearSelect: () => void;
+  selectionCount: number;
 }
 
-export const FilterBar = ({ search, setSearch, filters, updateFilter, users, onDisconnect }: FilterBarProps) => {
+export const FilterBar = ({
+  search, setSearch, filters, updateFilter,
+  onMagicSelect, onClearSelect, selectionCount
+}: FilterBarProps) => {
   return (
     <div className="flex flex-col gap-3">
-
-      {/* TOP ROW: SEARCH */}
+      {/* TOP ROW: Search & Magic Actions */}
       <div className="flex gap-3">
         <div className="relative flex-1 group">
-          <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-             <Search size={16} className="text-slate-500 group-focus-within:text-accent transition-colors" />
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <Search className="h-4 w-4 text-slate-500 group-focus-within:text-accent transition-colors" />
           </div>
           <input
+            type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            className="block w-full pl-10 pr-3 py-2.5 bg-black/20 border border-white/10 rounded-xl
+                     text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-accent/50
+                     focus:ring-1 focus:ring-accent/50 transition-all backdrop-blur-sm"
             placeholder="Search packages..."
-            className="w-full bg-surface border border-white/5 rounded-2xl py-3 pl-10 pr-4 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/50 transition-all"
           />
         </div>
 
-        {/* Disconnect Button (Icon Only) */}
         <button
-          onClick={onDisconnect}
-          className="w-12 h-12 flex items-center justify-center rounded-2xl bg-danger/10 text-danger border border-danger/20 active:scale-95 transition-transform"
+          onClick={onMagicSelect}
+          className="flex items-center gap-2 px-4 py-2.5 bg-emerald-500/10 hover:bg-emerald-500/20
+                   border border-emerald-500/20 rounded-xl text-emerald-400 text-xs font-medium transition-all"
         >
-          <LogOut size={20} />
+          <Sparkles size={16} />
+          <span className="hidden sm:inline">Auto</span>
         </button>
       </div>
 
-      {/* BOTTOM ROW: HORIZONTAL SCROLL FILTERS */}
-      <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar -mx-4 px-4">
-        <FilterPill
-            active={filters.safety !== 'All'}
-            label={filters.safety === 'All' ? 'Safety' : filters.safety}
-        >
-             <select
-                className="opacity-0 absolute inset-0 w-full h-full"
-                value={filters.safety}
-                onChange={(e) => updateFilter('safety', e.target.value)}
-             >
-                {['All', 'Recommended', 'Advanced', 'Expert', 'Unsafe'].map(f => <option key={f} value={f}>{f}</option>)}
-             </select>
-        </FilterPill>
+      {/* BOTTOM ROW: Advanced Filters */}
+      <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
 
-        <FilterPill
-            active={filters.status !== 'All'}
-            label={filters.status === 'All' ? 'Status' : filters.status}
-        >
-             <select
-                className="opacity-0 absolute inset-0 w-full h-full"
-                value={filters.status}
-                onChange={(e) => updateFilter('status', e.target.value)}
-             >
-                {['All', 'Enabled', 'Disabled', 'Uninstalled'].map(f => <option key={f} value={f}>{f}</option>)}
-             </select>
-        </FilterPill>
+        {/* 1. Status Filter (New) */}
+        <div className="flex items-center bg-black/20 rounded-lg border border-white/5 p-1">
+          <Activity size={14} className="ml-2 text-slate-400" />
+          <select
+            value={filters.appStatus}
+            onChange={(e) => updateFilter('appStatus', e.target.value)}
+            className="bg-transparent text-xs font-medium text-slate-300 py-1.5 pl-2 pr-8 outline-none cursor-pointer appearance-none"
+          >
+            <option value="All">All Status</option>
+            <option value="Enabled">Enabled</option>
+            <option value="Disabled">Disabled</option>
+            <option value="Uninstalled">Uninstalled</option>
+          </select>
+        </div>
 
-        <FilterPill active={false} label="User">
-             <select
-                className="opacity-0 absolute inset-0 w-full h-full"
-                value={filters.userId}
-                onChange={(e) => updateFilter('userId', parseInt(e.target.value))}
-             >
-                {users.map(u => <option key={u.id} value={u.id}>{u.name}</option>)}
-             </select>
-        </FilterPill>
+        {/* 2. List Type Filter (Added 'User' option) */}
+        <div className="flex items-center bg-black/20 rounded-lg border border-white/5 p-1">
+          <Layers size={14} className="ml-2 text-slate-400" />
+          <select
+            value={filters.listType}
+            onChange={(e) => updateFilter('listType', e.target.value)}
+            className="bg-transparent text-xs font-medium text-slate-300 py-1.5 pl-2 pr-8 outline-none cursor-pointer appearance-none"
+          >
+            <option value="All">All Lists</option>
+            <option value="User">User Apps</option> {/* Added */}
+            <option value="System">System Apps</option>
+            <option value="Oem">OEM</option>
+            <option value="Carrier">Carrier</option>
+            <option value="Google">Google</option>
+            <option value="Misc">Misc</option>
+          </select>
+        </div>
+
+        {/* 3. Risk Level Filter */}
+        <div className="flex items-center bg-black/20 rounded-lg border border-white/5 p-1">
+          <AlertTriangle size={14} className="ml-2 text-slate-400" />
+          <select
+            value={filters.removalLevel}
+            onChange={(e) => updateFilter('removalLevel', e.target.value)}
+            className="bg-transparent text-xs font-medium text-slate-300 py-1.5 pl-2 pr-8 outline-none cursor-pointer appearance-none"
+          >
+            <option value="All">All Risks</option>
+            <option value="Recommended">Recommended</option>
+            <option value="Advanced">Advanced</option>
+            <option value="Expert">Expert</option>
+            <option value="Unsafe">Unsafe</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+
+        {selectionCount > 0 && (
+          <button
+            onClick={onClearSelect}
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20
+                     border border-rose-500/20 rounded-lg text-rose-400 text-xs transition-all ml-auto"
+          >
+            <XCircle size={14} />
+            Clear ({selectionCount})
+          </button>
+        )}
       </div>
     </div>
   );
 };
-
-const FilterPill = ({ label, active, children }: any) => (
-    <div className={`relative flex items-center justify-center px-4 py-2 rounded-xl text-xs font-medium border transition-all whitespace-nowrap ${active ? 'bg-accent text-white border-accent' : 'bg-surface text-slate-400 border-white/5'}`}>
-        <span className="flex items-center gap-1.5">
-            {active && <Filter size={10} />}
-            {label}
-        </span>
-        {children}
-    </div>
-);
