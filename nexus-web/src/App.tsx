@@ -33,12 +33,17 @@ export default function App() {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
+  // --- HOOK INTEGRATION ---
+  // We destructure everything from a SINGLE call to prevent state conflicts.
+  // Note: We expect 'executeCommand' to be returned here. (See step 2 below if you get an error)
   const {
-    apps, users, status, vpnActive, history, actions,
-    pairingData, connectData, shieldLogs, tools
+    apps, users, status, vpnActive, shieldLogs, actions,
+    pairingData, connectData, executeCommand
   } = useNativeBridge();
 
   const handleAppAction = (action: string, pkg: string, userId: number) => {
+    // If the hook provides a specific action handler, use it.
+    // Otherwise, we fallback to the raw bridge for app-specific actions.
     if ((window as any).AndroidNative) {
       (window as any).AndroidNative.executeCommand(action, pkg, userId);
     } else {
@@ -47,7 +52,9 @@ export default function App() {
   };
 
   const renderPurgeContent = () => {
+    // 'Shell Active' means we are fully ready.
     const isReady = status === 'Shell Active';
+    // 'Connected' usually means ADB is linked but we are fetching packages.
     const isHandshaking = status === 'Connected';
 
     if (isReady) {
@@ -86,12 +93,11 @@ export default function App() {
   };
 
   // --- RENDER ---
-
   return (
     <div className="flex flex-col h-full w-full bg-gray-50 dark:bg-void text-slate-900 dark:text-slate-200 font-sans select-none overflow-hidden relative transition-colors duration-300">
 
       {/* TOP NAVBAR (FIXED) */}
-      <header className="fixed top-0 left-0 right-0 h-auto min-h-[80px] pt-[env(safe-area-inset-top,40px)] pb-3 px-4 flex items-center justify-between bg-white/80 dark:bg-void/80 backdrop-blur-md border-b border-slate-200 dark:border-white/5 z-40 transition-colors duration-300">
+      <header className="fixed top-0 left-0 right-0 h-auto min-h-[80px] pb-3 px-4 flex items-center justify-between bg-white/80 dark:bg-void/80 backdrop-blur-md border-b border-slate-200 dark:border-white/5 z-40 transition-colors duration-300">
         <div className="flex items-center gap-2 mt-1">
            <button
              onClick={toggleTheme}
@@ -107,9 +113,8 @@ export default function App() {
         </div>
       </header>
 
-      {/* MAIN CONTENT - FIXED PADDING HERE */}
-      {/* Changed pt-36 to pt-28 to remove the gap */}
-      <main className="flex-1 overflow-y-auto pt-28 pb-36 px-4 scroll-smooth">
+      {/* MAIN CONTENT */}
+      <main className="flex-1 overflow-y-auto pt-24 pb-24 px-4 scroll-smooth">
         <div className="animate-in fade-in duration-300 slide-in-from-bottom-2">
           {activeTab === 'shield' && (
             <ShieldView
@@ -122,13 +127,13 @@ export default function App() {
           {activeTab === 'purge' && renderPurgeContent()}
 
           {activeTab === 'tools' && (
-            <ToolsView tools={tools} />
+            <ToolsView executeCommand={executeCommand} />
           )}
         </div>
       </main>
 
       {/* BOTTOM NAVBAR (FIXED) */}
-      <nav className="fixed bottom-0 left-0 right-0 h-auto pb-[env(safe-area-inset-bottom,24px)] pt-4 bg-white/95 dark:bg-void/95 backdrop-blur-xl border-t border-slate-200 dark:border-white/5 flex items-start justify-around z-50 transition-colors duration-300">
+      <nav className="fixed bottom-0 left-0 right-0 h-auto pt-4 pb-4 bg-white/95 dark:bg-void/95 backdrop-blur-xl border-t border-slate-200 dark:border-white/5 flex items-start justify-around z-50 transition-colors duration-300">
         <NavButton
           active={activeTab === 'shield'}
           onClick={() => setActiveTab('shield')}

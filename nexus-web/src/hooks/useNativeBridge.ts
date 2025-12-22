@@ -8,7 +8,7 @@ export const useNativeBridge = () => {
   const [vpnActive, setVpnActive] = useState(false);
   const [history, setHistory] = useState<ActionLog[]>([]);
 
-  // NEW STATE: Live Shield Logs
+  // Shield Logs State
   const [shieldLogs, setShieldLogs] = useState<{time: string, domain: string}[]>([]);
 
   // Connection UI State
@@ -16,8 +16,10 @@ export const useNativeBridge = () => {
   const [connectData, setConnectData] = useState({ ip: '', port: '' });
   const [mainEndpoint, setMainEndpoint] = useState<{ ip: string, port: string } | null>(null);
 
+  // Helper to check if we are running inside the Android App
   const isNative = () => typeof (window as any).AndroidNative !== 'undefined';
 
+  // --- ACTIONS ---
   const actions = {
     pair: (ip: string, port: string, code: string) => {
         if (isNative()) (window as any).AndroidNative.pairAdb(ip, port, code);
@@ -53,63 +55,15 @@ export const useNativeBridge = () => {
     }
   };
 
-  // --- TOOLS OBJECT ---
-  const tools = {
-    // 1. OVERDRIVE: Set Animation Scale
-    setAnimationSpeed: (scale: number) => {
-        if (isNative()) {
-            const cmd = `settings put global window_animation_scale ${scale}; settings put global transition_animation_scale ${scale}; settings put global animator_duration_scale ${scale}`;
-            (window as any).AndroidNative.executeShell(cmd);
-        }
-    },
-    // 2. OVERDRIVE: Set DPI
-    setDpi: (val: string) => {
-        if (isNative()) {
-            const cmd = val === 'reset' ? 'wm density reset' : `wm density ${val}`;
-            (window as any).AndroidNative.executeShell(cmd);
-        }
-    },
-    // 3. GHOST: Toggle Monochrome
-    toggleMonochrome: (enable: boolean) => {
-        if (isNative()) {
-            const cmd = enable
-                ? 'settings put secure accessibility_display_daltonizer_enabled 1; settings put secure accessibility_display_daltonizer 0'
-                : 'settings put secure accessibility_display_daltonizer_enabled 0';
-            (window as any).AndroidNative.executeShell(cmd);
-        }
-    },
-    // 4. GHOST: Kill Background
-    killBackground: () => {
-        if (isNative()) {
-            (window as any).AndroidNative.executeShell('am kill-all');
-        }
-    },
-    // 5. GHOST: Sensors Off (Robust)
-toggleSensors: (disable: boolean) => {
-         if (isNative()) {
-             // 1 = Blocked (True), 0 = Allowed (False)
-             const val = disable ? '1' : '0';
-             const action = disable ? 'enable' : 'disable';
-
-             // COMMAND 1: Standard Manager (Pixel/AOSP)
-             const cmdStandard = `cmd sensor_privacy ${action} 0 1; cmd sensor_privacy ${action} 0 2`;
-
-             // COMMAND 2: Direct Settings Injection (Samsung/Xiaomi/Oppo)
-             // Forces the system toggle state in the secure database
-             const cmdSettings = `settings put global sensor_privacy_enabled ${val}; settings put secure sensor_privacy_enabled ${val}`;
-
-             // COMMAND 3: Service Call (Low-level fallback)
-             // 8 = toggleSensorPrivacy (Int), 1 = Mic, 2 = Camera, val = boolean (1/0)
-             // Note: Transaction codes vary by Android version, this is a generic attempt
-             const cmdService = `service call sensor_privacy 8 i32 1 i32 ${val}; service call sensor_privacy 8 i32 2 i32 ${val}`;
-
-             // EXECUTE ALL
-             const finalCommand = `${cmdStandard}; ${cmdSettings}; ${cmdService}`;
-
-             // Log it for debugging
-             console.log("Executing Sensor Lock:", finalCommand);
-             (window as any).AndroidNative.executeShell(finalCommand);
-         }
+  // --- NEW COMMAND EXECUTOR (Fixes your error) ---
+  const executeCommand = async (command: string): Promise<string> => {
+    if (isNative()) {
+      // Execute the shell command via the Java interface
+      (window as any).AndroidNative.executeCommand(command);
+      return "Command Sent";
+    } else {
+      console.warn("Native Bridge not found. Command ignored:", command);
+      return "Error: Native Bridge Missing";
     }
   };
 
@@ -122,7 +76,7 @@ toggleSensors: (disable: boolean) => {
        }
     }, 2000);
 
-    // Setup Global Listeners
+    // Setup Global Listeners from Java
     (window as any).adbStatus = (s: string) => {
         console.log("ADB Status:", s);
         setStatus(s);
@@ -159,7 +113,7 @@ toggleSensors: (disable: boolean) => {
         });
     };
 
-    // MOUNT LOGIC
+    // Initial Connection Info Retrieval
     if (isNative()) {
         (window as any).AndroidNative.retrieveConnectionInfo();
     }
@@ -175,5 +129,17 @@ toggleSensors: (disable: boolean) => {
     }
   }, [status]);
 
-  return { apps, users, status, vpnActive, history, actions, pairingData, connectData, shieldLogs, tools };
+  // --- RETURN EVERYTHING ---
+  return {
+      apps,
+      users,
+      status,
+      vpnActive,
+      history,
+      actions,
+      pairingData,
+      connectData,
+      shieldLogs,
+      executeCommand // <--- This is now defined and exported correctly
+  };
 };

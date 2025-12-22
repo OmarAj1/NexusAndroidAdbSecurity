@@ -3,7 +3,6 @@ package com.example.nexus.managers;
 import android.content.Context;
 import android.os.Build;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import org.bouncycastle.asn1.x500.X500Name;
@@ -46,9 +45,7 @@ public class MyAdbManager extends AbsAdbConnectionManager {
         if (keyFile.exists() && certFile.exists()) {
             try {
                 loadKeys();
-                Log.d("NEXUS", "Keys loaded successfully.");
             } catch (Exception e) {
-                Log.e("NEXUS", "Corrupted keys found. Deleting and regenerating.", e);
                 keyFile.delete();
                 certFile.delete();
                 generateAndSaveKeys();
@@ -94,31 +91,45 @@ public class MyAdbManager extends AbsAdbConnectionManager {
     @NonNull @Override protected Certificate getCertificate() { return mCertificate; }
     @NonNull @Override protected String getDeviceName() { return "NexusUAD"; }
 
+    // --- LOGIC: Run Shell Commands ---
     public String runShellCommand(String cmd) throws Exception {
         if (!isConnected()) throw new IllegalStateException("ADB Not Connected");
+
         try (AdbStream stream = openStream("shell:" + cmd)) {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             byte[] buffer = new byte[8192];
+
+            // Wait loop
             long startTime = System.currentTimeMillis();
-            final long TIMEOUT = 40000;
-
             while (!stream.isClosed()) {
-                if (System.currentTimeMillis() - startTime > TIMEOUT) break;
-
+                if (System.currentTimeMillis() - startTime > 15000) break; // 15s Timeout
                 try {
-                    int bytesRead = stream.read(buffer, 0, buffer.length);
-                    if (bytesRead > 0) {
-                        outputStream.write(buffer, 0, bytesRead);
-                        startTime = System.currentTimeMillis();
-                    } else if (bytesRead < 0) {
-                        break; // End of stream
+                    // FIX: 3 Arguments required for AdbStream.read
+                    int read = stream.read(buffer, 0, buffer.length);
+                    if (read > 0) {
+                        outputStream.write(buffer, 0, read);
+                        startTime = System.currentTimeMillis(); // Reset timeout on data
+                    } else if (read < 0) {
+                        break;
                     }
-                } catch (Exception e) {
-                    // FIX: Ignore "Stream closed" error.
-                    // This happens normally when running 'pm clear' because the process is killed.
-                    break;
-                }
+                } catch (Exception e) { break; }
             }
             return outputStream.toString("UTF-8");
         }
-    }}
+    }
+
+    // --- LOGIC: Wireless Debugging Switch ---
+    public String restartTcpIp(int port) throws Exception {
+        if (!isConnected()) throw new IllegalStateException("ADB Not Connected");
+
+        // This connects to the 'tcpip' service, NOT 'shell'
+        try (AdbStream stream = openStream("tcpip:" + port)) {
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+
+            int read = stream.read(buffer, 0, buffer.length);
+            if (read > 0) return new String(buffer, 0, read);
+            return "Restarting in TCP Mode...";
+        }
+    }
+}

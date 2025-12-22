@@ -14,10 +14,10 @@ module.exports = {
         danger: '#ef4444',
       },
       // UPDATED SPACING WITH LARGER DEFAULTS
-      spacing: {
-        'safe-top': 'env(safe-area-inset-top, 5px)',      // Clears Status Bar
-        'safe-bottom': 'env(safe-area-inset-bottom, 5px)', // Clears Nav Buttons
-      },
+//      spacing: {
+//        'safe-top': 'env(safe-area-inset-top, 5px)',      // Clears Status Bar
+//        'safe-bottom': 'env(safe-area-inset-bottom, 5px)', // Clears Nav Buttons
+//      },
       animation: {
         'press': 'press 0.1s ease-out',
       },
