@@ -101,13 +101,24 @@ public class MyAdbManager extends AbsAdbConnectionManager {
             byte[] buffer = new byte[8192];
             long startTime = System.currentTimeMillis();
             final long TIMEOUT = 40000;
+
             while (!stream.isClosed()) {
                 if (System.currentTimeMillis() - startTime > TIMEOUT) break;
-                int bytesRead = stream.read(buffer, 0, buffer.length);
-                if (bytesRead > 0) { outputStream.write(buffer, 0, bytesRead); startTime = System.currentTimeMillis(); }
-                else if (bytesRead < 0) break;
+
+                try {
+                    int bytesRead = stream.read(buffer, 0, buffer.length);
+                    if (bytesRead > 0) {
+                        outputStream.write(buffer, 0, bytesRead);
+                        startTime = System.currentTimeMillis();
+                    } else if (bytesRead < 0) {
+                        break; // End of stream
+                    }
+                } catch (Exception e) {
+                    // FIX: Ignore "Stream closed" error.
+                    // This happens normally when running 'pm clear' because the process is killed.
+                    break;
+                }
             }
             return outputStream.toString("UTF-8");
         }
-    }
-}
+    }}

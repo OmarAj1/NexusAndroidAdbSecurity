@@ -90,22 +90,32 @@ public class ConsolidatedWebAppInterface {
                 else if ("enable".equals(action)) cmd = "pm enable --user " + userId + " " + pkg;
                 else if ("restore".equals(action)) cmd = "cmd package install-existing --user " + userId + " " + pkg;
 
+                    // ADD WIPE COMMAND
+                else if ("wipe".equals(action)) cmd = "pm clear --user " + userId + " " + pkg;
+
                 if (!cmd.isEmpty()) {
                     String output = manager.runShellCommand(cmd);
                     String cleanOutput = output != null ? output.trim().toLowerCase() : "";
 
-                    if (cleanOutput.contains("success") || cleanOutput.contains("installed")) {
+                    // CHECK FOR SUCCESS
+                    // 1. Standard success message
+                    // 2. OR if action is 'wipe' and output is empty (due to stream close), it's also a success
+                    boolean isSuccess = cleanOutput.contains("success") ||
+                            cleanOutput.contains("installed") ||
+                            ("wipe".equals(action) && cleanOutput.isEmpty());
+
+                    if (isSuccess) {
                         common.showToast(action + " Success");
                     } else {
                         common.showToast("Failed: " + (cleanOutput.length() > 50 ? cleanOutput.substring(0, 47) + "..." : cleanOutput));
                     }
 
-                    fetchRealPackageListInternal();
+                    // Refresh list (optional, but good practice)
+                    // fetchRealPackageListInternal();
                 }
             } catch(Exception e) { common.showToast("Cmd Failed: " + e.getMessage()); }
         });
     }
-
     private void fetchUsersInternal() {
         executor.execute(() -> {
             try {
@@ -121,85 +131,96 @@ public class ConsolidatedWebAppInterface {
 
     private void fetchRealPackageListInternal() {
         executor.execute(() -> {
-            String base64Data = Base64.encodeToString("[]".getBytes(), Base64.NO_WRAP);
+            String base64Data = "";
             try {
                 MyAdbManager manager = AdbSingleton.getInstance().getAdbManager();
                 if (manager != null && manager.isConnected()) {
-                    // 1. Fetch MASTER list (All packages including uninstalled ones)
-                    String rawAll = manager.runShellCommand("pm list packages -f -u");
-                    // 2. Fetch DISABLED list
-                    String rawDisabled = manager.runShellCommand("pm list packages -d");
-                    // 3. Fetch ENABLED list
-                    String rawEnabled = manager.runShellCommand("pm list packages -e");
 
-                    // Parse Status Lists
-                    Set<String> disabledSet = new HashSet<>();
-                    if (rawDisabled != null) {
-                        for (String s : rawDisabled.split("\\n")) {
-                            if (s.contains(":")) disabledSet.add(s.substring(s.indexOf(":") + 1).trim());
-                        }
-                    }
+                    // 1. Fetch MASTER list (-u ONLY): Much faster without -f (file paths)
+                    // This gets every app (installed + uninstalled) instantly
+                    Set<String> allApps = fetchPackageSet(manager, "pm list packages -u");
 
-                    Set<String> enabledSet = new HashSet<>();
-                    if (rawEnabled != null) {
-                        for (String s : rawEnabled.split("\\n")) {
-                            if (s.contains(":")) enabledSet.add(s.substring(s.indexOf(":") + 1).trim());
-                        }
-                    }
+                    // 2. Fetch INSTALLED list: If an app is in 'allApps' but NOT here, it is Uninstalled
+                    Set<String> installedSet = fetchPackageSet(manager, "pm list packages");
 
-                    if (rawAll != null && !rawAll.isEmpty()) {
+                    // 3. Fetch DISABLED list
+                    Set<String> disabledSet = fetchPackageSet(manager, "pm list packages -d");
+
+                    // 4. Fetch SYSTEM list: Reliable way to identify system apps without file paths
+                    Set<String> systemSet = fetchPackageSet(manager, "pm list packages -s");
+
+                    if (!allApps.isEmpty()) {
                         JSONArray jsonArray = new JSONArray();
-                        String[] lines = rawAll.split("\\n");
 
-                        for (String line : lines) {
-                            line = line.trim();
-                            if (line.isEmpty()) continue;
+                        for (String pkgName : allApps) {
+                            JSONObject obj = new JSONObject();
+                            obj.put("pkg", pkgName);
 
-                            // Format: package:/path/to/apk=com.package.name
-                            int equalsIndex = line.lastIndexOf('=');
-                            int packageIndex = line.indexOf("package:");
+                            // --- TYPE DETECTION ---
+                            // If it's in the system list, it's System. Otherwise, it's User.
+                            // This is fast and matches standard Android behavior.
+                            obj.put("type", systemSet.contains(pkgName) ? "System" : "User");
 
-                            if (equalsIndex > -1 && packageIndex > -1) {
-                                String path = line.substring(packageIndex + 8, equalsIndex);
-                                String pkgName = line.substring(equalsIndex + 1);
-
-                                JSONObject obj = new JSONObject();
-                                obj.put("pkg", pkgName);
-
-                                // Determine Type (System/User) based on Path
-                                boolean isSystem = path.startsWith("/system") || path.startsWith("/product") || path.startsWith("/vendor") || path.startsWith("/apex");
-                                obj.put("type", isSystem ? "System" : "User");
-
-                                // Determine Status (Enabled/Disabled/Uninstalled)
-                                if (enabledSet.contains(pkgName)) {
-                                    obj.put("status", "Enabled");
-                                } else if (disabledSet.contains(pkgName)) {
-                                    obj.put("status", "Disabled");
-                                } else {
-                                    obj.put("status", "Uninstalled");
-                                }
-
-                                String simpleName = pkgName;
-                                if (simpleName.contains(".")) {
-                                    simpleName = simpleName.substring(simpleName.lastIndexOf('.') + 1);
-                                    if (simpleName.length() > 0) {
-                                        simpleName = simpleName.substring(0, 1).toUpperCase() + simpleName.substring(1);
-                                    }
-                                }
-                                obj.put("name", simpleName);
-
-                                jsonArray.put(obj);
+                            // --- STATUS DETECTION ---
+                            if (!installedSet.contains(pkgName)) {
+                                obj.put("status", "Uninstalled");
+                            } else if (disabledSet.contains(pkgName)) {
+                                obj.put("status", "Disabled");
+                            } else {
+                                obj.put("status", "Enabled");
                             }
+
+                            // Name Formatting (Simple capitalization)
+                            String simpleName = pkgName;
+                            if (simpleName.contains(".")) {
+                                simpleName = simpleName.substring(simpleName.lastIndexOf('.') + 1);
+                                if (simpleName.length() > 0) {
+                                    simpleName = simpleName.substring(0, 1).toUpperCase() + simpleName.substring(1);
+                                }
+                            }
+                            obj.put("name", simpleName);
+
+                            jsonArray.put(obj);
                         }
                         base64Data = Base64.encodeToString(jsonArray.toString().getBytes("UTF-8"), Base64.NO_WRAP);
                     }
                 }
             } catch (Exception e) {
                 Log.e("NEXUS", "Error fetching ADB apps", e);
+            } finally {
+                // FAIL-SAFE: Ensure the UI *always* gets a response, even if empty.
+                // This prevents the "Stuck at retrieving" screen.
+                if (base64Data.isEmpty()) {
+                    base64Data = Base64.encodeToString("[]".getBytes(), Base64.NO_WRAP);
+                }
+                final String finalData = base64Data;
+                activity.runOnUiThread(() -> webView.evaluateJavascript("if(window.receiveAppList) window.receiveAppList('" + finalData + "');", null));
             }
-
-            final String finalData = base64Data;
-            activity.runOnUiThread(() -> webView.evaluateJavascript("if(window.receiveAppList) window.receiveAppList('" + finalData + "');", null));
         });
     }
+
+    // Helper method to reliably fetch a clean Set of package names
+    private Set<String> fetchPackageSet(MyAdbManager manager, String cmd) {
+        Set<String> set = new HashSet<>();
+        try {
+            String output = manager.runShellCommand(cmd);
+            if (output != null) {
+                for (String line : output.split("\\n")) {
+                    line = line.trim();
+                    // Handle "package:com.example" -> "com.example"
+                    if (line.startsWith("package:")) {
+                        set.add(line.substring(8).trim());
+                    } else if (!line.isEmpty()) {
+                        // Some devices might output raw names without prefix
+                        set.add(line);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            Log.w("NEXUS", "Warning: Failed to run aux command: " + cmd);
+        }
+        return set;
+    }
+
+
 }
