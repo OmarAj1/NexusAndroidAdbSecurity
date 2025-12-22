@@ -46,49 +46,69 @@ public class ConsolidatedWebAppInterface {
     @JavascriptInterface public void startVpn() { shield.startVpn(); }
     @JavascriptInterface public void stopVpn() { shield.stopVpn(); }
     @JavascriptInterface public boolean getVpnStatus() { return shield.getVpnStatus(); }
-    @JavascriptInterface public void executeCommand(String a, String p, int u) { executeCommandInternal(a, p, u); }
+        @JavascriptInterface public void executeCommand(String a, String p, int u) { executeCommandInternal(a, p, u); }
+
+    // --- COMPATIBILITY FIX: Redirects old 1-argument calls to the new logic ---
+    @JavascriptInterface
+    public void executeCommand(String cmd) {
+        // This catches the call from your stale React bundle and fixes it
+        executeShell(cmd);
+    }
     @JavascriptInterface public void getInstalledPackages() { fetchRealPackageListInternal(); }
     @JavascriptInterface public void getUsers() { fetchUsersInternal(); }
+    @JavascriptInterface
+    public void fetchToolStats() {
+        executor.execute(() -> {
+            MyAdbManager manager = AdbSingleton.getInstance().getAdbManager();
+            if (manager == null || !manager.isConnected()) return;
 
-    // --- NEW LOGIC: THE TOOLS BACKEND ---
+            // Use the manager to get data
+            com.example.nexus.managers.ToolActionManager toolManager =
+                    new com.example.nexus.managers.ToolActionManager(manager, common);
+
+            String json = toolManager.getToolStats();
+
+            // Send back to React
+            activity.runOnUiThread(() ->
+                    webView.evaluateJavascript("if(window.updateToolStats) window.updateToolStats('" + json + "');", null)
+            );
+        });
+    }
+
     @JavascriptInterface
     public void executeShell(String cmd) {
         executor.execute(() -> {
             MyAdbManager manager = AdbSingleton.getInstance().getAdbManager();
 
-            // 1. Safety Check
             if (manager == null || !manager.isConnected()) {
                 common.showToast("Error: ADB Not Connected");
                 return;
             }
 
-            try {
-                String output;
+            // --- USE THE NEW MANAGER ---
+            // Create the manager on the fly (or you can make it a class field)
+            com.example.nexus.managers.ToolActionManager toolManager =
+                    new com.example.nexus.managers.ToolActionManager(manager, common);
 
-                // 2. Route Command
-                if (cmd.startsWith("tcpip")) {
-                    // Logic for Wireless ADB
-                    int port = 5555;
-                    try { port = Integer.parseInt(cmd.split(" ")[1]); } catch(Exception e){}
-                    output = manager.restartTcpIp(port);
-                    common.showToast("Wireless ADB Enabled on port " + port);
-                } else {
-                    // Logic for Standard Tools (Speed, Ghost, etc.)
-                    // ADB Shell handles '&&' automatically
-                    output = manager.runShellCommand(cmd);
+            // 1. Try to handle it as a "Tool" first
+            boolean handled = toolManager.handleCommand(cmd);
+
+            // 2. If it wasn't a tool (or if handleCommand returned false), run as raw shell
+            if (!handled) {
+                try {
+                    String output = manager.runShellCommand(cmd);
+                    // Only show toast if there is output, to avoid spamming for background tasks
+                    if (!output.isEmpty()) {
+                        common.showToast(output);
+                    } else {
+                        common.showToast("Command Executed");
+                    }
+                } catch (Exception e) {
+                    common.showToast("Error: " + e.getMessage());
                 }
-
-                Log.d("NEXUS_CMD", "Input: " + cmd + " | Output: " + output);
-
-            } catch (Exception e) {
-                Log.e("NEXUS_CMD", "Failed", e);
-                common.showToast("Tool Failed: " + e.getMessage());
             }
         });
-    }
-
-    // --- EXISTING INTERNAL HELPERS (Keep these exactly as they were) ---
-    private void executeCommandInternal(String action, String pkg, int userId) {
+    }    private void executeCommandInternal(String action, String pkg, int userId) {
         executor.execute(() -> {
             try {
                 MyAdbManager m = AdbSingleton.getInstance().getAdbManager();

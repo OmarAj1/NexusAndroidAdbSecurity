@@ -24,14 +24,16 @@ export const TOOLS_DATA = [
     cmd: 'pm trim-caches 999G'
   },
   {
-    id: 'ghost',
-    title: 'Black & White',
-    desc: 'No colors.',
-    icon: Ghost,
-    color: 'text-gray-400',
-    bg: 'bg-gray-400/10',
-    cmd: 'settings put secure accessibility_display_daltonizer_enabled 1 && settings put secure accessibility_display_daltonizer 0'
-  },
+      id: 'ghost',
+      title: 'Black & White',
+      desc: 'No colors.',
+      icon: Ghost,
+      color: 'text-gray-400',
+      bg: 'bg-gray-400/10',
+      // FIX: Set value to 0 (Monochrome) FIRST, then turn it ON (1).
+      // We also toggle it off/on quickly to force a refresh.
+      cmd: 'settings put secure accessibility_display_daltonizer 0 && settings put secure accessibility_display_daltonizer_enabled 1'
+    },
   {
     id: 'caffeine',
     title: 'Stay Awake',

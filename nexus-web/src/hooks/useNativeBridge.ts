@@ -1,12 +1,28 @@
 import { useState, useEffect } from 'react';
 import { AppData, ActionLog } from '../types';
 
+// Define the shape of the stats data coming from Java
+export interface ToolStats {
+  ghost: boolean;
+  privacy: boolean;
+  storage: string;
+  tasks: string;
+}
+
 export const useNativeBridge = () => {
   const [status, setStatus] = useState('Initializing...');
   const [apps, setApps] = useState<AppData[]>([]);
   const [users, setUsers] = useState<{id: number, name: string}[]>([{id: 0, name: 'Owner'}]);
   const [vpnActive, setVpnActive] = useState(false);
   const [history, setHistory] = useState<ActionLog[]>([]);
+
+  // --- NEW: Live Tool Stats State ---
+  const [toolStats, setToolStats] = useState<ToolStats>({
+      ghost: false,
+      privacy: false,
+      storage: '...',
+      tasks: '0'
+  });
 
   // Shield Logs State
   const [shieldLogs, setShieldLogs] = useState<{time: string, domain: string}[]>([]);
@@ -52,10 +68,17 @@ export const useNativeBridge = () => {
     exportHistory: () => {
         const text = history.map(h => `[${h.timestamp}] ${h.action} -> ${h.pkg}`).join('\n');
         if (isNative()) (window as any).AndroidNative.shareText("UAD Export", text);
+    },
+
+    // --- NEW: Action to request updated stats from Java ---
+    refreshStats: () => {
+        if (isNative() && (window as any).AndroidNative.fetchToolStats) {
+            (window as any).AndroidNative.fetchToolStats();
+        }
     }
   };
 
-  // --- NEW COMMAND EXECUTOR (Fixes your error) ---
+  // --- COMMAND EXECUTOR ---
   const executeCommand = async (command: string): Promise<string> => {
     if (isNative()) {
       // Execute the shell command via the Java interface
@@ -91,6 +114,14 @@ export const useNativeBridge = () => {
             setApps(json);
             setStatus("Shell Active");
         } catch(e) { console.error("JSON Parse Error:", e); }
+    };
+
+    // --- NEW: Listener for Tool Stats Updates ---
+    (window as any).updateToolStats = (jsonString: string) => {
+        try {
+            const data = JSON.parse(jsonString);
+            setToolStats(data);
+        } catch(e) { console.error("Stats Parse Error", e); }
     };
 
     (window as any).onPairingServiceFound = (ip: string, port: any) => {
@@ -140,6 +171,7 @@ export const useNativeBridge = () => {
       pairingData,
       connectData,
       shieldLogs,
-      executeCommand // <--- This is now defined and exported correctly
+      executeCommand,
+      toolStats // <--- Exported so ToolsView can read it
   };
 };

@@ -1,67 +1,137 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTools } from './useTools';
+import { useNativeBridge } from '../../hooks/useNativeBridge';
+import {
+  Zap, Trash2, Ghost, Lock, Unlock, Layers, HardDrive
+} from 'lucide-react';
 
 interface ToolsViewProps {
   executeCommand: (command: string) => Promise<string>;
 }
 
 export const ToolsView: React.FC<ToolsViewProps> = ({ executeCommand }) => {
-  // Use our new custom hook for logic
-  const { tools, runTool, loadingId } = useTools(executeCommand);
+  const { runTool, loadingId } = useTools(executeCommand);
+
+  // Get live data from our hook
+  const { toolStats, actions } = useNativeBridge();
+
+  // Polling Effect: Refresh data every 5 seconds
+  useEffect(() => {
+    actions.refreshStats(); // Initial fetch
+    const interval = setInterval(() => {
+        actions.refreshStats();
+    }, 5000); // 5 seconds is snappier than 10
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="h-full w-full p-4 flex flex-col animate-in fade-in slide-in-from-bottom-4 duration-500">
-
-      {/* Header */}
-      <div className="mb-3 px-1 shrink-0">
-        <h1 className="text-2xl font-bold text-slate-800 dark:text-white">Tools</h1>
-        <p className="text-slate-500 text-xs">Quick actions for your device.</p>
+    <div className="h-full w-full p-4 flex flex-col animate-in fade-in">
+      <div className="mb-4">
+        <h1 className="text-2xl font-bold text-slate-800 dark:text-white">System Tools</h1>
+        <p className="text-slate-500 text-xs">Live Status & Controls</p>
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 pb-20 overflow-y-auto">
-        {tools.map((tool) => (
-          <button
-            key={tool.id}
-            onClick={() => runTool(tool.id, tool.cmd)}
-            disabled={loadingId !== null}
-            className={`
-              relative group
-              flex flex-col justify-center
-              min-h-[90px]
-              bg-white dark:bg-white/5
-              border border-slate-200 dark:border-white/5
-              rounded-xl p-3
-              text-left transition-all duration-200
-              hover:border-slate-300 dark:hover:border-white/20
-              hover:shadow-lg dark:hover:shadow-none
-              active:scale-[0.98]
-              ${loadingId === tool.id ? 'opacity-70' : 'opacity-100'}
-            `}
-          >
-            {/* Loading Spinner Overlay */}
-            {loadingId === tool.id && (
-              <div className="absolute inset-0 bg-white/50 dark:bg-black/50 flex items-center justify-center z-10 rounded-xl">
-                <div className="w-5 h-5 border-2 border-accent border-t-transparent rounded-full animate-spin" />
-              </div>
-            )}
+      <div className="grid grid-cols-2 gap-3 pb-20 overflow-y-auto">
 
-            <div className="flex items-start gap-3">
-              <div className={`p-2.5 rounded-lg shrink-0 ${tool.bg} ${tool.color}`}>
-                <tool.icon size={22} />
-              </div>
-              <div className="min-w-0 flex flex-col justify-center">
-                <h3 className="font-bold text-sm text-slate-800 dark:text-slate-100 leading-tight">
-                  {tool.title}
-                </h3>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug mt-1 opacity-90">
-                  {tool.desc}
-                </p>
-              </div>
-            </div>
-          </button>
-        ))}
+        {/* --- 1. CLEANER CARD --- */}
+        <ToolCard
+            title="Clean Storage"
+            desc={`Available: ${toolStats.storage}`}
+            icon={Trash2}
+            color="text-red-500"
+            bg="bg-red-500/10"
+            isLoading={loadingId === 'clean'}
+            onClick={() => runTool('clean', 'pm trim-caches 999G')}
+        />
+
+        {/* --- 2. GHOST MODE TOGGLE --- */}
+        <ToolCard
+            title="Ghost Mode"
+            desc={toolStats.ghost ? "State: Monochrome" : "State: Normal"}
+            icon={Ghost}
+            // Change color based on state
+            color={toolStats.ghost ? "text-white" : "text-slate-400"}
+            bg={toolStats.ghost ? "bg-slate-800" : "bg-slate-400/10"}
+            isLoading={loadingId === 'ghost'}
+            onClick={() => {
+                // Send new toggle command
+                runTool('ghost', 'toggle_ghost');
+                // Optimistic update (optional, makes it feel instant)
+                setTimeout(actions.refreshStats, 500);
+            }}
+        />
+
+        {/* --- 3. PRIVACY TOGGLE (Merged) --- */}
+        <ToolCard
+            title="Sensors & Cam"
+            desc={toolStats.privacy ? "Blocked (Secure)" : "Allowed (Open)"}
+            icon={toolStats.privacy ? Lock : Unlock}
+            color={toolStats.privacy ? "text-green-500" : "text-orange-500"}
+            bg={toolStats.privacy ? "bg-green-500/10" : "bg-orange-500/10"}
+            isLoading={loadingId === 'privacy'}
+            onClick={() => {
+                runTool('privacy', 'toggle_privacy');
+                setTimeout(actions.refreshStats, 500);
+            }}
+        />
+
+        {/* --- 4. CLOSE APPS --- */}
+        <ToolCard
+            title="Close Apps"
+            desc={`Active Tasks: ${toolStats.tasks}`}
+            icon={Layers}
+            color="text-blue-500"
+            bg="bg-blue-500/10"
+            isLoading={loadingId === 'kill'}
+            onClick={() => {
+                 // Send kill all command
+                 runTool('kill', 'am kill-all');
+                 setTimeout(actions.refreshStats, 1000);
+            }}
+        />
+
+        {/* --- 5. SPEED UP (Stateless) --- */}
+         <ToolCard
+            title="Speed Up"
+            desc="Set animations to 0.5x"
+            icon={Zap}
+            color="text-amber-500"
+            bg="bg-amber-500/10"
+            isLoading={loadingId === 'speed'}
+            onClick={() => runTool('speed', 'settings put global window_animation_scale 0.5')}
+        />
+
       </div>
     </div>
   );
 };
+
+// Reusable Card Component to keep code clean
+const ToolCard = ({ title, desc, icon: Icon, color, bg, onClick, isLoading }: any) => (
+  <button
+    onClick={onClick}
+    disabled={isLoading}
+    className={`
+      relative group flex flex-col justify-between min-h-[110px]
+      bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5
+      rounded-xl p-4 text-left transition-all duration-200
+      hover:shadow-lg active:scale-[0.98]
+      ${isLoading ? 'opacity-70' : 'opacity-100'}
+    `}
+  >
+    {isLoading && (
+       <div className="absolute inset-0 flex items-center justify-center bg-black/10 rounded-xl">
+         <div className="w-5 h-5 border-2 border-slate-500 border-t-transparent rounded-full animate-spin"/>
+       </div>
+    )}
+
+    <div className={`p-2 w-fit rounded-lg ${bg} ${color} mb-2`}>
+      <Icon size={24} />
+    </div>
+
+    <div>
+      <h3 className="font-bold text-slate-800 dark:text-slate-100">{title}</h3>
+      <p className="text-xs text-slate-500 font-mono mt-1">{desc}</p>
+    </div>
+  </button>
+);
