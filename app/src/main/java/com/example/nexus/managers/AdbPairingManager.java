@@ -131,15 +131,22 @@ public class AdbPairingManager {
             }
 
             try {
-                String cleanIp = (ip != null) ? ip.trim() : null;
-                String cleanPortStr = (portStr != null) ? portStr.trim() : "";
-                String targetIp = (cleanIp != null && !cleanIp.isEmpty()) ? cleanIp : autoConnectIp;
+                // FIX: Prioritize Auto-Discovered Connect Info
+                // This ignores the manual input if it's likely stale (e.g. user just paired and input still has pairing port)
+                String targetIp = autoConnectIp;
+                int targetPort = autoConnectPort;
 
-                int targetPort = -1;
-                try {
-                    targetPort = Integer.parseInt(cleanPortStr);
-                } catch (Exception e) {
-                    targetPort = autoConnectPort;
+                // Fallback to manual input only if auto-discovery failed
+                if (targetIp == null || targetPort <= 0) {
+                    String cleanIp = (ip != null) ? ip.trim() : null;
+                    String cleanPortStr = (portStr != null) ? portStr.trim() : "";
+
+                    targetIp = (cleanIp != null && !cleanIp.isEmpty()) ? cleanIp : autoConnectIp;
+                    try {
+                        targetPort = Integer.parseInt(cleanPortStr);
+                    } catch (Exception e) {
+                        targetPort = autoConnectPort;
+                    }
                 }
 
                 if (targetIp == null || targetPort <= 0) {
@@ -148,7 +155,7 @@ public class AdbPairingManager {
                 }
 
                 boolean connected = false;
-                notifyConnectResult(false, "Connecting to " + targetIp + "...");
+                notifyConnectResult(false, "Connecting to " + targetIp + ":" + targetPort + "...");
 
                 try {
                     connected = manager.connect(targetIp, targetPort);
