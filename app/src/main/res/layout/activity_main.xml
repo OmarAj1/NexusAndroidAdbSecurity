@@ -5,11 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#020617"
-    tools:context=".UserMainActivity">
+    android:background="#020617">
 
-    <!-- THE WEBVIEW (Your React App lives here) -->
-    <!-- Alpha is 0 initially so we don't see the white flash loading screen -->
     <WebView
         android:id="@+id/webview"
         android:layout_width="0dp"
@@ -22,13 +19,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- NATIVE LOADING SPINNER -->
-    <!-- This shows while React is initializing -->
     <ProgressBar
         android:id="@+id/loader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateTint="#10b981"
+        android:indeterminateTint="#818CF8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

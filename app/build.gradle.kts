@@ -5,15 +5,12 @@ plugins {
 
 android {
     namespace = "com.example.nexus"
-    compileSdk = 36
+    compileSdk = 34 // CHANGED: 36 -> 34 (Stable for Android 14)
 
-    // 1. Task to install dependencies
     tasks.register("npmInstall", Exec::class) {
         workingDir = rootProject.file("nexus-web")
         inputs.file(rootProject.file("nexus-web/package.json"))
         outputs.dir(rootProject.file("nexus-web/node_modules"))
-
-        // CHANGED: Added "--legacy-peer-deps" to ignore the React version conflict
         commandLine(
             if (System.getProperty("os.name").toLowerCase().contains("windows")) "npm.cmd" else "npm",
             "install",
@@ -21,7 +18,6 @@ android {
         )
     }
 
-    // 2. Task to build the React app (Keep this as is)
     tasks.register("buildReactApp", Exec::class) {
         dependsOn("npmInstall")
         workingDir = rootProject.file("nexus-web")
@@ -35,19 +31,22 @@ android {
     defaultConfig {
         applicationId = "com.example.nexus"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        // --- ADD THIS BLOCK ---
+        ndk {
+            // Force include both standard architectures
+            abiFilters += listOf("armeabi-v7a", "arm64-v8a")
+        }
+        // ----------------------
+
         externalNativeBuild {
             cmake {
                 cppFlags += ""
-                arguments += listOf(
-                    "-DCMAKE_SHARED_LINKER_FLAGS=-Wl,-z,max-page-size=16384",
-                    "-DCMAKE_EXE_LINKER_FLAGS=-Wl,-z,max-page-size=16384"
-                )
             }
         }
     }
@@ -63,6 +62,9 @@ android {
     }
 
     compileOptions {
+        // --- ADDED THIS BLOCK ---
+        isCoreLibraryDesugaringEnabled = true
+
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
@@ -83,6 +85,9 @@ android {
 }
 
 dependencies {
+    // --- ADDED THIS LINE ---
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)

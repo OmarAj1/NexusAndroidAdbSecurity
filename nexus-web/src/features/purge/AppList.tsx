@@ -81,7 +81,7 @@ const AppRow = memo(({ app, isSelected, onToggle, onAction }: any) => {
           {/* 1. RESTORE (Only if uninstalled) */}
           {isUninstalled && (
             <button
-              onClick={() => onAction('install-existing', app.pkg)}
+              onClick={() => onAction('restore', app.pkg)} // <--- FIXED HERE
               className="p-2 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 border border-emerald-500/20 transition-colors"
               title="Restore / Re-install"
             >

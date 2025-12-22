@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Zap, FileText, Loader2, Moon, Sun } from 'lucide-react';
+import { Shield, Zap, Wrench, Loader2, Moon, Sun } from 'lucide-react';
 import { useNativeBridge } from './hooks/useNativeBridge';
 
 // Views
 import { PurgeView } from './features/purge/PurgeView';
 import { ConnectionView } from './features/connection/ConnectionView';
 import { ShieldView } from './features/shield/ShieldView';
-import { HistoryView } from './features/history/HistoryView';
+import { ToolsView } from './features/tools/ToolsView';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('shield');
@@ -35,7 +35,7 @@ export default function App() {
 
   const {
     apps, users, status, vpnActive, history, actions,
-    pairingData, connectData, shieldLogs // NEW: shieldLogs
+    pairingData, connectData, shieldLogs, tools
   } = useNativeBridge();
 
   const handleAppAction = (action: string, pkg: string, userId: number) => {
@@ -107,21 +107,22 @@ export default function App() {
         </div>
       </header>
 
-      {/* MAIN CONTENT */}
-      <main className="flex-1 overflow-y-auto pt-36 pb-36 px-4 scroll-smooth">
+      {/* MAIN CONTENT - FIXED PADDING HERE */}
+      {/* Changed pt-36 to pt-28 to remove the gap */}
+      <main className="flex-1 overflow-y-auto pt-28 pb-36 px-4 scroll-smooth">
         <div className="animate-in fade-in duration-300 slide-in-from-bottom-2">
           {activeTab === 'shield' && (
             <ShieldView
               isActive={vpnActive}
               onToggle={actions.toggleVpn}
-              logs={shieldLogs} // NEW: Passing logs
+              logs={shieldLogs}
             />
           )}
 
           {activeTab === 'purge' && renderPurgeContent()}
 
-          {activeTab === 'history' && (
-            <HistoryView history={history} onExport={actions.exportHistory} />
+          {activeTab === 'tools' && (
+            <ToolsView tools={tools} />
           )}
         </div>
       </main>
@@ -141,10 +142,10 @@ export default function App() {
           label="Purge"
         />
         <NavButton
-          active={activeTab === 'history'}
-          onClick={() => setActiveTab('history')}
-          icon={FileText}
-          label="Logs"
+          active={activeTab === 'tools'}
+          onClick={() => setActiveTab('tools')}
+          icon={Wrench}
+          label="Tools"
         />
       </nav>
 

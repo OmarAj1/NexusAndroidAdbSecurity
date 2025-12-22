@@ -36,29 +36,59 @@ public class ConsolidatedWebAppInterface {
         this.shield = new ShieldInterface(activity, common);
     }
 
+    // --- STANDARD UTILITIES ---
     @JavascriptInterface public String getNativeCoreVersion() { return common.getNativeCoreVersion(); }
     @JavascriptInterface public void hapticFeedback(String type) { common.hapticFeedback(type); }
     @JavascriptInterface public void showToast(String toast) { common.showToast(toast); }
     @JavascriptInterface public void shareText(String t, String c) { common.shareText(t, c); }
 
+    // --- ADB CONNECTION ---
     @JavascriptInterface public void pairAdb(String ip, String p, String c) { pairingManager.pairAdb(ip, p, c); }
     @JavascriptInterface public boolean connectAdb(String ip, String p) { pairingManager.connectAdb(ip, p); return true; }
     @JavascriptInterface public void startMdnsDiscovery() { pairingManager.startMdnsDiscovery(); }
     @JavascriptInterface public void stopMdnsDiscovery() { pairingManager.stopMdnsDiscovery(); }
     @JavascriptInterface public void retrieveConnectionInfo() { pairingManager.retrieveConnectionInfo(); }
 
+    // --- SHIELD / VPN ---
     @JavascriptInterface public void startVpn() { shield.startVpn(); }
     @JavascriptInterface public void stopVpn() { shield.stopVpn(); }
     @JavascriptInterface public boolean getVpnStatus() { return shield.getVpnStatus(); }
 
+    // --- CORE COMMANDS ---
     @JavascriptInterface public void executeCommand(String a, String p, int userId) { executeCommandInternal(a, p, userId); }
     @JavascriptInterface public void getInstalledPackages() { fetchRealPackageListInternal(); }
     @JavascriptInterface public void getUsers() { fetchUsersInternal(); }
 
-    /**
-     * Forces the system to clear caches for all apps by requesting an impossible amount of free space.
-     * This triggers the PackageManager's aggressive cache trimming mechanism.
-     */
+    // --- NEW: TOOLS & SHELL EXECUTION (FIXED) ---
+    @JavascriptInterface
+    public void executeShell(String cmd) {
+        executor.execute(() -> {
+            MyAdbManager manager = AdbSingleton.getInstance().getAdbManager();
+            if (manager == null || !manager.isConnected()) {
+                common.showToast("Not Connected");
+                return;
+            }
+            try {
+                String output = manager.runShellCommand(cmd);
+                Log.d("NEXUS_CMD", "Cmd: " + cmd + " | Result: " + output);
+
+                // FIX: Use activity.runOnUiThread instead of mainHandler (which caused the error)
+                String cleanOutput = output != null ? output.replace("'", "\\'").replace("\n", "\\n") : "";
+                activity.runOnUiThread(() -> {
+                    if (webView != null) {
+                        webView.evaluateJavascript("console.log('[SHELL] " + cleanOutput + "');", null);
+                    }
+                });
+
+                // Optional: Toast for specific commands if needed
+                // common.showToast("Command Sent");
+            } catch(Exception e) {
+                common.showToast("Error: " + e.getMessage());
+            }
+        });
+    }
+
+    // --- NEW: SYSTEM CACHE TRIMMER ---
     @JavascriptInterface
     public void trimCaches() {
         executor.execute(() -> {
@@ -68,16 +98,16 @@ public class ConsolidatedWebAppInterface {
                 return;
             }
             try {
-                // pm trim-caches <DESIRED_FREE_SPACE>
-                // Asking for 999GB forces the system to delete everything it possibly can to free up space.
-                String cmd = "pm trim-caches 999G";
-                manager.runShellCommand(cmd);
-                common.showToast("System Cache Wipe Executed");
+                // Requesting impossible space (999G) forces Android to delete all non-essential cache
+                manager.runShellCommand("pm trim-caches 999G");
+                common.showToast("System Cache Cleared");
             } catch (Exception e) {
                 common.showToast("Cache Wipe Failed: " + e.getMessage());
             }
         });
     }
+
+    // --- INTERNAL LOGIC ---
 
     private void executeCommandInternal(String action, String pkg, int userId) {
         executor.execute(() -> {
@@ -89,20 +119,16 @@ public class ConsolidatedWebAppInterface {
                 else if ("disable".equals(action)) cmd = "pm disable-user --user " + userId + " " + pkg;
                 else if ("enable".equals(action)) cmd = "pm enable --user " + userId + " " + pkg;
                 else if ("restore".equals(action)) cmd = "cmd package install-existing --user " + userId + " " + pkg;
-
-                    // ADD WIPE COMMAND
-                else if ("wipe".equals(action)) cmd = "pm clear --user " + userId + " " + pkg;
+                else if ("wipe".equals(action)) cmd = "pm clear --user " + userId + " " + pkg; // Added Wipe
 
                 if (!cmd.isEmpty()) {
                     String output = manager.runShellCommand(cmd);
                     String cleanOutput = output != null ? output.trim().toLowerCase() : "";
 
-                    // CHECK FOR SUCCESS
-                    // 1. Standard success message
-                    // 2. OR if action is 'wipe' and output is empty (due to stream close), it's also a success
+                    // Success checks
                     boolean isSuccess = cleanOutput.contains("success") ||
                             cleanOutput.contains("installed") ||
-                            ("wipe".equals(action) && cleanOutput.isEmpty());
+                            ("wipe".equals(action) && cleanOutput.isEmpty()); // 'pm clear' often returns nothing on success
 
                     if (isSuccess) {
                         common.showToast(action + " Success");
@@ -110,12 +136,13 @@ public class ConsolidatedWebAppInterface {
                         common.showToast("Failed: " + (cleanOutput.length() > 50 ? cleanOutput.substring(0, 47) + "..." : cleanOutput));
                     }
 
-                    // Refresh list (optional, but good practice)
-                    // fetchRealPackageListInternal();
+                    // Refresh list to show changes
+                    fetchRealPackageListInternal();
                 }
             } catch(Exception e) { common.showToast("Cmd Failed: " + e.getMessage()); }
         });
     }
+
     private void fetchUsersInternal() {
         executor.execute(() -> {
             try {
@@ -136,17 +163,14 @@ public class ConsolidatedWebAppInterface {
                 MyAdbManager manager = AdbSingleton.getInstance().getAdbManager();
                 if (manager != null && manager.isConnected()) {
 
-                    // 1. Fetch MASTER list (-u ONLY): Much faster without -f (file paths)
-                    // This gets every app (installed + uninstalled) instantly
+                    // OPTIMIZED FETCHING (Set-based)
+                    // 1. All Apps (-u)
                     Set<String> allApps = fetchPackageSet(manager, "pm list packages -u");
-
-                    // 2. Fetch INSTALLED list: If an app is in 'allApps' but NOT here, it is Uninstalled
+                    // 2. Installed (Active)
                     Set<String> installedSet = fetchPackageSet(manager, "pm list packages");
-
-                    // 3. Fetch DISABLED list
+                    // 3. Disabled
                     Set<String> disabledSet = fetchPackageSet(manager, "pm list packages -d");
-
-                    // 4. Fetch SYSTEM list: Reliable way to identify system apps without file paths
+                    // 4. System Apps (-s)
                     Set<String> systemSet = fetchPackageSet(manager, "pm list packages -s");
 
                     if (!allApps.isEmpty()) {
@@ -156,12 +180,10 @@ public class ConsolidatedWebAppInterface {
                             JSONObject obj = new JSONObject();
                             obj.put("pkg", pkgName);
 
-                            // --- TYPE DETECTION ---
-                            // If it's in the system list, it's System. Otherwise, it's User.
-                            // This is fast and matches standard Android behavior.
+                            // Determine Type
                             obj.put("type", systemSet.contains(pkgName) ? "System" : "User");
 
-                            // --- STATUS DETECTION ---
+                            // Determine Status
                             if (!installedSet.contains(pkgName)) {
                                 obj.put("status", "Uninstalled");
                             } else if (disabledSet.contains(pkgName)) {
@@ -170,7 +192,7 @@ public class ConsolidatedWebAppInterface {
                                 obj.put("status", "Enabled");
                             }
 
-                            // Name Formatting (Simple capitalization)
+                            // Simple Name
                             String simpleName = pkgName;
                             if (simpleName.contains(".")) {
                                 simpleName = simpleName.substring(simpleName.lastIndexOf('.') + 1);
@@ -188,8 +210,6 @@ public class ConsolidatedWebAppInterface {
             } catch (Exception e) {
                 Log.e("NEXUS", "Error fetching ADB apps", e);
             } finally {
-                // FAIL-SAFE: Ensure the UI *always* gets a response, even if empty.
-                // This prevents the "Stuck at retrieving" screen.
                 if (base64Data.isEmpty()) {
                     base64Data = Base64.encodeToString("[]".getBytes(), Base64.NO_WRAP);
                 }
@@ -199,7 +219,7 @@ public class ConsolidatedWebAppInterface {
         });
     }
 
-    // Helper method to reliably fetch a clean Set of package names
+    // Helper for Optimized Fetching
     private Set<String> fetchPackageSet(MyAdbManager manager, String cmd) {
         Set<String> set = new HashSet<>();
         try {
@@ -207,11 +227,9 @@ public class ConsolidatedWebAppInterface {
             if (output != null) {
                 for (String line : output.split("\\n")) {
                     line = line.trim();
-                    // Handle "package:com.example" -> "com.example"
                     if (line.startsWith("package:")) {
                         set.add(line.substring(8).trim());
                     } else if (!line.isEmpty()) {
-                        // Some devices might output raw names without prefix
                         set.add(line);
                     }
                 }
@@ -221,6 +239,4 @@ public class ConsolidatedWebAppInterface {
         }
         return set;
     }
-
-
 }

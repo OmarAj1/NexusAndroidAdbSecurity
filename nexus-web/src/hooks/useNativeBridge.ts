@@ -53,6 +53,66 @@ export const useNativeBridge = () => {
     }
   };
 
+  // --- TOOLS OBJECT ---
+  const tools = {
+    // 1. OVERDRIVE: Set Animation Scale
+    setAnimationSpeed: (scale: number) => {
+        if (isNative()) {
+            const cmd = `settings put global window_animation_scale ${scale}; settings put global transition_animation_scale ${scale}; settings put global animator_duration_scale ${scale}`;
+            (window as any).AndroidNative.executeShell(cmd);
+        }
+    },
+    // 2. OVERDRIVE: Set DPI
+    setDpi: (val: string) => {
+        if (isNative()) {
+            const cmd = val === 'reset' ? 'wm density reset' : `wm density ${val}`;
+            (window as any).AndroidNative.executeShell(cmd);
+        }
+    },
+    // 3. GHOST: Toggle Monochrome
+    toggleMonochrome: (enable: boolean) => {
+        if (isNative()) {
+            const cmd = enable
+                ? 'settings put secure accessibility_display_daltonizer_enabled 1; settings put secure accessibility_display_daltonizer 0'
+                : 'settings put secure accessibility_display_daltonizer_enabled 0';
+            (window as any).AndroidNative.executeShell(cmd);
+        }
+    },
+    // 4. GHOST: Kill Background
+    killBackground: () => {
+        if (isNative()) {
+            (window as any).AndroidNative.executeShell('am kill-all');
+        }
+    },
+    // 5. GHOST: Sensors Off (Robust)
+toggleSensors: (disable: boolean) => {
+         if (isNative()) {
+             // 1 = Blocked (True), 0 = Allowed (False)
+             const val = disable ? '1' : '0';
+             const action = disable ? 'enable' : 'disable';
+
+             // COMMAND 1: Standard Manager (Pixel/AOSP)
+             const cmdStandard = `cmd sensor_privacy ${action} 0 1; cmd sensor_privacy ${action} 0 2`;
+
+             // COMMAND 2: Direct Settings Injection (Samsung/Xiaomi/Oppo)
+             // Forces the system toggle state in the secure database
+             const cmdSettings = `settings put global sensor_privacy_enabled ${val}; settings put secure sensor_privacy_enabled ${val}`;
+
+             // COMMAND 3: Service Call (Low-level fallback)
+             // 8 = toggleSensorPrivacy (Int), 1 = Mic, 2 = Camera, val = boolean (1/0)
+             // Note: Transaction codes vary by Android version, this is a generic attempt
+             const cmdService = `service call sensor_privacy 8 i32 1 i32 ${val}; service call sensor_privacy 8 i32 2 i32 ${val}`;
+
+             // EXECUTE ALL
+             const finalCommand = `${cmdStandard}; ${cmdSettings}; ${cmdService}`;
+
+             // Log it for debugging
+             console.log("Executing Sensor Lock:", finalCommand);
+             (window as any).AndroidNative.executeShell(finalCommand);
+         }
+    }
+  };
+
   // --- EFFECT 1: SETUP (Runs Once) ---
   useEffect(() => {
     // Poll VPN Status
@@ -75,7 +135,6 @@ export const useNativeBridge = () => {
 
             const json = JSON.parse(atob(b64));
             setApps(json);
-            // Update status to indicate data is ready
             setStatus("Shell Active");
         } catch(e) { console.error("JSON Parse Error:", e); }
     };
@@ -92,32 +151,29 @@ export const useNativeBridge = () => {
         setStatus((prev) => prev.includes('Active') ? prev : 'Ready to Connect');
     };
 
-    // NEW LISTENER: Blocked Domains
     (window as any).onShieldBlock = (domain: string) => {
         const time = new Date().toLocaleTimeString('en-US', { hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit" });
         setShieldLogs(prev => {
             const newLog = { time, domain };
-            return [newLog, ...prev].slice(0, 20); // Keep last 20 items
+            return [newLog, ...prev].slice(0, 20);
         });
     };
 
     // MOUNT LOGIC
     if (isNative()) {
-        // Only ask for connection info ONCE at startup
         (window as any).AndroidNative.retrieveConnectionInfo();
     }
 
     return () => clearInterval(interval);
-  }, []); // Empty dependency array = Runs once
+  }, []);
 
   // --- EFFECT 2: REACTION (Runs on Status Change) ---
   useEffect(() => {
-    // Auto-fetch ONLY when status explicitly changes to connected
     if (status === 'Connected' && isNative()) {
         console.log("Status Connected -> Fetching Packages");
         (window as any).AndroidNative.getInstalledPackages();
     }
   }, [status]);
 
-  return { apps, users, status, vpnActive, history, actions, pairingData, connectData, shieldLogs };
+  return { apps, users, status, vpnActive, history, actions, pairingData, connectData, shieldLogs, tools };
 };
