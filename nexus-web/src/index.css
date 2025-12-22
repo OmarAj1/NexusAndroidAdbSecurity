@@ -25,3 +25,21 @@ html, body, #root {
   -webkit-tap-highlight-color: transparent;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
+
+* {
+    /* 1. Stop all moving animations */
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+
+    /* 2. Remove Blurs (The #1 cause of lag on Exynos chips) */
+    backdrop-filter: none !important;
+    filter: none !important;
+    box-shadow: none !important;
+}
+
+/* 3. Ensure background isn't transparent (since blur is gone) */
+.backdrop-blur-md, .backdrop-blur-xl {
+    background-color: #020617 !important; /* Solid Dark Color */
+    opacity: 1 !important;
+}
