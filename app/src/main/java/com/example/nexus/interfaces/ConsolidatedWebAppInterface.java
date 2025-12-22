@@ -14,6 +14,8 @@ import com.example.nexus.managers.MyAdbManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.ExecutorService;
 
 public class ConsolidatedWebAppInterface {
@@ -99,13 +101,31 @@ public class ConsolidatedWebAppInterface {
             try {
                 MyAdbManager manager = AdbSingleton.getInstance().getAdbManager();
                 if (manager != null && manager.isConnected()) {
-                    // FIX: Use ADB Shell 'pm list packages -f' instead of local PackageManager
-                    // -f gives us the path so we can determine if it is System or User
-                    String rawOutput = manager.runShellCommand("pm list packages -f");
+                    // 1. Fetch MASTER list (All packages including uninstalled ones)
+                    String rawAll = manager.runShellCommand("pm list packages -f -u");
+                    // 2. Fetch DISABLED list
+                    String rawDisabled = manager.runShellCommand("pm list packages -d");
+                    // 3. Fetch ENABLED list
+                    String rawEnabled = manager.runShellCommand("pm list packages -e");
 
-                    if (rawOutput != null && !rawOutput.isEmpty()) {
+                    // Parse Status Lists
+                    Set<String> disabledSet = new HashSet<>();
+                    if (rawDisabled != null) {
+                        for (String s : rawDisabled.split("\\n")) {
+                            if (s.contains(":")) disabledSet.add(s.substring(s.indexOf(":") + 1).trim());
+                        }
+                    }
+
+                    Set<String> enabledSet = new HashSet<>();
+                    if (rawEnabled != null) {
+                        for (String s : rawEnabled.split("\\n")) {
+                            if (s.contains(":")) enabledSet.add(s.substring(s.indexOf(":") + 1).trim());
+                        }
+                    }
+
+                    if (rawAll != null && !rawAll.isEmpty()) {
                         JSONArray jsonArray = new JSONArray();
-                        String[] lines = rawOutput.split("\\n");
+                        String[] lines = rawAll.split("\\n");
 
                         for (String line : lines) {
                             line = line.trim();
@@ -121,10 +141,19 @@ public class ConsolidatedWebAppInterface {
 
                                 JSONObject obj = new JSONObject();
                                 obj.put("pkg", pkgName);
-                                // Determine type based on path
+
+                                // Determine Type (System/User) based on Path
                                 boolean isSystem = path.startsWith("/system") || path.startsWith("/product") || path.startsWith("/vendor") || path.startsWith("/apex");
                                 obj.put("type", isSystem ? "System" : "User");
-                                obj.put("status", "Enabled"); // Default to Enabled, checking exact status requires dumpsys which is slower
+
+                                // Determine Status (Enabled/Disabled/Uninstalled)
+                                if (enabledSet.contains(pkgName)) {
+                                    obj.put("status", "Enabled");
+                                } else if (disabledSet.contains(pkgName)) {
+                                    obj.put("status", "Disabled");
+                                } else {
+                                    obj.put("status", "Uninstalled");
+                                }
 
                                 String simpleName = pkgName;
                                 if (simpleName.contains(".")) {
@@ -134,6 +163,7 @@ public class ConsolidatedWebAppInterface {
                                     }
                                 }
                                 obj.put("name", simpleName);
+
                                 jsonArray.put(obj);
                             }
                         }
