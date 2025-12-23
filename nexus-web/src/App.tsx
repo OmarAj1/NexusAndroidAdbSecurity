@@ -64,6 +64,8 @@ export default function App() {
           users={users}
           onDisconnect={actions.disconnect}
           onAction={handleAppAction}
+
+          onTrimCaches={() => executeCommand('trim-caches')}
         />
       );
     }

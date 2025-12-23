@@ -3,6 +3,9 @@ package com.example.nexus;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +18,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
-import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -24,10 +26,13 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.RemoteInput;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.WindowCompat;
 
 import com.example.nexus.interfaces.AdbPairingListener;
+import com.example.nexus.interfaces.CommonInterface;
 import com.example.nexus.interfaces.ConsolidatedWebAppInterface;
 import com.example.nexus.managers.AdbPairingManager;
 import com.example.nexus.managers.AdbSingleton;
@@ -49,8 +54,15 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     private ConsolidatedWebAppInterface mInterface;
     private AdbPairingManager pairingManager;
 
+    // NEW: Flag to keep discovery alive in background
+    private boolean isPairingMode = false;
+
     public static final int VPN_REQUEST_CODE = 0x0F;
     private static final int NOTIFICATION_REQUEST_CODE = 0x10;
+
+    private static final String CHANNEL_ID = "nexus_pairing_channel";
+    private static final String KEY_TEXT_REPLY = "key_text_reply";
+    private static final String ACTION_PAIR_REPLY = "com.example.nexus.ACTION_PAIR_REPLY";
 
     private final BroadcastReceiver blockReceiver = new BroadcastReceiver() {
         @Override
@@ -59,6 +71,30 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
                 String domain = intent.getStringExtra(ShieldVpnService.EXTRA_BLOCKED_DOMAIN);
                 if (domain != null && webView != null) {
                     webView.evaluateJavascript("if(window.onShieldBlock) window.onShieldBlock('" + domain + "');", null);
+                }
+            }
+        }
+    };
+
+    private final BroadcastReceiver pairingReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (ACTION_PAIR_REPLY.equals(intent.getAction())) {
+                Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
+                if (remoteInput != null) {
+                    String code = remoteInput.getCharSequence(KEY_TEXT_REPLY).toString();
+
+                    if (pairingManager != null) {
+                        pairingManager.pairWithSavedService(code, new CommonInterface(UserMainActivity.this));
+                    }
+
+                    // Cleanup: Turn off mode and remove notification
+                    isPairingMode = false;
+                    NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                    nm.cancel(999);
+
+                    // Optional: Stop discovery now to save battery, or let it run a bit longer for connection
+                    // pairingManager.stopMdnsDiscovery();
                 }
             }
         }
@@ -75,7 +111,8 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
             WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
             setContentView(R.layout.activity_main);
 
-            // Find views from XML
+            registerPairingReceiver();
+
             webView = findViewById(R.id.webview);
             loader = findViewById(R.id.loader);
 
@@ -123,7 +160,6 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
             checkPermissions();
 
         } catch (RuntimeException e) {
-            // Check for missing WebView specifically
             if (e.getClass().getName().contains("MissingWebViewPackageException") ||
                     (e.getMessage() != null && e.getMessage().contains("No WebView installed"))) {
                 showMissingWebViewDialog();
@@ -133,6 +169,57 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
         } catch (Exception e) {
             handleFatalError(e);
         }
+    }
+
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
+    private void registerPairingReceiver() {
+        IntentFilter filter = new IntentFilter(ACTION_PAIR_REPLY);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(pairingReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(pairingReceiver, filter);
+        }
+    }
+
+    public void showPairingNotification() {
+        // FIX: Enable pairing mode so onPause doesn't kill discovery
+        isPairingMode = true;
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Pairing Service", NotificationManager.IMPORTANCE_HIGH);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        RemoteInput remoteInput = new RemoteInput.Builder(KEY_TEXT_REPLY)
+                .setLabel("Enter 6-digit Code")
+                .build();
+
+        Intent replyIntent = new Intent(ACTION_PAIR_REPLY);
+        replyIntent.setPackage(getPackageName());
+
+        PendingIntent replyPendingIntent = PendingIntent.getBroadcast(
+                this,
+                0,
+                replyIntent,
+                PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT
+        );
+
+        NotificationCompat.Action action = new NotificationCompat.Action.Builder(
+                android.R.drawable.ic_menu_send, "ENTER CODE", replyPendingIntent)
+                .addRemoteInput(remoteInput)
+                .build();
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Wireless Debugging Pairing")
+                .setContentText("Tap 'Enter Code' and type the code from Settings")
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setOngoing(true)
+                .addAction(action);
+
+        notificationManager.notify(999, builder.build());
     }
 
     private void showMissingWebViewDialog() {
@@ -170,10 +257,7 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     private void setupWebViewUI() {
         if (webView == null) return;
         webView.setBackgroundColor(0xFF020617);
-
-        // Force Software Mode for Samsung A30 Stability
         webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
@@ -201,6 +285,7 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     protected void onResume() {
         super.onResume();
         if (pairingManager != null) pairingManager.startMdnsDiscovery();
+
         IntentFilter filter = new IntentFilter(ShieldVpnService.ACTION_VPN_BLOCK);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             registerReceiver(blockReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
@@ -212,14 +297,20 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     @Override
     protected void onPause() {
         super.onPause();
-        if (pairingManager != null) pairingManager.stopMdnsDiscovery();
+        // FIX: Only stop discovery if we are NOT in pairing mode.
+        // This keeps the app listening for ports while you are in Settings.
+        if (pairingManager != null && !isPairingMode) {
+            pairingManager.stopMdnsDiscovery();
+        }
         try { unregisterReceiver(blockReceiver); } catch (IllegalArgumentException e) { }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // Always cleanup on destroy
         if (pairingManager != null) pairingManager.stopMdnsDiscovery();
+        try { unregisterReceiver(pairingReceiver); } catch (Exception e) { }
     }
 
     @Override

@@ -38,7 +38,31 @@ export const ConnectionView = ({ status, onPair, onConnect, onRetrieve, pairingD
       {/* FORM AREA */}
       <div className="space-y-4">
 
-          {/* IP & Port Row */}
+          {/* NEW: Notification Mode Button */}
+          <div className="p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/20 mb-4">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-indigo-400 font-bold text-sm">Notification Mode</h3>
+              <span className="text-[10px] bg-indigo-500 text-white px-2 py-0.5 rounded-full">RECOMMENDED</span>
+            </div>
+            <p className="text-xs text-slate-400 mb-3">
+              Creates a notification so you can enter the code directly from Settings without switching apps.
+            </p>
+
+            <button
+              onClick={() => {
+                if ((window as any).AndroidNative) {
+                  (window as any).AndroidNative.startPairingNotificationMode();
+                }
+              }}
+              className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-mono text-sm shadow-lg shadow-indigo-500/20 active:scale-95 transition-all"
+            >
+              START PAIRING SERVICE
+            </button>
+          </div>
+
+          <div className="h-px bg-white/5 my-6" />
+
+          {/* Manual IP & Port Row */}
           <div className="flex gap-3">
               <input
                   value={ip} onChange={e=>setIp(e.target.value)} placeholder="192.168.x.x"
@@ -54,11 +78,9 @@ export const ConnectionView = ({ status, onPair, onConnect, onRetrieve, pairingD
               <DownloadCloud size={14} /> AUTO-DETECT
           </button>
 
-          <div className="h-px bg-white/5 my-6" />
-
           {/* Pairing Input */}
-          <div className="relative">
-             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+          <div className="relative pt-2">
+             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none top-2">
                 <span className="text-slate-600 font-mono text-xs">PAIRING CODE</span>
              </div>
              <input

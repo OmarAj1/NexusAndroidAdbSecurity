@@ -7,7 +7,50 @@ import org.json.JSONObject; // <--- This fixes your error
 public class ToolActionManager {
     private final MyAdbManager adbManager;
     private final CommonInterface common;
+// In ToolActionManager.java (Bottom of file)
 
+    private void cycleColorSteps() throws Exception {
+        // 1. Check current system state
+        String enabledStr = adbManager.runShellCommand("settings get secure accessibility_display_daltonizer_enabled").trim();
+        String modeStr = adbManager.runShellCommand("settings get secure accessibility_display_daltonizer").trim();
+
+        boolean isEnabled = enabledStr.equals("1");
+        int currentMode = -1;
+
+        // Parse current mode (defaults to 0 if error)
+        try {
+            currentMode = Integer.parseInt(modeStr);
+        } catch (NumberFormatException e) {
+            currentMode = 0;
+        }
+
+        // 2. Logic: Normal -> Greyscale -> Red-Green -> Blue-Yellow -> Normal
+        if (!isEnabled) {
+            // Step 1: Was Normal, switch to GREYSCALE (Mode 0)
+            applyDaltonizer(0, 1, "Mode: Greyscale");
+        } else {
+            if (currentMode == 0) {
+                // Step 2: Was Greyscale, switch to RED-GREEN (Mode 1 - Deuteranomaly)
+                applyDaltonizer(1, 1, "Mode: Red-Green");
+            } else if (currentMode == 1) {
+                // Step 3: Was Red-Green, switch to BLUE-YELLOW (Mode 3 - Tritanomaly)
+                applyDaltonizer(3, 1, "Mode: Blue-Yellow");
+            } else {
+                // Step 4: Was Blue-Yellow (or others), switch to NORMAL (Disabled)
+                applyDaltonizer(0, 0, "Mode: Normal");
+            }
+        }
+    }
+
+    // Helper to apply the settings
+    private void applyDaltonizer(int mode, int enabled, String toastMsg) throws Exception {
+        // We set the mode first, then the enabled switch
+        adbManager.runShellCommand("settings put secure accessibility_display_daltonizer " + mode);
+        // Small delay ensures the mode setting sticks before enabling
+        Thread.sleep(50);
+        adbManager.runShellCommand("settings put secure accessibility_display_daltonizer_enabled " + enabled);
+        common.showToast(toastMsg);
+    }
     public ToolActionManager(MyAdbManager adbManager, CommonInterface common) {
         this.adbManager = adbManager;
         this.common = common;
@@ -78,22 +121,15 @@ public class ToolActionManager {
     public boolean handleCommand(String rawCommand) {
         try {
             // --- NEW TOGGLES (Smart Logic) ---
+            if (rawCommand.equals("toggle_ghost") ||
+                    rawCommand.equals("cycle_color") ||
+                    rawCommand.contains("daltonizer")) {
 
-            // 1. Smart Ghost Toggle
-            if (rawCommand.equals("toggle_ghost")) {
-                String current = adbManager.runShellCommand("settings get secure accessibility_display_daltonizer_enabled");
-                boolean isOn = current.trim().equals("1");
-
-                if (isOn) {
-                    // Turn OFF
-                    adbManager.runShellCommand("settings put secure accessibility_display_daltonizer_enabled 0");
-                    common.showToast("Ghost Mode: OFF");
-                } else {
-                    // Turn ON (Force Monochrome)
-                    applyGhostMode();
-                }
-                return true;
+                cycleColorSteps(); // <--- Run your new 4-step logic
+                return true;       // <--- Return TRUE so it doesn't run in the shell
             }
+
+
 
             // 2. Smart Privacy Toggle
             if (rawCommand.equals("toggle_privacy")) {
@@ -110,19 +146,49 @@ public class ToolActionManager {
 
             // --- STANDARD COMMANDS ---
 
-            // 3. Clean Space
             if (rawCommand.contains("trim-caches")) {
-                runSimpleCommand("pm trim-caches 999G", "System Cache Cleaned");
+                long beforeKB = getFreeSpaceKB();
+
+                adbManager.runShellCommand("pm trim-caches 999G");
+
+                // Cache trimming is fast, but filesystem stats lag slightly
+                Thread.sleep(800);
+
+                long afterKB = getFreeSpaceKB();
+                long diffKB = afterKB - beforeKB;
+
+                // Even small cleanups (1MB) will now show up
+                if (diffKB > 1024) { // If we freed more than 1MB
+                    common.showToast("Cleaned: " + (diffKB / 1024) + " MB Junk");
+                } else if (diffKB > 0) {
+                    common.showToast("Cleaned: " + diffKB + " KB Junk");
+                } else {
+                    // If it returns 0, it means the system hasn't updated stats yet,
+                    // but the command definitely ran. Be positive.
+                    common.showToast("System Cache Optimized");
+                }
                 return true;
             }
 
-            // 4. Kill All Apps
+// 4. Kill All Apps (RAM Check)
             if (rawCommand.contains("kill-all")) {
-                // 'am kill-all' kills background processes
-                runSimpleCommand("am kill-all", "Background Apps Closed");
+                long beforeRam = getAvailableRamMB();
+
+                adbManager.runShellCommand("am kill-all");
+
+                Thread.sleep(500);
+
+                long afterRam = getAvailableRamMB();
+                long diffRam = afterRam - beforeRam;
+
+                if (diffRam > 10) { // Freed more than 10MB
+                    common.showToast("Boosted: Freed " + diffRam + " MB RAM");
+                } else {
+                    // Fallback message if RAM didn't shift much (system manages this aggressively)
+                    common.showToast("Background Processes Cleared");
+                }
                 return true;
             }
-
             // 5. Speed Up (Animations)
             if (rawCommand.contains("window_animation_scale")) {
                 applySpeedUp();
@@ -194,5 +260,65 @@ public class ToolActionManager {
     private void runSimpleCommand(String cmd, String successMsg) throws Exception {
         adbManager.runShellCommand(cmd);
         common.showToast(successMsg);
+    }
+
+// In ToolActionManager.java (Bottom of file)
+
+    private long getFreeSpaceKB() {
+        try {
+            // -k forces output in Kilobytes for precision
+            String dfOutput = adbManager.runShellCommand("df -k /data");
+            // Output example: /data 115343360 48343040 66852864 42% ...
+            String[] lines = dfOutput.split("\n");
+            if (lines.length > 1) {
+                // Split by whitespace
+                String[] parts = lines[1].replaceAll("\\s+", " ").split(" ");
+                // Column 3 is usually 'Available' in 1k-blocks on Android's toolbox df
+                if (parts.length >= 4) {
+                    return Long.parseLong(parts[3]);
+                }
+            }
+        } catch (Exception e) {}
+        return 0;
+    }
+
+    // Helper: Get Available RAM in Megabytes (Best way to see if apps were killed)
+    private long getAvailableRamMB() {
+        try {
+            String memInfo = adbManager.runShellCommand("cat /proc/meminfo");
+            // Look for "MemAvailable:" or "MemFree:"
+            for (String line : memInfo.split("\n")) {
+                if (line.contains("MemAvailable")) {
+                    // Example: MemAvailable:   453432 kB
+                    String val = line.replaceAll("[^0-9]", "");
+                    return Long.parseLong(val) / 1024; // Convert kB to MB
+                }
+            }
+        } catch (Exception e) {}
+        return 0;
+    }
+    private int getRunningProcessCount() {
+        try {
+            // Count lines containing "TaskRecord" which represents an active task/app
+            String output = adbManager.runShellCommand("dumpsys activity activities | grep -c 'TaskRecord{'");
+            return Integer.parseInt(output.trim());
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    // Helper to convert "63G", "500M" to MB (Long)
+    private long parseSizeToMB(String sizeStr) {
+        try {
+            sizeStr = sizeStr.toUpperCase();
+            if (sizeStr.endsWith("G")) {
+                return (long) (Double.parseDouble(sizeStr.replace("G", "")) * 1024);
+            } else if (sizeStr.endsWith("M")) {
+                return (long) (Double.parseDouble(sizeStr.replace("M", "")));
+            } else if (sizeStr.endsWith("K")) {
+                return (long) (Double.parseDouble(sizeStr.replace("K", "")) / 1024);
+            }
+        } catch (Exception e) {}
+        return 0;
     }
 }

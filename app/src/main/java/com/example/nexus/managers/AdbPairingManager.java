@@ -8,6 +8,7 @@ import android.os.Looper;
 import android.util.Log;
 
 import com.example.nexus.interfaces.AdbPairingListener;
+import com.example.nexus.interfaces.CommonInterface; // Added Import
 
 import java.lang.ref.WeakReference;
 import java.util.concurrent.ExecutorService;
@@ -22,6 +23,9 @@ public class AdbPairingManager {
     private String autoPairIp, autoConnectIp;
     private int autoPairPort = -1, autoConnectPort = -1;
     private boolean isDiscoveryActive = false;
+
+    // NEW: Store the service info so we can pair later via Notification
+    private NsdServiceInfo pendingServiceInfo;
 
     private NsdManager.DiscoveryListener pairingListener;
     private NsdManager.DiscoveryListener connectListener;
@@ -61,6 +65,23 @@ public class AdbPairingManager {
     public void retrieveConnectionInfo() {
         if (autoPairIp != null) notifyPairingFound(autoPairIp, autoPairPort);
         if (autoConnectIp != null) notifyConnectFound(autoConnectIp, autoConnectPort);
+    }
+
+    // NEW: Called by UserMainActivity when user types code in notification
+    public void pairWithSavedService(String code, CommonInterface common) {
+        if (pendingServiceInfo == null) {
+            common.showToast("No pairing service found yet. Wait for discovery.");
+            return;
+        }
+
+        // Extract IP and Port from the saved info
+        String host = pendingServiceInfo.getHost().getHostAddress();
+        int port = pendingServiceInfo.getPort();
+
+        common.showToast("Pairing with " + host + ":" + port);
+
+        // Reuse existing logic
+        pairAdb(host, String.valueOf(port), code);
     }
 
     public void pairAdb(String ip, String portStr, String code) {
@@ -131,12 +152,9 @@ public class AdbPairingManager {
             }
 
             try {
-                // FIX: Prioritize Auto-Discovered Connect Info
-                // This ignores the manual input if it's likely stale (e.g. user just paired and input still has pairing port)
                 String targetIp = autoConnectIp;
                 int targetPort = autoConnectPort;
 
-                // Fallback to manual input only if auto-discovery failed
                 if (targetIp == null || targetPort <= 0) {
                     String cleanIp = (ip != null) ? ip.trim() : null;
                     String cleanPortStr = (portStr != null) ? portStr.trim() : "";
@@ -196,6 +214,10 @@ public class AdbPairingManager {
                     nsdManager.resolveService(s, new NsdManager.ResolveListener() {
                         @Override public void onResolveFailed(NsdServiceInfo s, int i) {}
                         @Override public void onServiceResolved(NsdServiceInfo s) {
+                            // NEW: Save info for Notification pairing
+                            pendingServiceInfo = s;
+                            Log.d("ADB_PAIR", "Resolved: " + s);
+
                             autoPairIp = s.getHost().getHostAddress();
                             autoPairPort = s.getPort();
                             notifyPairingFound(autoPairIp, autoPairPort);
@@ -206,6 +228,7 @@ public class AdbPairingManager {
             @Override public void onServiceLost(NsdServiceInfo s) {
                 autoPairIp = null;
                 autoPairPort = -1;
+                // Optional: pendingServiceInfo = null; (kept it so you can still pair if it disappears briefly)
             }
             @Override public void onDiscoveryStopped(String s) {}
             @Override public void onStartDiscoveryFailed(String s, int i) {}

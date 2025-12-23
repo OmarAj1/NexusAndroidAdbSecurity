@@ -46,12 +46,27 @@ public class ConsolidatedWebAppInterface {
     @JavascriptInterface public void startVpn() { shield.startVpn(); }
     @JavascriptInterface public void stopVpn() { shield.stopVpn(); }
     @JavascriptInterface public boolean getVpnStatus() { return shield.getVpnStatus(); }
-        @JavascriptInterface public void executeCommand(String a, String p, int u) { executeCommandInternal(a, p, u); }
+    @JavascriptInterface public void executeCommand(String a, String p, int u) { executeCommandInternal(a, p, u); }
+
+    // --- NEW: Shizuku-Style Notification Mode ---
+    @JavascriptInterface
+    public void startPairingNotificationMode() {
+        // 1. Start Discovery (so we find the IP/Port)
+        pairingManager.startMdnsDiscovery();
+
+        // 2. Show the Notification UI
+        activity.runOnUiThread(() -> {
+            if (activity instanceof com.example.nexus.UserMainActivity) {
+                ((com.example.nexus.UserMainActivity) activity).showPairingNotification();
+            }
+        });
+
+        common.showToast("Notification ready. Go to Settings!");
+    }
 
     // --- COMPATIBILITY FIX: Redirects old 1-argument calls to the new logic ---
     @JavascriptInterface
     public void executeCommand(String cmd) {
-        // This catches the call from your stale React bundle and fixes it
         executeShell(cmd);
     }
     @JavascriptInterface public void getInstalledPackages() { fetchRealPackageListInternal(); }
@@ -85,8 +100,7 @@ public class ConsolidatedWebAppInterface {
                 return;
             }
 
-            // --- USE THE NEW MANAGER ---
-            // Create the manager on the fly (or you can make it a class field)
+            // Create the manager on the fly
             com.example.nexus.managers.ToolActionManager toolManager =
                     new com.example.nexus.managers.ToolActionManager(manager, common);
 
@@ -97,7 +111,6 @@ public class ConsolidatedWebAppInterface {
             if (!handled) {
                 try {
                     String output = manager.runShellCommand(cmd);
-                    // Only show toast if there is output, to avoid spamming for background tasks
                     if (!output.isEmpty()) {
                         common.showToast(output);
                     } else {
@@ -108,7 +121,9 @@ public class ConsolidatedWebAppInterface {
                 }
             }
         });
-    }    private void executeCommandInternal(String action, String pkg, int userId) {
+    }
+
+    private void executeCommandInternal(String action, String pkg, int userId) {
         executor.execute(() -> {
             try {
                 MyAdbManager m = AdbSingleton.getInstance().getAdbManager();
