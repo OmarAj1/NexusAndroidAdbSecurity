@@ -7,17 +7,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        void: '#020617',
-        surface: '#1e293b',
-        accent: '#8b5cf6',
-        safe: '#06b6d4',
-        danger: '#ef4444',
+        // SEMANTIC COLORS (Use these everywhere)
+        main: 'var(--bg-main)',
+        card: 'var(--bg-card)',
+        input: 'var(--bg-input)',
+
+        body: 'var(--text-body)',
+        muted: 'var(--text-muted)',
+
+        border: 'var(--border-base)',
+
+        // DYNAMIC STATUS COLORS
+        accent: 'var(--color-accent)',
+        safe: 'var(--color-safe)',
+        danger: 'var(--color-danger)',
       },
-      // UPDATED SPACING WITH LARGER DEFAULTS
-//      spacing: {
-//        'safe-top': 'env(safe-area-inset-top, 5px)',      // Clears Status Bar
-//        'safe-bottom': 'env(safe-area-inset-bottom, 5px)', // Clears Nav Buttons
-//      },
       animation: {
         'press': 'press 0.1s ease-out',
       },

@@ -33,28 +33,19 @@ export default function App() {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
-  // --- HOOK INTEGRATION ---
-  // We destructure everything from a SINGLE call to prevent state conflicts.
-  // Note: We expect 'executeCommand' to be returned here. (See step 2 below if you get an error)
   const {
     apps, users, status, vpnActive, shieldLogs, actions,
     pairingData, connectData, executeCommand
   } = useNativeBridge();
 
   const handleAppAction = (action: string, pkg: string, userId: number) => {
-    // If the hook provides a specific action handler, use it.
-    // Otherwise, we fallback to the raw bridge for app-specific actions.
     if ((window as any).AndroidNative) {
       (window as any).AndroidNative.executeCommand(action, pkg, userId);
-    } else {
-      console.warn("Native bridge not found. Action:", action, pkg);
     }
   };
 
   const renderPurgeContent = () => {
-    // 'Shell Active' means we are fully ready.
     const isReady = status === 'Shell Active';
-    // 'Connected' usually means ADB is linked but we are fetching packages.
     const isHandshaking = status === 'Connected';
 
     if (isReady) {
@@ -64,7 +55,6 @@ export default function App() {
           users={users}
           onDisconnect={actions.disconnect}
           onAction={handleAppAction}
-
           onTrimCaches={() => executeCommand('trim-caches')}
         />
       );
@@ -72,11 +62,12 @@ export default function App() {
 
     if (isHandshaking) {
       return (
-        <div className="flex flex-col items-center justify-center h-[60vh] space-y-4 animate-in fade-in">
+        <div className="flex flex-col items-center justify-center h-[60vh] space-y-4">
           <Loader2 size={48} className="text-accent animate-spin" />
+          {/* Note: animate-spin kept for the loader, remove if you want it static */}
           <div className="text-center">
-            <h2 className="text-xl font-bold text-slate-800 dark:text-white">Establishing Shell</h2>
-            <p className="text-slate-500">Retrieving package list...</p>
+            <h2 className="text-xl font-bold text-body">Establishing Shell</h2>
+            <p className="text-muted">Retrieving package list...</p>
           </div>
         </div>
       );
@@ -94,30 +85,33 @@ export default function App() {
     );
   };
 
-  // --- RENDER ---
   return (
-    <div className="flex flex-col h-full w-full bg-gray-50 dark:bg-void text-slate-900 dark:text-slate-200 font-sans select-none overflow-hidden relative transition-colors duration-300">
+    <div className="flex flex-col h-screen w-full bg-main text-body font-sans select-none overflow-hidden relative">
 
-      {/* TOP NAVBAR (FIXED) */}
-      <header className="fixed top-0 left-0 right-0 h-auto min-h-[80px] pb-3 px-4 flex items-center justify-between bg-white/80 dark:bg-void/80 backdrop-blur-md border-b border-slate-200 dark:border-white/5 z-40 transition-colors duration-300">
-        <div className="flex items-center gap-2 mt-1">
+      {/* TOP NAVBAR (Fixed height, removed calc and transitions) */}
+      <header className="fixed top-0 left-0 right-0 z-40 w-full h-14
+        bg-card border-b border-border
+        pt-[env(safe-area-inset-top)]
+        flex items-center justify-between px-4"
+      >
+        <div className="flex items-center gap-2 h-full shrink-0">
            <button
              onClick={toggleTheme}
-             className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-all"
+             className="p-1.5 rounded-full bg-transparent hover:bg-input text-muted"
            >
-             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
            </button>
-           <span className="font-bold text-lg tracking-tight">Nexus<span className="text-accent">Security</span></span>
+           <span className="font-bold text-base tracking-tight text-body">Nexus<span className="text-accent">Security</span></span>
         </div>
 
-        <div className="text-xs font-mono text-slate-400 mt-1">
-          {status === 'Shell Active' ? <span className="text-green-500">● ONLINE</span> : <span>○ {status}</span>}
+        <div className="text-[10px] font-mono text-muted shrink-0">
+          {status === 'Shell Active' ? <span className="text-safe">● ONLINE</span> : <span>○ {status}</span>}
         </div>
       </header>
 
-      {/* MAIN CONTENT */}
-      <main className="flex-1 overflow-y-auto pt-24 pb-24 px-4 scroll-smooth">
-        <div className="animate-in fade-in duration-300 slide-in-from-bottom-2">
+      {/* MAIN CONTENT (Static padding to prevent height collapse) */}
+      <main className="flex-1 overflow-y-auto pt-20 pb-20">
+        <div className="px-4">
           {activeTab === 'shield' && (
             <ShieldView
               isActive={vpnActive}
@@ -134,8 +128,12 @@ export default function App() {
         </div>
       </main>
 
-      {/* BOTTOM NAVBAR (FIXED) */}
-      <nav className="fixed bottom-0 left-0 right-0 h-auto pt-4 pb-4 bg-white/95 dark:bg-void/95 backdrop-blur-xl border-t border-slate-200 dark:border-white/5 flex items-start justify-around z-50 transition-colors duration-300">
+      {/* BOTTOM NAVBAR (Fixed height, removed calc and transitions) */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 w-full h-16
+        bg-card border-t border-border
+        pb-[env(safe-area-inset-bottom)]
+        flex items-center justify-around"
+      >
         <NavButton
           active={activeTab === 'shield'}
           onClick={() => setActiveTab('shield')}
@@ -163,13 +161,15 @@ export default function App() {
 const NavButton = ({ active, onClick, icon: Icon, label }: any) => (
   <button
     onClick={onClick}
-    className={`flex flex-col items-center justify-center gap-1.5 w-16 mb-2 transition-all duration-200 active:scale-90 ${active ? 'text-accent' : 'text-slate-400 dark:text-slate-600'}`}
+    className={`
+      flex flex-col items-center justify-center gap-0.5 w-16 shrink-0
+      ${active ? 'text-accent' : 'text-muted'}
+    `}
   >
     <Icon
-      size={26}
+      size={20}
       strokeWidth={active ? 2.5 : 2}
-      className={active ? 'drop-shadow-[0_0_12px_rgba(139,92,246,0.6)]' : ''}
     />
-    <span className="text-[10px] font-medium tracking-wide">{label}</span>
+    <span className="text-[9px] font-medium tracking-wide uppercase">{label}</span>
   </button>
 );

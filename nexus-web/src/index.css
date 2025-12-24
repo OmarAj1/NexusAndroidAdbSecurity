@@ -2,44 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* THEME: Neon on Void */
-  --bg-void: #020617;
-  --bg-card: #1e293b;
-  --accent: #8b5cf6;
-  --safe: #06b6d4;
-  --danger: #ef4444;
+@layer base {
+  /* ☀️ LIGHT MODE */
+  :root {
+    --bg-main: #f7f9fc;
+    --bg-card: #ffffff;
+    --bg-input: #eef2f9;
+
+    --text-body: #0d1117;
+    --text-muted: #586069;
+
+    --border-base: #d0d7de;
+
+    --color-accent: #1f6feb;
+    --color-safe: #1a7f37;
+    --color-danger: #d73a49;
+  }
+
+  /* 🌙 DARK MODE */
+  .dark {
+    --bg-main: #0d1117;
+    --bg-card: #161b22;
+    --bg-input: #21262d;
+
+    --text-body: #c9d1d9;
+    --text-muted: #8b949e;
+
+    --border-base: #30363d;
+
+    --color-accent: #2f81f7;
+    --color-safe: #238636;
+    --color-danger: #f85149;
+  }
 }
 
-/* NATIVE APP RESETS */
-html, body, #root {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  /* background-color: var(--bg-void);  <--- REMOVE OR COMMENT OUT THIS LINE */
-  /* color: #f1f5f9;                    <--- REMOVE OR COMMENT OUT THIS LINE */
-  overflow: hidden;
-  overscroll-behavior: none;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-* {
-    /* 1. Stop all moving animations */
-    animation: none !important;
-    transition: none !important;
-    transform: none !important;
-
-    /* 2. Remove Blurs (The #1 cause of lag on Exynos chips) */
-    backdrop-filter: none !important;
-    filter: none !important;
-    box-shadow: none !important;
-}
-
-/* 3. Ensure background isn't transparent (since blur is gone) */
-.backdrop-blur-md, .backdrop-blur-xl {
-    background-color: #020617 !important; /* Solid Dark Color */
-    opacity: 1 !important;
+/* Apply defaults to the body to prevent flashes */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-body);
 }

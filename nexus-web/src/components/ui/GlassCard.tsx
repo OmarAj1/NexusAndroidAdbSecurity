@@ -3,29 +3,27 @@ import React from 'react';
 interface GlassCardProps {
   children: React.ReactNode;
   className?: string;
-  borderColor?: "white" | "purple" | "cyan" | "danger" | "amber";
-  isDark?: boolean; // Kept for API compatibility, but effectively ignored in Void theme
+  borderColor?: "default" | "accent" | "safe" | "danger" | "amber";
 }
 
-export const GlassCard = ({ children, className = "", borderColor = "white" }: GlassCardProps) => {
+export const GlassCard = ({ children, className = "", borderColor = "default" }: GlassCardProps) => {
 
-  // Mapping border colors to our new Tailwind Palette
   const borderStyles = {
-    white:  "border-white/5",
-    purple: "border-accent/30 bg-accent/5",
-    cyan:   "border-safe/30 bg-safe/5",
-    danger: "border-danger/30 bg-danger/5",
-    amber:  "border-amber-500/30 bg-amber-500/5"
+    default: "border-border bg-card",
+    accent:  "border-accent/30 bg-accent/5",
+    safe:    "border-safe/30 bg-safe/5",
+    danger:  "border-danger/30 bg-danger/5",
+    amber:   "border-amber-500/30 bg-amber-500/5"
   };
 
   return (
     <div
       className={`
         relative rounded-2xl p-5
-        bg-surface backdrop-blur-xl border
-        shadow-lg shadow-black/20
+        backdrop-blur-xl border
+        shadow-lg shadow-black/5
         transition-all duration-300
-        ${borderStyles[borderColor] || borderStyles.white}
+        ${borderStyles[borderColor]}
         ${className}
       `}
     >
