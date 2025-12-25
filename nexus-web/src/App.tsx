@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Zap, Wrench, Loader2, Moon, Sun } from 'lucide-react';
+import { Shield, Zap, Wrench, Loader2, Moon, Sun, Map as MapIcon, History } from 'lucide-react';
+
+// Hooks & UI
 import { useNativeBridge } from './hooks/useNativeBridge';
+import { AtmosphericBackground } from './components/ui/AtmosphericBackground';
 
 // Views
 import { PurgeView } from './features/purge/PurgeView';
 import { ConnectionView } from './features/connection/ConnectionView';
 import { ShieldView } from './features/shield/ShieldView';
 import { ToolsView } from './features/tools/ToolsView';
+import { MapView } from './features/map/MapView';
+import { HistoryView } from './features/history/HistoryView';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('shield');
@@ -18,6 +23,11 @@ export default function App() {
     }
     return 'dark';
   });
+
+  const {
+    apps, users, status, vpnActive, shieldLogs, actions,
+    pairingData, connectData, executeCommand, history
+  } = useNativeBridge();
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -33,17 +43,13 @@ export default function App() {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
-  const {
-    apps, users, status, vpnActive, shieldLogs, actions,
-    pairingData, connectData, executeCommand
-  } = useNativeBridge();
-
   const handleAppAction = (action: string, pkg: string, userId: number) => {
     if ((window as any).AndroidNative) {
       (window as any).AndroidNative.executeCommand(action, pkg, userId);
     }
   };
 
+  // Logic for the Purge/Connection workflow
   const renderPurgeContent = () => {
     const isReady = status === 'Shell Active';
     const isHandshaking = status === 'Connected';
@@ -64,7 +70,6 @@ export default function App() {
       return (
         <div className="flex flex-col items-center justify-center h-[60vh] space-y-4">
           <Loader2 size={48} className="text-accent animate-spin" />
-          {/* Note: animate-spin kept for the loader, remove if you want it static */}
           <div className="text-center">
             <h2 className="text-xl font-bold text-body">Establishing Shell</h2>
             <p className="text-muted">Retrieving package list...</p>
@@ -74,45 +79,43 @@ export default function App() {
     }
 
     return (
-<ConnectionView
-    status={status}
-    actions={actions} // <--- Don't forget this!
-    onPair={actions.pair}
-    onConnect={actions.connect}
-    onRetrieve={actions.retrieve}
-    pairingData={pairingData}
-    connectData={connectData}
-/>
+      <ConnectionView
+        status={status}
+        actions={actions}
+        onPair={actions.pair}
+        onConnect={actions.connect}
+        onRetrieve={actions.retrieve}
+        pairingData={pairingData}
+        connectData={connectData}
+      />
     );
   };
 
   return (
     <div className="flex flex-col h-screen w-full bg-main text-body font-sans select-none overflow-hidden relative">
 
-      {/* TOP NAVBAR (Fixed height, removed calc and transitions) */}
-      <header className="fixed top-0 left-0 right-0 z-40 w-full h-14
-        bg-card border-b border-border
-        pt-[env(safe-area-inset-top)]
-        flex items-center justify-between px-4"
-      >
-        <div className="flex items-center gap-2 h-full shrink-0">
-           <button
-             onClick={toggleTheme}
-             className="p-1.5 rounded-full bg-transparent hover:bg-input text-muted"
-           >
-             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-           </button>
-           <span className="font-bold text-base tracking-tight text-body">Nexus<span className="text-accent">Security</span></span>
-        </div>
+      {/* Visual background layer */}
+      <AtmosphericBackground />
 
-        <div className="text-[10px] font-mono text-muted shrink-0">
-          {status === 'Shell Active' ? <span className="text-safe">● ONLINE</span> : <span>○ {status}</span>}
-        </div>
-      </header>
+      {/* TOP NAVBAR */}
+      {activeTab !== 'map' && (
+        <header className="fixed top-0 left-0 right-0 z-40 w-full h-14 bg-card border-b border-border pt-[env(safe-area-inset-top)] flex items-center justify-between px-4">
+          <div className="flex items-center gap-2 h-full shrink-0">
+            <button onClick={toggleTheme} className="p-1.5 rounded-full bg-transparent hover:bg-input text-muted">
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <span className="font-bold text-base tracking-tight text-body">Nexus<span className="text-accent">Security</span></span>
+          </div>
 
-      {/* MAIN CONTENT (Static padding to prevent height collapse) */}
-      <main className="flex-1 overflow-y-auto pt-20 pb-20">
-        <div className="px-4">
+          <div className="text-[10px] font-mono text-muted shrink-0">
+            {status === 'Shell Active' ? <span className="text-safe">● ONLINE</span> : <span>○ {status}</span>}
+          </div>
+        </header>
+      )}
+
+      {/* MAIN CONTENT AREA */}
+      <main className={`flex-1 overflow-y-auto relative z-10 ${activeTab === 'map' ? 'pt-0 pb-0' : 'pt-20 pb-20'}`}>
+        <div className={activeTab === 'map' ? 'h-full w-full' : 'px-4'}>
           {activeTab === 'shield' && (
             <ShieldView
               isActive={vpnActive}
@@ -126,35 +129,28 @@ export default function App() {
           {activeTab === 'tools' && (
             <ToolsView executeCommand={executeCommand} />
           )}
+
+          {activeTab === 'history' && (
+            <HistoryView
+              history={history || []}
+              onExport={actions.exportHistory}
+            />
+          )}
+
+          {activeTab === 'map' && <MapView />}
         </div>
       </main>
 
-      {/* BOTTOM NAVBAR (Fixed height, removed calc and transitions) */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 w-full h-16
-        bg-card border-t border-border
-        pb-[env(safe-area-inset-bottom)]
-        flex items-center justify-around"
-      >
-        <NavButton
-          active={activeTab === 'shield'}
-          onClick={() => setActiveTab('shield')}
-          icon={Shield}
-          label="Shield"
-        />
-        <NavButton
-          active={activeTab === 'purge'}
-          onClick={() => setActiveTab('purge')}
-          icon={Zap}
-          label="Purge"
-        />
-        <NavButton
-          active={activeTab === 'tools'}
-          onClick={() => setActiveTab('tools')}
-          icon={Wrench}
-          label="Tools"
-        />
-      </nav>
-
+      {/* BOTTOM NAVBAR */}
+      {activeTab !== 'map' && (
+        <nav className="fixed bottom-0 left-0 right-0 z-50 w-full h-16 bg-card border-t border-border pb-[env(safe-area-inset-bottom)] flex items-center justify-around">
+          <NavButton active={activeTab === 'shield'} onClick={() => setActiveTab('shield')} icon={Shield} label="Shield" />
+          <NavButton active={activeTab === 'purge'} onClick={() => setActiveTab('purge')} icon={Zap} label="Purge" />
+          <NavButton active={activeTab === 'tools'} onClick={() => setActiveTab('tools')} icon={Wrench} label="Tools" />
+          <NavButton active={activeTab === 'history'} onClick={() => setActiveTab('history')} icon={History} label="History" />
+          <NavButton active={activeTab === 'map'} onClick={() => setActiveTab('map')} icon={MapIcon} label="Map" />
+        </nav>
+      )}
     </div>
   );
 }
@@ -162,15 +158,9 @@ export default function App() {
 const NavButton = ({ active, onClick, icon: Icon, label }: any) => (
   <button
     onClick={onClick}
-    className={`
-      flex flex-col items-center justify-center gap-0.5 w-16 shrink-0
-      ${active ? 'text-accent' : 'text-muted'}
-    `}
+    className={`flex flex-col items-center justify-center gap-0.5 w-14 shrink-0 ${active ? 'text-accent' : 'text-muted'}`}
   >
-    <Icon
-      size={20}
-      strokeWidth={active ? 2.5 : 2}
-    />
+    <Icon size={20} strokeWidth={active ? 2.5 : 2} />
     <span className="text-[9px] font-medium tracking-wide uppercase">{label}</span>
   </button>
 );

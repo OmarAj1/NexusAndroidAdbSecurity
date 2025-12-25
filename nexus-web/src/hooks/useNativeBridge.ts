@@ -1,5 +1,30 @@
 import { useState, useEffect } from 'react';
-import { AppData, ActionLog } from '../types';
+
+declare global {
+  interface Window {
+    AndroidNative?: {
+      executeCommand: (action: string, pkg: string, userId: number) => void;
+      getInstalledPackages: () => void;
+      toggleVpn: () => void;
+      setFakeLocation: (lat: number, lon: number) => void;
+      stopFakeLocation: () => void;
+    };
+  }
+}
+
+export interface AppData {
+  name: string;
+  packageName: string;
+  version: string;
+  icon: string;
+}
+
+export interface ActionLog {
+  timestamp: string;
+  pkg: string;
+  action: string;
+  status: string;
+}
 
 // Define the shape of the stats data coming from Java
 export interface ToolStats {
@@ -74,7 +99,8 @@ export const useNativeBridge = () => {
         }
     },
     exportHistory: () => {
-        const text = history.map(h => `[${h.timestamp}] ${h.action} -> ${h.pkg}`).join('\n');
+        const text = history.map(h => `[${h.timestamp}] ${h.action} -> ${h.pkg}`).join('
+');
         if (isNative()) (window as any).AndroidNative.shareText("UAD Export", text);
     },
 

@@ -5,10 +5,16 @@ import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
+import android.content.Intent;
+import android.webkit.JavascriptInterface;
+import android.widget.Toast;
 import com.example.nexus.managers.AdbPairingManager;
 import com.example.nexus.managers.AdbSingleton;
 import com.example.nexus.managers.MyAdbManager;
+import com.example.nexus.managers.CorpseFinderManager;
+import com.example.nexus.managers.ToolActionManager;
+import com.example.nexus.services.MockLocationService;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,6 +29,11 @@ public class ConsolidatedWebAppInterface {
     private final ExecutorService executor;
     private final AdbPairingManager pairingManager;
     private final WebView webView;
+    private Context context;
+    private MyAdbManager adbManager;
+    private ToolActionManager toolManager;
+    private CorpseFinderManager corpseManager; // NEW
+
 
     public ConsolidatedWebAppInterface(AppCompatActivity activity, ExecutorService executor, WebView webView, AdbPairingManager pairingManager) {
         this.activity = activity;
@@ -31,9 +42,33 @@ public class ConsolidatedWebAppInterface {
         this.pairingManager = pairingManager;
         this.common = new CommonInterface(activity);
         this.shield = new ShieldInterface(activity, common);
+        this.corpseManager = new CorpseFinderManager(context, common); // NEW
     }
 
     // --- Standard Methods (Keep these) ---
+
+    @JavascriptInterface
+    public void scanForCorpses() {
+        corpseManager.scanForCorpses();
+    }
+
+    @JavascriptInterface
+    public void setFakeLocation(double lat, double lon) {
+        Intent intent = new Intent(context, MockLocationService.class);
+        intent.setAction(MockLocationService.ACTION_START);
+        intent.putExtra(MockLocationService.EXTRA_LAT, lat);
+        intent.putExtra(MockLocationService.EXTRA_LON, lon);
+        context.startService(intent);
+        Toast.makeText(context, "Fake GPS Started", Toast.LENGTH_SHORT).show();
+    }
+
+    @JavascriptInterface
+    public void stopFakeLocation() {
+        Intent intent = new Intent(context, MockLocationService.class);
+        intent.setAction(MockLocationService.ACTION_STOP);
+        context.startService(intent);
+        Toast.makeText(context, "Fake GPS Stopped", Toast.LENGTH_SHORT).show();
+    }
     @JavascriptInterface public String getNativeCoreVersion() { return common.getNativeCoreVersion(); }
     @JavascriptInterface public void hapticFeedback(String type) { common.hapticFeedback(type); }
     @JavascriptInterface public void showToast(String toast) { common.showToast(toast); }

@@ -20,6 +20,15 @@ public class CommonInterface {
         this.mContext = activity.getApplicationContext();
     }
 
+    // --- NEW: Helper to run code on the main UI thread (Fixes CorpseFinder error) ---
+    public void runOnUi(Runnable action) {
+        if (mActivity != null) {
+            mActivity.runOnUiThread(action);
+        } else {
+            new Handler(Looper.getMainLooper()).post(action);
+        }
+    }
+
     @JavascriptInterface
     public String getNativeCoreVersion() {
         return "5.2.1-STABLE";
@@ -43,14 +52,14 @@ public class CommonInterface {
 
     @JavascriptInterface
     public void showToast(String toast) {
-        new Handler(Looper.getMainLooper()).post(() ->
+        runOnUi(() ->
                 Toast.makeText(mContext, toast, Toast.LENGTH_LONG).show()
         );
     }
 
     @JavascriptInterface
     public void shareText(String title, String content) {
-        new Handler(Looper.getMainLooper()).post(() -> {
+        runOnUi(() -> {
             try {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
@@ -61,7 +70,7 @@ public class CommonInterface {
                 chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(chooser);
             } catch (Exception e) {
-                showToast("Share failed: " + e.getMessage());
+                Toast.makeText(mContext, "Share failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

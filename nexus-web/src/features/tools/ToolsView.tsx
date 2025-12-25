@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { useTools } from './useTools';
 import { useNativeBridge } from '../../hooks/useNativeBridge';
 import {
-  Zap, Trash2, Ghost, Lock, Unlock, Layers
+  Zap, Trash2, Ghost, Lock, Unlock, Layers, Skull, MapPin
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface ToolsViewProps {
   executeCommand: (command: string) => Promise<string>;
@@ -12,6 +13,8 @@ interface ToolsViewProps {
 export const ToolsView: React.FC<ToolsViewProps> = ({ executeCommand }) => {
   const { runTool, loadingId } = useTools(executeCommand);
   const { toolStats, actions } = useNativeBridge();
+  const navigate = useNavigate(); // NEW
+
 
   useEffect(() => {
     actions.refreshStats();
@@ -113,6 +116,40 @@ export const ToolsView: React.FC<ToolsViewProps> = ({ executeCommand }) => {
         />
 
       </div>
+
+
+      {/* --- NEW SECTION: NON-ADB TOOLS --- */}
+            <div className="mt-2 mb-3 pt-4 border-t border-border">
+                <h2 className="text-sm font-bold text-muted mb-3 uppercase tracking-wider">No ADB Required</h2>
+
+                <div className="grid grid-cols-2 gap-3">
+                    <ToolCard
+                      title="Corpse Finder"
+                      desc="Scan uninstalled data"
+                      icon={Skull}
+                      color="text-pink-500"
+                      bg="bg-pink-500/10"
+                      isLoading={loadingId === 'corpse'}
+                      onClick={() => {
+                          // Call Native Method directly
+                          if ((window as any).AndroidNative?.scanForCorpses) {
+                              (window as any).AndroidNative.scanForCorpses();
+                          } else {
+                              console.warn("Corpse Finder requires Native App");
+                          }
+                      }}
+                  />
+
+                  <ToolCard
+                      title="Fake GPS"
+                      desc="Mock Location"
+                      icon={MapPin}
+                      color="text-cyan-500"
+                      bg="bg-cyan-500/10"
+                      isLoading={false}
+                      onClick={() => navigate('/map')} // Navigate to new screen
+                  />
+                </div></div>
     </div>
   );
 };
