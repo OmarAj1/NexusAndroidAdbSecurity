@@ -19,6 +19,28 @@ export const ToolsView: React.FC<ToolsViewProps> = ({ executeCommand }) => {
     return () => clearInterval(interval);
   }, []);
 
+  // Helper to determine Speed Up Card UI
+  const getSpeedDesc = () => {
+    const s = toolStats.speed || "1";
+    if (s === "0" || s === "0.0") return "State: Off (Instant)";
+    if (s === "0.5") return "State: Fast (0.5x)";
+    return "State: Normal (1.0x)";
+  };
+
+  const getSpeedColor = () => {
+    const s = toolStats.speed || "1";
+    if (s === "0" || s === "0.0") return "text-purple-500";
+    if (s === "0.5") return "text-amber-500";
+    return "text-muted";
+  };
+
+  const getSpeedBg = () => {
+      const s = toolStats.speed || "1";
+      if (s === "0" || s === "0.0") return "bg-purple-500/10";
+      if (s === "0.5") return "bg-amber-500/10";
+      return "bg-input";
+  };
+
   return (
     <div className="h-full w-full p-4 flex flex-col animate-in fade-in">
       <div className="mb-4">
@@ -79,12 +101,15 @@ export const ToolsView: React.FC<ToolsViewProps> = ({ executeCommand }) => {
 
          <ToolCard
             title="Speed Up"
-            desc="Set animations to 0.5x"
+            desc={getSpeedDesc()}
             icon={Zap}
-            color="text-amber-500"
-            bg="bg-amber-500/10"
+            color={getSpeedColor()}
+            bg={getSpeedBg()}
             isLoading={loadingId === 'speed'}
-            onClick={() => runTool('speed', 'settings put global window_animation_scale 0.5')}
+            onClick={() => {
+                runTool('speed', 'toggle_speed');
+                setTimeout(actions.refreshStats, 500);
+            }}
         />
 
       </div>

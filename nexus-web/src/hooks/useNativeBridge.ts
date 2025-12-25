@@ -7,6 +7,7 @@ export interface ToolStats {
   privacy: boolean;
   storage: string;
   tasks: string;
+  speed?: string;
 }
 
 export const useNativeBridge = () => {
@@ -21,7 +22,8 @@ export const useNativeBridge = () => {
       ghost: false,
       privacy: false,
       storage: '...',
-      tasks: '0'
+      tasks: '0',
+      speed: '1'
   });
 
   // Shield Logs State

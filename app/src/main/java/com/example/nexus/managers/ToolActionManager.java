@@ -68,6 +68,10 @@ public class ToolActionManager {
             }
             stats.put("tasks", taskCount);
 
+            // NEW: Fetch current animation scale
+            String animScale = adbManager.runShellCommand("settings get global window_animation_scale").trim();
+            stats.put("speed", animScale.isEmpty() ? "1" : animScale);
+
             return stats.toString();
         } catch (Exception e) {
             Log.e("NEXUS_STATS", "Error fetching stats", e);
@@ -105,6 +109,12 @@ public class ToolActionManager {
                 String micState = adbManager.runShellCommand("cmd sensor_privacy status " + userId + " 1");
                 boolean isBlocked = micState.contains("enabled") || micState.contains("true");
                 applyPrivacyMode(!isBlocked);
+                return true;
+            }
+
+            // NEW: Handle speed cycle command
+            if (rawCommand.equals("toggle_speed")) {
+                cycleSpeedSteps();
                 return true;
             }
 
@@ -169,6 +179,31 @@ public class ToolActionManager {
             common.showToast("Error: " + e.getMessage());
             return true;
         }
+    }
+
+    // NEW: Cycle logic: 1.0 -> 0.5 -> 0.0 -> 1.0
+    private void cycleSpeedSteps() throws Exception {
+        String current = adbManager.runShellCommand("settings get global window_animation_scale").trim();
+
+        if (current.isEmpty()) current = "1";
+
+        if (current.equals("1") || current.equals("1.0")) {
+            applyAnimationScale("0.5", "Speed: 0.5x (Fast)");
+        } else if (current.equals("0.5")) {
+            applyAnimationScale("0", "Speed: 0x (Instant)");
+        } else {
+            applyAnimationScale("1", "Speed: Normal (1.0x)");
+        }
+    }
+
+    // NEW: Helper to apply scale to all animation settings
+    private void applyAnimationScale(String scale, String msg) throws Exception {
+        adbManager.runShellCommand("settings put global window_animation_scale " + scale);
+        Thread.sleep(20);
+        adbManager.runShellCommand("settings put global transition_animation_scale " + scale);
+        Thread.sleep(20);
+        adbManager.runShellCommand("settings put global animator_duration_scale " + scale);
+        common.showToast(msg);
     }
 
     private void applySpeedUp() throws Exception {
