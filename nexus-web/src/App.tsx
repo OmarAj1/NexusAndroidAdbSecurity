@@ -74,14 +74,15 @@ export default function App() {
     }
 
     return (
-      <ConnectionView
-        status={status}
-        onPair={actions.pair}
-        onConnect={actions.connect}
-        onRetrieve={actions.retrieve}
-        pairingData={pairingData}
-        connectData={connectData}
-      />
+<ConnectionView
+    status={status}
+    actions={actions} // <--- Don't forget this!
+    onPair={actions.pair}
+    onConnect={actions.connect}
+    onRetrieve={actions.retrieve}
+    pairingData={pairingData}
+    connectData={connectData}
+/>
     );
   };
 

@@ -41,6 +41,12 @@ export const useNativeBridge = () => {
         if (isNative()) (window as any).AndroidNative.pairAdb(ip, port, code);
     },
 
+    checkStatus: () => {
+          if (isNative() && (window as any).AndroidNative.checkConnectionStatus) {
+              (window as any).AndroidNative.checkConnectionStatus();
+          }
+      },
+
     connect: (uiIp: string, uiPort: string) => {
         const finalIp = mainEndpoint ? mainEndpoint.ip : uiIp;
         const finalPort = mainEndpoint ? mainEndpoint.port : uiPort;
@@ -75,7 +81,15 @@ export const useNativeBridge = () => {
         if (isNative() && (window as any).AndroidNative.fetchToolStats) {
             (window as any).AndroidNative.fetchToolStats();
         }
-    }
+    },
+
+    startZeroTouch: () => {
+          if (isNative() && (window as any).AndroidNative.startZeroTouchPairing) {
+              (window as any).AndroidNative.startZeroTouchPairing();
+          } else {
+              console.warn("Zero Touch not supported or not running on device");
+          }
+      },
   };
 
   // --- COMMAND EXECUTOR ---
@@ -94,9 +108,9 @@ export const useNativeBridge = () => {
   useEffect(() => {
     // Poll VPN Status
     const interval = setInterval(() => {
-       if (isNative() && (window as any).AndroidNative.getVpnStatus) {
-         setVpnActive((window as any).AndroidNative.getVpnStatus());
-       }
+    if (isNative() && (window as any).AndroidNative.checkConnectionStatus) {
+            (window as any).AndroidNative.checkConnectionStatus();
+        }
     }, 2000);
 
     // Setup Global Listeners from Java

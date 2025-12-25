@@ -48,6 +48,34 @@ public class ConsolidatedWebAppInterface {
     @JavascriptInterface public boolean getVpnStatus() { return shield.getVpnStatus(); }
     @JavascriptInterface public void executeCommand(String a, String p, int u) { executeCommandInternal(a, p, u); }
 
+    @JavascriptInterface
+    public void checkConnectionStatus() {
+        executor.execute(() -> {
+            MyAdbManager m = AdbSingleton.getInstance().getAdbManager();
+            boolean isConnected = (m != null && m.isConnected());
+
+            activity.runOnUiThread(() -> {
+                if (isConnected) {
+                    // Force an update to the UI
+                    webView.evaluateJavascript("window.adbStatus('Connected');", null);
+                    // Automatically fetch packages again to be safe
+                    fetchRealPackageListInternal();
+                } else {
+                    webView.evaluateJavascript("window.adbStatus('Disconnected');", null);
+                }
+            });
+        });
+    }
+    // Add this method inside the class
+    @JavascriptInterface
+    public void startZeroTouchPairing() {
+        activity.runOnUiThread(() -> {
+            if (activity instanceof com.example.nexus.UserMainActivity) {
+                ((com.example.nexus.UserMainActivity) activity).startZeroTouchPairing();
+            }
+        });
+    }
+
     // --- NEW: Shizuku-Style Notification Mode ---
     @JavascriptInterface
     public void startPairingNotificationMode() {
