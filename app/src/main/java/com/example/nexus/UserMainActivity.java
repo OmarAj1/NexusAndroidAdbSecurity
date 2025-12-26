@@ -16,6 +16,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.PowerManager;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -23,8 +25,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-import android.os.PowerManager;
-import android.provider.Settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -46,13 +46,17 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class UserMainActivity extends AppCompatActivity implements AdbPairingListener {
 
+    private static final String TAG = "NEXUS_MAIN";
+
     private WebView webView;
     private ProgressBar loader;
+    // [OPTIMIZATION] CachedThreadPool is best for bursty tasks
     private final ExecutorService executor = Executors.newCachedThreadPool();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
 
@@ -70,24 +74,24 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     public static final String ACTION_PAIR_REPLY = "com.example.nexus.ACTION_PAIR_REPLY";
 
     private void checkBatteryOptimizations() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            PowerManager pm = (PowerManager) getSystemService(POWER_SERVICE);
-            if (pm != null && !pm.isIgnoringBatteryOptimizations(getPackageName())) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Prevent Service Death")
-                        .setMessage("To keep the 'Zero-Touch' feature running in the background, Nexus needs to be excluded from Battery Optimizations.\n\nPlease select 'Allow' or 'No Restrictions' in the next screen.")
-                        .setPositiveButton("Fix Now", (d, w) -> {
-                            try {
-                                Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
-                                intent.setData(Uri.parse("package:" + getPackageName()));
-                                startActivity(intent);
-                            } catch (Exception e) {
-                                startActivity(new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS));
-                            }
-                        })
-                        .setNegativeButton("Later", null)
-                        .show();
-            }
+        // [FIX] Removed redundant SDK check (MinSDK is 26+)
+        PowerManager pm = (PowerManager) getSystemService(POWER_SERVICE);
+        if (pm != null && !pm.isIgnoringBatteryOptimizations(getPackageName())) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Prevent Service Death")
+                    .setMessage("To keep the 'Zero-Touch' feature running in the background, Nexus needs to be excluded from Battery Optimizations.\n\nPlease select 'Allow' or 'No Restrictions' in the next screen.")
+                    // [FIX] Simplified Lambda
+                    .setPositiveButton("Fix Now", (d, w) -> {
+                        try {
+                            Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+                            intent.setData(Uri.parse("package:" + getPackageName()));
+                            startActivity(intent);
+                        } catch (Exception e) {
+                            startActivity(new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS));
+                        }
+                    })
+                    .setNegativeButton("Later", null)
+                    .show();
         }
     }
 
@@ -116,7 +120,11 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
                 } else {
                     Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
                     if (remoteInput != null) {
-                        code = remoteInput.getCharSequence(KEY_TEXT_REPLY).toString();
+                        // [FIX] Potential NPE fix
+                        CharSequence inputChars = remoteInput.getCharSequence(KEY_TEXT_REPLY);
+                        if (inputChars != null) {
+                            code = inputChars.toString();
+                        }
                     }
                 }
 
@@ -131,7 +139,7 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
                     }
                     isPairingMode = false;
                     NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                    nm.cancel(999);
+                    if (nm != null) nm.cancel(999);
                 }
             }
         }
@@ -142,9 +150,8 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
             new AlertDialog.Builder(this)
                     .setTitle("Enable Zero-Touch?")
                     .setMessage("Nexus needs 'Accessibility' permission to tap the pairing buttons for you.\n\nEnable 'Nexus' in the next screen.")
-                    .setPositiveButton("Enable", (d, w) -> {
-                        startActivity(new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS));
-                    })
+                    // [FIX] Simplified Lambda
+                    .setPositiveButton("Enable", (d, w) -> startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)))
                     .setNegativeButton("Cancel", null)
                     .show();
             return;
@@ -159,7 +166,7 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
             new CommonInterface(this).showToast("Watch the magic...");
         } catch (Exception e) {
             try {
-                Intent devIntent = new Intent(android.provider.Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS);
+                Intent devIntent = new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS);
                 devIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(devIntent);
                 new CommonInterface(this).showToast("Finding Wireless Debugging...");
@@ -170,17 +177,17 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     }
 
     private boolean isAccessibilityServiceEnabled() {
-        int accessibilityEnabled = 0;
+        int accessibilityEnabled; // [FIX] Removed redundant initializer
         try {
-            accessibilityEnabled = android.provider.Settings.Secure.getInt(
+            accessibilityEnabled = Settings.Secure.getInt(
                     getContentResolver(),
-                    android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
-        } catch (android.provider.Settings.SettingNotFoundException e) { return false; }
+                    Settings.Secure.ACCESSIBILITY_ENABLED);
+        } catch (Settings.SettingNotFoundException e) { return false; }
 
         if (accessibilityEnabled == 1) {
-            String services = android.provider.Settings.Secure.getString(
+            String services = Settings.Secure.getString(
                     getContentResolver(),
-                    android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+                    Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
             return services != null && services.toLowerCase().contains(getPackageName().toLowerCase());
         }
         return false;
@@ -206,16 +213,13 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
                 setupWebViewUI();
 
                 try {
-                    AdbSingleton.getInstance().init(getApplicationContext(), new AdbSingleton.AdbInitListener() {
-                        @Override
-                        public void onInitComplete() {
+                    // [FIX] Converted anonymous inner class to lambda
+                    AdbSingleton.getInstance().init(getApplicationContext(), () ->
                             mainHandler.post(() -> {
                                 if (webView != null) webView.evaluateJavascript("console.log('ADB Native Init Complete');", null);
-                            });
-                        }
-                    });
+                            }));
                 } catch (Throwable t) {
-                    Log.e("NEXUS", "ADB Init Failed", t);
+                    Log.e(TAG, "ADB Init Failed", t);
                 }
 
                 pairingManager = new AdbPairingManager(this, this);
@@ -272,7 +276,8 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
         isPairingMode = true;
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+        // [FIX] Removed redundant SDK check (O is implied 26+)
+        if (notificationManager != null) {
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Pairing Service", NotificationManager.IMPORTANCE_HIGH);
             notificationManager.createNotificationChannel(channel);
         }
@@ -304,7 +309,9 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
                 .setOngoing(true)
                 .addAction(action);
 
-        notificationManager.notify(999, builder.build());
+        if (notificationManager != null) {
+            notificationManager.notify(999, builder.build());
+        }
     }
 
     private void showMissingWebViewDialog() {
@@ -329,14 +336,15 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
         e.printStackTrace(new PrintWriter(sw));
         String stackTrace = sw.toString();
 
-        new Handler(Looper.getMainLooper()).post(() -> {
-            new AlertDialog.Builder(this)
-                    .setTitle("CRASH DETECTED")
-                    .setMessage("Error: " + e.getMessage() + "\n\n" + stackTrace.substring(0, Math.min(500, stackTrace.length())))
-                    .setPositiveButton("Close", (d, w) -> finish())
-                    .setCancelable(false)
-                    .show();
-        });
+        // [FIX] Simplified Lambda
+        new Handler(Looper.getMainLooper()).post(() ->
+                new AlertDialog.Builder(this)
+                        .setTitle("CRASH DETECTED")
+                        .setMessage("Error: " + e.getMessage() + "\n\n" + stackTrace.substring(0, Math.min(500, stackTrace.length())))
+                        .setPositiveButton("Close", (d, w) -> finish())
+                        .setCancelable(false)
+                        .show()
+        );
     }
 
     private void setupWebViewUI() {
@@ -344,7 +352,7 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
         webView.setBackgroundColor(0xFF020617);
         webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
+        webSettings.setJavaScriptEnabled(true); // Required for React
         webSettings.setDomStorageEnabled(true);
         webSettings.setAllowFileAccess(true);
     }
@@ -374,7 +382,9 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == VPN_REQUEST_CODE && resultCode == RESULT_OK) {
-            mInterface.shield.startShieldServiceInternal();
+            if (mInterface != null && mInterface.shield != null) {
+                mInterface.shield.startShieldServiceInternal();
+            }
         }
     }
 
@@ -408,24 +418,41 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
         if (pairingManager != null && !isPairingMode) {
             pairingManager.stopMdnsDiscovery();
         }
-        try { unregisterReceiver(blockReceiver); } catch (IllegalArgumentException e) { }
+        try {
+            unregisterReceiver(blockReceiver);
+        } catch (IllegalArgumentException e) {
+            // Receiver might not be registered, which is fine
+            Log.d(TAG, "BlockReceiver not registered: " + e.getMessage());
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (pairingManager != null) pairingManager.stopMdnsDiscovery();
-        try { unregisterReceiver(pairingReceiver); } catch (Exception e) { }
+        try {
+            unregisterReceiver(pairingReceiver);
+        } catch (Exception e) {
+            Log.d(TAG, "PairingReceiver not registered: " + e.getMessage());
+        }
     }
 
     @Override
     public void onPairingServiceFound(String ip, int port) {
-        runOnUiThread(() -> { if(webView!=null) webView.evaluateJavascript(String.format("if(window.onPairingServiceFound) window.onPairingServiceFound('%s', '%d');", ip, port), null); });
+        // [FIX] Added Locale.US
+        runOnUiThread(() -> {
+            if (webView != null) webView.evaluateJavascript(
+                    String.format(Locale.US, "if(window.onPairingServiceFound) window.onPairingServiceFound('%s', '%d');", ip, port), null);
+        });
     }
 
     @Override
     public void onConnectServiceFound(String ip, int port) {
-        runOnUiThread(() -> { if(webView!=null) webView.evaluateJavascript(String.format("if(window.onConnectServiceFound) window.onConnectServiceFound('%s', '%d');", ip, port), null); });
+        // [FIX] Added Locale.US
+        runOnUiThread(() -> {
+            if (webView != null) webView.evaluateJavascript(
+                    String.format(Locale.US, "if(window.onConnectServiceFound) window.onConnectServiceFound('%s', '%d');", ip, port), null);
+        });
     }
 
     @Override
@@ -442,7 +469,6 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
                 if (webView != null) webView.evaluateJavascript("window.adbStatus('Connected');", null);
                 if (pairingManager != null) pairingManager.stopMdnsDiscovery();
 
-                // --- FIX: Fetch apps immediately on connection success ---
                 if (mInterface != null) mInterface.getInstalledPackages();
 
                 updateAutomationState(true);
@@ -459,7 +485,7 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
             intent.putExtra("SHIELD_STATUS", isConnected);
             startService(intent);
         } catch (Exception e) {
-            Log.e("NEXUS_MAIN", "Failed to update automation state", e);
+            Log.e(TAG, "Failed to update automation state", e);
         }
     }
 }

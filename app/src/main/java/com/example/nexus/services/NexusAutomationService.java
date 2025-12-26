@@ -1,7 +1,10 @@
 package com.example.nexus.services;
 
 import android.accessibilityservice.AccessibilityService;
+import android.accessibilityservice.GestureDescription;
 import android.content.Intent;
+import android.graphics.Path;
+import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -19,134 +22,228 @@ public class NexusAutomationService extends AccessibilityService {
 
     private static final String TAG = "NexusAuto";
 
-    private boolean isPairingDialogOpened = false;
-    private boolean isSequenceCompleted = false;
+    // --- STATES ---
+    private static final int STATE_SEARCHING = 1;
+    private static final int STATE_ENTERING = 2; // Found "Wireless debug", trying to click in
+    private static final int STATE_INSIDE_MENU = 3;
+    private static final int STATE_DONE = 5;
+
+    private int currentState = STATE_SEARCHING;
     private boolean isAppConnected = false;
     private long lastActionTime = 0;
+
+    // Counters & Limits
+    private int scrollAttempts = 0;
+    private static final int MAX_SCROLLS = 10;
+    private int entryClickAttempts = 0;
+    private static final int MAX_ENTRY_ATTEMPTS = 5;
 
     private final Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        // CRASH GUARD: Catch errors here to prevent "Malfunctioning" status
         try {
             if (intent != null && intent.hasExtra("SHIELD_STATUS")) {
                 boolean wasConnected = isAppConnected;
                 isAppConnected = intent.getBooleanExtra("SHIELD_STATUS", false);
-
                 if (isAppConnected && !wasConnected) {
                     resetState();
                 }
             }
         } catch (Exception e) {
-            Log.e(TAG, "Error processing command", e);
+            Log.e(TAG, "Command Error", e);
         }
-        // START_STICKY tells OS to recreate service if killed, but don't redeliver intent (avoids loops)
         return START_NOT_STICKY;
     }
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        // CRASH GUARD: The Ultimate Protection
-        // If ANY line of code below fails, we catch it so the Service stays alive.
         try {
             handleAccessibilityEventSafe(event);
         } catch (Throwable t) {
-            Log.e(TAG, "CRITICAL SERVICE ERROR", t);
-            // Optional: reset state to recover
+            Log.e(TAG, "CRITICAL ERROR", t);
             resetState();
         }
     }
 
-    // Move logic to a helper method for safety
     private void handleAccessibilityEventSafe(AccessibilityEvent event) {
-        if (isAppConnected) return; // Standby Mode
-        if (isSequenceCompleted) return;
-        if (event == null || event.getSource() == null) return;
+        if (isAppConnected || currentState == STATE_DONE) return;
+        if (event == null) return;
 
-        // Anti-Spam
-        if (System.currentTimeMillis() - lastActionTime < 300) return;
+        // Anti-Spam / Animation Wait
+        if (System.currentTimeMillis() - lastActionTime < 600) return;
 
-        if (!"com.android.settings".equals(event.getPackageName())) return;
+        AccessibilityNodeInfo root = getRootInActiveWindow();
+        if (root == null) return;
 
-        AccessibilityNodeInfo rootNode = getRootInActiveWindow();
-        if (rootNode == null) return;
+        // --- DETERMINE LOCATION ---
+        boolean isInsideMenu = !findNodesByText(root, "Pair device with pairing code").isEmpty() ||
+                !findNodesByText(root, "Pair with pairing code").isEmpty() ||
+                !findNodesByText(root, "IP address & Port").isEmpty();
 
-        // --- PHASE 1: NAVIGATION ---
-        if (!isPairingDialogOpened) {
-            List<AccessibilityNodeInfo> wirelessOptions = findNodesByText(rootNode, "Wireless debugging");
+        boolean isPairingDialog = isInsideMenu &&
+                (!findNodesByText(root, "Cancel").isEmpty() ||
+                        !findNodesByText(root, "Pair").isEmpty());
 
-            if (!wirelessOptions.isEmpty()) {
-                AccessibilityNodeInfo target = wirelessOptions.get(0);
-                boolean alreadyInside = !findNodesByText(rootNode, "Pair device with pairing code").isEmpty() ||
-                        !findNodesByText(rootNode, "Pair with pairing code").isEmpty();
+        // --- STATE MACHINE ---
 
-                if (!alreadyInside) {
-                    if (clickNode(target)) {
-                        lastActionTime = System.currentTimeMillis();
-                        return;
-                    }
-                }
-            }
+        if (!isInsideMenu && currentState >= STATE_INSIDE_MENU) {
+            currentState = STATE_SEARCHING; // Reset if lost
         }
 
-        // --- PHASE 2: TRIGGER ---
-        if (!isPairingDialogOpened) {
-            AccessibilityNodeInfo pairButton = findClickableButton(rootNode);
-
-            if (pairButton != null) {
-                if (clickNode(pairButton)) {
-                    isPairingDialogOpened = true;
-                    lastActionTime = System.currentTimeMillis();
+        if (isPairingDialog) {
+            handleExtraction(root);
+        } else if (isInsideMenu) {
+            currentState = STATE_INSIDE_MENU;
+            handleInsideMenu(root);
+        } else {
+            // Main Settings List
+            if (currentState == STATE_ENTERING) {
+                // We tried clicking but are still outside. Retry.
+                if (System.currentTimeMillis() - lastActionTime > 1500) {
+                    Log.d(TAG, "Click didn't work, retrying entry...");
+                    handleNavigation(root);
                 }
             } else {
-                AccessibilityNodeInfo list = findScrollableNode(rootNode);
+                currentState = STATE_SEARCHING;
+                handleNavigation(root);
+            }
+        }
+    }
+
+    // --- PHASE 1: FIND & ENTER ---
+    private void handleNavigation(AccessibilityNodeInfo root) {
+        List<AccessibilityNodeInfo> targets = findNodesByText(root, "Wireless debugging");
+
+        if (!targets.isEmpty()) {
+            AccessibilityNodeInfo target = targets.get(0);
+
+            // [MAX OUT] Try standard click first, then force gesture
+            if (entryClickAttempts < MAX_ENTRY_ATTEMPTS) {
+                boolean clicked = smartClick(target);
+
+                // If standard click 'worked' (returned true) but we are still here,
+                // it means the UI didn't respond. Try Physical Gesture.
+                if (!clicked || entryClickAttempts > 2) {
+                    dispatchGestureClick(target);
+                }
+
+                currentState = STATE_ENTERING;
+                lastActionTime = System.currentTimeMillis();
+                entryClickAttempts++;
+            } else {
+                resetState();
+            }
+        } else {
+            // NOT FOUND -> SCROLL
+            if (scrollAttempts < MAX_SCROLLS) {
+                AccessibilityNodeInfo list = findScrollableNode(root);
                 if (list != null) {
                     list.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD);
+                    scrollAttempts++;
                     lastActionTime = System.currentTimeMillis();
                 }
             }
         }
+    }
 
-        // --- PHASE 3: EXTRACTION ---
-        else {
-            String code = extractRegex(rootNode, "\\d{6}");
-            String ipPort = extractRegex(rootNode, "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}:\\d{5}");
+    // --- PHASE 2: CLICK PAIR BUTTON ---
+    private void handleInsideMenu(AccessibilityNodeInfo root) {
+        scrollAttempts = 0;
+        AccessibilityNodeInfo pairButton = findClickableButton(root);
 
-            if (code != null && ipPort != null) {
-                isSequenceCompleted = true;
-
-                Intent intent = new Intent(UserMainActivity.ACTION_PAIR_REPLY);
-                intent.putExtra("auto_code", code);
-                intent.putExtra("auto_addr", ipPort);
-                intent.setPackage(getPackageName());
-                sendBroadcast(intent);
-
-                showToastSafe("Pairing...");
-
-                handler.postDelayed(() -> {
-                    performGlobalAction(GLOBAL_ACTION_BACK);
-                    handler.postDelayed(() -> {
-                        performGlobalAction(GLOBAL_ACTION_BACK);
-                        handler.postDelayed(this::resetState, 5000);
-                    }, 800);
-                }, 3000);
+        if (pairButton != null) {
+            // Try standard click, then nuclear gesture
+            if (!smartClick(pairButton)) {
+                dispatchGestureClick(pairButton);
+            }
+            lastActionTime = System.currentTimeMillis();
+        } else {
+            // Scroll to find button
+            AccessibilityNodeInfo list = findScrollableNode(root);
+            if (list != null) {
+                list.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD);
+                lastActionTime = System.currentTimeMillis();
             }
         }
     }
 
-    private void showToastSafe(String msg) {
-        try {
-            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            // UI operations in background services can sometimes fail
+    // --- PHASE 3: EXTRACT INFO ---
+    private void handleExtraction(AccessibilityNodeInfo root) {
+        String code = extractRegex(root, "\\d{6}");
+        String ipPort = extractRegex(root, "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}:\\d{5}");
+
+        if (code != null && ipPort != null) {
+            currentState = STATE_DONE;
+
+            Intent intent = new Intent(UserMainActivity.ACTION_PAIR_REPLY);
+            intent.putExtra("auto_code", code);
+            intent.putExtra("auto_addr", ipPort);
+            intent.setPackage(getPackageName());
+            sendBroadcast(intent);
+
+            try {
+                Toast.makeText(this, "Pairing...", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Log.e(TAG, "Toast failed", e);
+            }
+
+            handler.postDelayed(() -> {
+                performGlobalAction(GLOBAL_ACTION_BACK);
+                handler.postDelayed(() -> {
+                    performGlobalAction(GLOBAL_ACTION_BACK);
+                    handler.postDelayed(this::resetState, 4000);
+                }, 800);
+            }, 2000);
         }
     }
 
-    // --- HELPER METHODS (Kept same but ensure they don't crash) ---
+    // --- SMART CLICK (Standard) ---
+    private boolean smartClick(AccessibilityNodeInfo node) {
+        if (node == null) return false;
+        if (node.isClickable()) {
+            return node.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+        }
+        AccessibilityNodeInfo parent = node.getParent();
+        while (parent != null) {
+            if (parent.isClickable()) {
+                return parent.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+            }
+            parent = parent.getParent();
+        }
+        return false;
+    }
+
+    // --- NUCLEAR OPTION: Physical Gesture Tap ---
+    // Simulates a finger tap at the center of the node.
+    // Works even if the View is non-clickable but swallows touches.
+    private void dispatchGestureClick(AccessibilityNodeInfo node) {
+        if (node == null) return;
+        Rect bounds = new Rect();
+        node.getBoundsInScreen(bounds);
+
+        // Tap center of the item
+        float x = bounds.centerX();
+        float y = bounds.centerY();
+
+        // Safety check: Don't click off-screen (e.g. 0,0)
+        if (x < 0 || y < 0) return;
+
+        Path path = new Path();
+        path.moveTo(x, y);
+        GestureDescription.Builder builder = new GestureDescription.Builder();
+        GestureDescription gesture = builder
+                .addStroke(new GestureDescription.StrokeDescription(path, 0, 50))
+                .build();
+
+        dispatchGesture(gesture, null, null);
+        Log.d(TAG, "Dispatching Nuclear Gesture Tap at: " + x + "," + y);
+    }
+
+    // --- HELPERS ---
 
     private List<AccessibilityNodeInfo> findNodesByText(AccessibilityNodeInfo root, String text) {
-        if (root == null) return java.util.Collections.emptyList(); // Safety check
+        if (root == null) return java.util.Collections.emptyList();
         List<AccessibilityNodeInfo> nodes = root.findAccessibilityNodeInfosByText(text);
         if (nodes.isEmpty()) nodes = root.findAccessibilityNodeInfosByText(text.toLowerCase());
         return nodes;
@@ -182,16 +279,10 @@ public class NexusAutomationService extends AccessibilityService {
         return null;
     }
 
-    private boolean clickNode(AccessibilityNodeInfo node) {
-        if (node == null) return false;
-        if (node.isClickable()) return node.performAction(AccessibilityNodeInfo.ACTION_CLICK);
-        if (node.getParent() != null) return clickNode(node.getParent());
-        return false;
-    }
-
     private void resetState() {
-        isPairingDialogOpened = false;
-        isSequenceCompleted = false;
+        currentState = STATE_SEARCHING;
+        scrollAttempts = 0;
+        entryClickAttempts = 0;
         lastActionTime = 0;
     }
 
@@ -199,10 +290,4 @@ public class NexusAutomationService extends AccessibilityService {
     public void onInterrupt() {
         resetState();
     }
-
-    @Override
-    public void onTaskRemoved(Intent rootIntent) {
-        // This is where most services die. We intentionally do nothing here
-        // to let the separate process keep running.
-        Log.d(TAG, "Main App swiped away. Service switching to background mode.");    }
 }
