@@ -1,48 +1,12 @@
 import { useState, useEffect } from 'react';
-
-declare global {
-  interface Window {
-    AndroidNative?: {
-      executeCommand: (action: string, pkg: string, userId: number) => void;
-      getInstalledPackages: () => void;
-      toggleVpn: () => void;
-      setFakeLocation: (lat: number, lon: number) => void;
-      stopFakeLocation: () => void;
-    };
-  }
-}
-
-export interface AppData {
-  name: string;
-  packageName: string;
-  version: string;
-  icon: string;
-}
-
-export interface ActionLog {
-  timestamp: string;
-  pkg: string;
-  action: string;
-  status: string;
-}
-
-// Define the shape of the stats data coming from Java
-export interface ToolStats {
-  ghost: boolean;
-  privacy: boolean;
-  storage: string;
-  tasks: string;
-  speed?: string;
-}
+import { AppData, ToolStats } from '../types/index';
 
 export const useNativeBridge = () => {
   const [status, setStatus] = useState('Initializing...');
   const [apps, setApps] = useState<AppData[]>([]);
   const [users, setUsers] = useState<{id: number, name: string}[]>([{id: 0, name: 'Owner'}]);
   const [vpnActive, setVpnActive] = useState(false);
-  const [history, setHistory] = useState<ActionLog[]>([]);
 
-  // --- NEW: Live Tool Stats State ---
   const [toolStats, setToolStats] = useState<ToolStats>({
       ghost: false,
       privacy: false,
@@ -51,18 +15,13 @@ export const useNativeBridge = () => {
       speed: '1'
   });
 
-  // Shield Logs State
   const [shieldLogs, setShieldLogs] = useState<{time: string, domain: string}[]>([]);
-
-  // Connection UI State
   const [pairingData, setPairingData] = useState({ ip: '', port: '' });
   const [connectData, setConnectData] = useState({ ip: '', port: '' });
   const [mainEndpoint, setMainEndpoint] = useState<{ ip: string, port: string } | null>(null);
 
-  // Helper to check if we are running inside the Android App
   const isNative = () => typeof (window as any).AndroidNative !== 'undefined';
 
-  // --- ACTIONS ---
   const actions = {
     pair: (ip: string, port: string, code: string) => {
         if (isNative()) (window as any).AndroidNative.pairAdb(ip, port, code);
@@ -98,13 +57,7 @@ export const useNativeBridge = () => {
              setVpnActive(!vpnActive);
         }
     },
-    exportHistory: () => {
-        const text = history.map(h => `[${h.timestamp}] ${h.action} -> ${h.pkg}`).join('
-');
-        if (isNative()) (window as any).AndroidNative.shareText("UAD Export", text);
-    },
 
-    // --- NEW: Action to request updated stats from Java ---
     refreshStats: () => {
         if (isNative() && (window as any).AndroidNative.fetchToolStats) {
             (window as any).AndroidNative.fetchToolStats();
@@ -120,10 +73,8 @@ export const useNativeBridge = () => {
       },
   };
 
-  // --- COMMAND EXECUTOR ---
   const executeCommand = async (command: string): Promise<string> => {
     if (isNative()) {
-      // Execute the shell command via the Java interface
       (window as any).AndroidNative.executeShell(command);
       return "Command Sent";
     } else {
@@ -132,16 +83,10 @@ export const useNativeBridge = () => {
     }
   };
 
-  // --- EFFECT 1: SETUP (Runs Once) ---
   useEffect(() => {
-    // Poll VPN Status
-    const interval = setInterval(() => {
-    if (isNative() && (window as any).AndroidNative.checkConnectionStatus) {
-            (window as any).AndroidNative.checkConnectionStatus();
-        }
-    }, 2000);
+    // REMOVED: The setInterval polling loop is gone.
+    // We now rely on events or manual actions.
 
-    // Setup Global Listeners from Java
     (window as any).adbStatus = (s: string) => {
         console.log("ADB Status:", s);
         setStatus(s);
@@ -151,14 +96,12 @@ export const useNativeBridge = () => {
         try {
             console.log("App List Received. Length:", b64.length);
             if (!b64) return;
-
             const json = JSON.parse(atob(b64));
             setApps(json);
             setStatus("Shell Active");
         } catch(e) { console.error("JSON Parse Error:", e); }
     };
 
-    // --- NEW: Listener for Tool Stats Updates ---
     (window as any).updateToolStats = (jsonString: string) => {
         try {
             const data = JSON.parse(jsonString);
@@ -186,15 +129,15 @@ export const useNativeBridge = () => {
         });
     };
 
-    // Initial Connection Info Retrieval
+    // Initial Check Once on Mount
     if (isNative()) {
         (window as any).AndroidNative.retrieveConnectionInfo();
+        (window as any).AndroidNative.checkConnectionStatus();
     }
 
-    return () => clearInterval(interval);
+    return () => {};
   }, []);
 
-  // --- EFFECT 2: REACTION (Runs on Status Change) ---
   useEffect(() => {
     if (status === 'Connected' && isNative()) {
         console.log("Status Connected -> Fetching Packages");
@@ -202,18 +145,16 @@ export const useNativeBridge = () => {
     }
   }, [status]);
 
-  // --- RETURN EVERYTHING ---
   return {
       apps,
       users,
       status,
       vpnActive,
-      history,
       actions,
       pairingData,
       connectData,
       shieldLogs,
       executeCommand,
-      toolStats // <--- Exported so ToolsView can read it
+      toolStats
   };
 };

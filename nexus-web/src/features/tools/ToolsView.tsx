@@ -4,17 +4,15 @@ import { useNativeBridge } from '../../hooks/useNativeBridge';
 import {
   Zap, Trash2, Ghost, Lock, Unlock, Layers, Skull, MapPin
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 
 interface ToolsViewProps {
   executeCommand: (command: string) => Promise<string>;
+  onNavigate: (tab: string) => void;
 }
 
-export const ToolsView: React.FC<ToolsViewProps> = ({ executeCommand }) => {
+export const ToolsView: React.FC<ToolsViewProps> = ({ executeCommand, onNavigate }) => {
   const { runTool, loadingId } = useTools(executeCommand);
   const { toolStats, actions } = useNativeBridge();
-  const navigate = useNavigate(); // NEW
-
 
   useEffect(() => {
     actions.refreshStats();
@@ -147,7 +145,7 @@ export const ToolsView: React.FC<ToolsViewProps> = ({ executeCommand }) => {
                       color="text-cyan-500"
                       bg="bg-cyan-500/10"
                       isLoading={false}
-                      onClick={() => navigate('/map')} // Navigate to new screen
+                      onClick={() => onNavigate('map')}
                   />
                 </div></div>
     </div>

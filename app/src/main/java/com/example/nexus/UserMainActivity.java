@@ -25,7 +25,6 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.os.PowerManager;
 import android.provider.Settings;
-import android.net.Uri;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -40,11 +39,13 @@ import com.example.nexus.interfaces.ConsolidatedWebAppInterface;
 import com.example.nexus.managers.AdbPairingManager;
 import com.example.nexus.managers.AdbSingleton;
 import com.example.nexus.managers.MyAdbManager;
-import com.example.nexus.services.NexusAutomationService; // Import the Automation Service
+import com.example.nexus.services.NexusAutomationService;
 import com.example.nexus.services.ShieldVpnService;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -58,17 +59,16 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     private ConsolidatedWebAppInterface mInterface;
     private AdbPairingManager pairingManager;
 
-    // Flag to keep discovery alive during manual pairing
     private boolean isPairingMode = false;
 
     public static final int VPN_REQUEST_CODE = 0x0F;
-    private static final int NOTIFICATION_REQUEST_CODE = 0x10;
+    private static final int PERMISSION_REQUEST_CODE = 0x10;
 
     private static final String CHANNEL_ID = "nexus_pairing_channel";
     private static final String KEY_TEXT_REPLY = "key_text_reply";
 
-    // PUBLIC so the Service can access it
     public static final String ACTION_PAIR_REPLY = "com.example.nexus.ACTION_PAIR_REPLY";
+
     private void checkBatteryOptimizations() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             PowerManager pm = (PowerManager) getSystemService(POWER_SERVICE);
@@ -82,7 +82,6 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
                                 intent.setData(Uri.parse("package:" + getPackageName()));
                                 startActivity(intent);
                             } catch (Exception e) {
-                                // Fallback to general settings if direct request fails
                                 startActivity(new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS));
                             }
                         })
@@ -91,6 +90,7 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
             }
         }
     }
+
     private final BroadcastReceiver blockReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -107,17 +107,13 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
         @Override
         public void onReceive(Context context, Intent intent) {
             if (ACTION_PAIR_REPLY.equals(intent.getAction())) {
-
                 String code = null;
                 String fullAddr = null;
 
-                // CASE 1: Data from Automation Service (Zero-Touch)
                 if (intent.hasExtra("auto_code")) {
                     code = intent.getStringExtra("auto_code");
                     fullAddr = intent.getStringExtra("auto_addr");
-                }
-                // CASE 2: Data from Notification (Legacy/Manual)
-                else {
+                } else {
                     Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
                     if (remoteInput != null) {
                         code = remoteInput.getCharSequence(KEY_TEXT_REPLY).toString();
@@ -126,20 +122,13 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
 
                 if (code != null) {
                     CommonInterface common = new CommonInterface(UserMainActivity.this);
-
-                    // If we got the exact address from the screen, use it directly!
                     if (fullAddr != null && fullAddr.contains(":")) {
                         String[] parts = fullAddr.split(":");
-                        String ip = parts[0];
-                        String port = parts[1];
-                        common.showToast("Auto-Detected: " + ip + ":" + port);
-                        pairingManager.pairAdb(ip, port, code);
+                        common.showToast("Auto-Detected: " + parts[0] + ":" + parts[1]);
+                        pairingManager.pairAdb(parts[0], parts[1], code);
                     } else {
-                        // Fallback to MDNS pending info
                         pairingManager.pairWithSavedService(code, common);
                     }
-
-                    // Restore UI
                     isPairingMode = false;
                     NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                     nm.cancel(999);
@@ -149,7 +138,6 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     };
 
     public void startZeroTouchPairing() {
-        // 1. Check Permissions
         if (!isAccessibilityServiceEnabled()) {
             new AlertDialog.Builder(this)
                     .setTitle("Enable Zero-Touch?")
@@ -162,18 +150,14 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
             return;
         }
 
-        // 2. Start Discovery (Need to find the port!)
         if (pairingManager != null) pairingManager.startMdnsDiscovery();
 
-        // 3. Robust Navigation Logic
         try {
-            // OPTION A: Try Direct Link (Android 11+ Standard)
             Intent intent = new Intent("android.settings.WIRELESS_DEBUGGING_SETTINGS");
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             new CommonInterface(this).showToast("Watch the magic...");
         } catch (Exception e) {
-            // OPTION B: Fallback to Developer Options
             try {
                 Intent devIntent = new Intent(android.provider.Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS);
                 devIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -204,7 +188,7 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
-        protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         Thread.setDefaultUncaughtExceptionHandler((thread, e) -> handleFatalError(e));
 
         super.onCreate(savedInstanceState);
@@ -366,10 +350,23 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     }
 
     private void checkPermissions() {
+        List<String> permissions = new ArrayList<>();
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, NOTIFICATION_REQUEST_CODE);
+                permissions.add(Manifest.permission.POST_NOTIFICATIONS);
             }
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+        }
+
+        if (!permissions.isEmpty()) {
+            ActivityCompat.requestPermissions(this, permissions.toArray(new String[0]), PERMISSION_REQUEST_CODE);
         }
     }
 
@@ -386,21 +383,14 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     protected void onResume() {
         super.onResume();
 
-        // --- UPDATED LOGIC FOR "STOP TOOL" & "STANDBY MODE" ---
         MyAdbManager m = AdbSingleton.getInstance().getAdbManager();
         boolean isConnected = (m != null && m.isConnected());
 
         if (isConnected) {
-            // 1. If connected, STOP background discovery (Saves Battery)
             if (pairingManager != null) pairingManager.stopMdnsDiscovery();
-
-            // 2. Put Automation Service to SLEEP (Prevents "10 Paired Devices")
             updateAutomationState(true);
         } else {
-            // 1. If disconnected, ensure discovery is running
             if (pairingManager != null) pairingManager.startMdnsDiscovery();
-
-            // 2. Wake up Automation Service
             updateAutomationState(false);
         }
 
@@ -415,7 +405,6 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
     @Override
     protected void onPause() {
         super.onPause();
-        // Only stop discovery if we are NOT in pairing mode.
         if (pairingManager != null && !isPairingMode) {
             pairingManager.stopMdnsDiscovery();
         }
@@ -451,28 +440,25 @@ public class UserMainActivity extends AppCompatActivity implements AdbPairingLis
 
             if (success) {
                 if (webView != null) webView.evaluateJavascript("window.adbStatus('Connected');", null);
-
-                // --- SUCCESS: Stop everything unnecessary ---
                 if (pairingManager != null) pairingManager.stopMdnsDiscovery();
-                updateAutomationState(true); // Tell Service to Stand Down
 
+                // --- FIX: Fetch apps immediately on connection success ---
+                if (mInterface != null) mInterface.getInstalledPackages();
+
+                updateAutomationState(true);
             } else if (message != null && message.contains("Connection Failed") && webView != null) {
                 webView.evaluateJavascript("window.adbStatus('Connection Failed');", null);
-
-                // Connection failed, so we might need the tools again
                 updateAutomationState(false);
             }
         });
     }
 
-    // --- HELPER: Communicates with NexusAutomationService ---
     private void updateAutomationState(boolean isConnected) {
         try {
             Intent intent = new Intent(this, NexusAutomationService.class);
             intent.putExtra("SHIELD_STATUS", isConnected);
             startService(intent);
         } catch (Exception e) {
-            // Service might be disabled or permission missing, safe to ignore.
             Log.e("NEXUS_MAIN", "Failed to update automation state", e);
         }
     }

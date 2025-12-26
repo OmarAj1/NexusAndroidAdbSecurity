@@ -10,16 +10,19 @@ export interface AppData {
   description?: string; 
 }
 
-export interface ActionLog {
-  timestamp: string;
-  pkg: string;
-  action: string;
-  status: 'Success' | 'Failed';
-}
+// REMOVED: ActionLog interface (History Tab)
 
 export interface UserData {
   id: number;
   name:string;
+}
+
+export interface ToolStats {
+  ghost: boolean;
+  privacy: boolean;
+  storage: string;
+  tasks: string;
+  speed?: string;
 }
 
 declare global {
@@ -28,8 +31,26 @@ declare global {
       executeCommand: (action: string, pkg: string, userId: number) => void;
       getInstalledPackages: () => void;
       toggleVpn: () => void;
+      pairAdb?: (ip: string, port: string, code: string) => void;
+      connectAdb?: (ip: string, port: string) => void;
+      checkConnectionStatus?: () => void;
+      retrieveConnectionInfo?: () => void;
+      startVpn?: () => void;
+      stopVpn?: () => void;
+      shareText?: (title: string, text: string) => void;
+      fetchToolStats?: () => void;
+      startZeroTouchPairing?: () => void;
+      executeShell?: (cmd: string) => void;
+      setFakeLocation: (lat: number, lon: number) => void;
+      stopFakeLocation: () => void;
+      scanForCorpses?: () => void;
     };
     updateAppList?: (json: string) => void;
     adbStatus?: (status: string) => void;
+    receiveAppList?: (b64: string) => void;
+    updateToolStats?: (json: string) => void;
+    onPairingServiceFound?: (ip: string, port: any) => void;
+    onConnectServiceFound?: (ip: string, port: any) => void;
+    onShieldBlock?: (domain: string) => void;
   }
 }

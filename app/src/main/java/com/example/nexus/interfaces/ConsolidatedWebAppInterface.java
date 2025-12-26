@@ -7,7 +7,6 @@ import android.webkit.WebView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
-import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 import com.example.nexus.managers.AdbPairingManager;
 import com.example.nexus.managers.AdbSingleton;
@@ -32,43 +31,55 @@ public class ConsolidatedWebAppInterface {
     private Context context;
     private MyAdbManager adbManager;
     private ToolActionManager toolManager;
-    private CorpseFinderManager corpseManager; // NEW
-
+    private CorpseFinderManager corpseManager;
 
     public ConsolidatedWebAppInterface(AppCompatActivity activity, ExecutorService executor, WebView webView, AdbPairingManager pairingManager) {
         this.activity = activity;
+        this.context = activity;
         this.executor = executor;
         this.webView = webView;
         this.pairingManager = pairingManager;
         this.common = new CommonInterface(activity);
         this.shield = new ShieldInterface(activity, common);
-        this.corpseManager = new CorpseFinderManager(context, common); // NEW
+        this.corpseManager = new CorpseFinderManager(context, common);
     }
 
-    // --- Standard Methods (Keep these) ---
+    // --- GPS SPOOFING METHODS ---
+
+    @JavascriptInterface
+    public void setFakeLocation(double lat, double lon) {
+        try {
+            Intent intent = new Intent(context, MockLocationService.class);
+            intent.setAction(MockLocationService.ACTION_START);
+            intent.putExtra(MockLocationService.EXTRA_LAT, lat);
+            intent.putExtra(MockLocationService.EXTRA_LON, lon);
+            context.startService(intent);
+            Toast.makeText(context, "Fake GPS Started", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e("NexusNative", "Failed to start GPS service", e);
+            Toast.makeText(context, "Error starting GPS: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @JavascriptInterface
+    public void stopFakeLocation() {
+        try {
+            Intent intent = new Intent(context, MockLocationService.class);
+            intent.setAction(MockLocationService.ACTION_STOP);
+            context.startService(intent);
+            Toast.makeText(context, "Fake GPS Stopped", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e("NexusNative", "Failed to stop GPS service", e);
+        }
+    }
+
+    // --- EXISTING METHODS ---
 
     @JavascriptInterface
     public void scanForCorpses() {
         corpseManager.scanForCorpses();
     }
 
-    @JavascriptInterface
-    public void setFakeLocation(double lat, double lon) {
-        Intent intent = new Intent(context, MockLocationService.class);
-        intent.setAction(MockLocationService.ACTION_START);
-        intent.putExtra(MockLocationService.EXTRA_LAT, lat);
-        intent.putExtra(MockLocationService.EXTRA_LON, lon);
-        context.startService(intent);
-        Toast.makeText(context, "Fake GPS Started", Toast.LENGTH_SHORT).show();
-    }
-
-    @JavascriptInterface
-    public void stopFakeLocation() {
-        Intent intent = new Intent(context, MockLocationService.class);
-        intent.setAction(MockLocationService.ACTION_STOP);
-        context.startService(intent);
-        Toast.makeText(context, "Fake GPS Stopped", Toast.LENGTH_SHORT).show();
-    }
     @JavascriptInterface public String getNativeCoreVersion() { return common.getNativeCoreVersion(); }
     @JavascriptInterface public void hapticFeedback(String type) { common.hapticFeedback(type); }
     @JavascriptInterface public void showToast(String toast) { common.showToast(toast); }
@@ -81,6 +92,10 @@ public class ConsolidatedWebAppInterface {
     @JavascriptInterface public void startVpn() { shield.startVpn(); }
     @JavascriptInterface public void stopVpn() { shield.stopVpn(); }
     @JavascriptInterface public boolean getVpnStatus() { return shield.getVpnStatus(); }
+
+    @JavascriptInterface public void getInstalledPackages() { fetchRealPackageListInternal(); }
+    @JavascriptInterface public void getUsers() { fetchUsersInternal(); }
+
     @JavascriptInterface public void executeCommand(String a, String p, int u) { executeCommandInternal(a, p, u); }
 
     @JavascriptInterface
@@ -91,9 +106,9 @@ public class ConsolidatedWebAppInterface {
 
             activity.runOnUiThread(() -> {
                 if (isConnected) {
-                    // Force an update to the UI
                     webView.evaluateJavascript("window.adbStatus('Connected');", null);
-                    // Automatically fetch packages again to be safe
+                    // RESTORED: This is needed so the list loads on app start!
+                    // Since we removed the polling loop in React, this is safe and won't spam.
                     fetchRealPackageListInternal();
                 } else {
                     webView.evaluateJavascript("window.adbStatus('Disconnected');", null);
@@ -101,7 +116,7 @@ public class ConsolidatedWebAppInterface {
             });
         });
     }
-    // Add this method inside the class
+
     @JavascriptInterface
     public void startZeroTouchPairing() {
         activity.runOnUiThread(() -> {
@@ -111,78 +126,52 @@ public class ConsolidatedWebAppInterface {
         });
     }
 
-    // --- NEW: Shizuku-Style Notification Mode ---
     @JavascriptInterface
     public void startPairingNotificationMode() {
-        // 1. Start Discovery (so we find the IP/Port)
         pairingManager.startMdnsDiscovery();
-
-        // 2. Show the Notification UI
         activity.runOnUiThread(() -> {
             if (activity instanceof com.example.nexus.UserMainActivity) {
                 ((com.example.nexus.UserMainActivity) activity).showPairingNotification();
             }
         });
-
         common.showToast("Notification ready. Go to Settings!");
-    }
-
-    // --- COMPATIBILITY FIX: Redirects old 1-argument calls to the new logic ---
-    @JavascriptInterface
-    public void executeCommand(String cmd) {
-        executeShell(cmd);
-    }
-    @JavascriptInterface public void getInstalledPackages() { fetchRealPackageListInternal(); }
-    @JavascriptInterface public void getUsers() { fetchUsersInternal(); }
-    @JavascriptInterface
-    public void fetchToolStats() {
-        executor.execute(() -> {
-            MyAdbManager manager = AdbSingleton.getInstance().getAdbManager();
-            if (manager == null || !manager.isConnected()) return;
-
-            // Use the manager to get data
-            com.example.nexus.managers.ToolActionManager toolManager =
-                    new com.example.nexus.managers.ToolActionManager(manager, common);
-
-            String json = toolManager.getToolStats();
-
-            // Send back to React
-            activity.runOnUiThread(() ->
-                    webView.evaluateJavascript("if(window.updateToolStats) window.updateToolStats('" + json + "');", null)
-            );
-        });
     }
 
     @JavascriptInterface
     public void executeShell(String cmd) {
         executor.execute(() -> {
             MyAdbManager manager = AdbSingleton.getInstance().getAdbManager();
-
             if (manager == null || !manager.isConnected()) {
                 common.showToast("Error: ADB Not Connected");
                 return;
             }
-
-            // Create the manager on the fly
             com.example.nexus.managers.ToolActionManager toolManager =
                     new com.example.nexus.managers.ToolActionManager(manager, common);
 
-            // 1. Try to handle it as a "Tool" first
             boolean handled = toolManager.handleCommand(cmd);
-
-            // 2. If it wasn't a tool (or if handleCommand returned false), run as raw shell
             if (!handled) {
                 try {
                     String output = manager.runShellCommand(cmd);
-                    if (!output.isEmpty()) {
-                        common.showToast(output);
-                    } else {
-                        common.showToast("Command Executed");
-                    }
+                    if (!output.isEmpty()) common.showToast(output);
+                    else common.showToast("Command Executed");
                 } catch (Exception e) {
                     common.showToast("Error: " + e.getMessage());
                 }
             }
+        });
+    }
+
+    @JavascriptInterface
+    public void fetchToolStats() {
+        executor.execute(() -> {
+            MyAdbManager manager = AdbSingleton.getInstance().getAdbManager();
+            if (manager == null || !manager.isConnected()) return;
+            com.example.nexus.managers.ToolActionManager toolManager =
+                    new com.example.nexus.managers.ToolActionManager(manager, common);
+            String json = toolManager.getToolStats();
+            activity.runOnUiThread(() ->
+                    webView.evaluateJavascript("if(window.updateToolStats) window.updateToolStats('" + json + "');", null)
+            );
         });
     }
 
@@ -238,7 +227,6 @@ public class ConsolidatedWebAppInterface {
                             JSONObject obj = new JSONObject();
                             obj.put("pkg", pkg);
                             obj.put("type", system.contains(pkg) ? "System" : "User");
-
                             if (!installed.contains(pkg)) obj.put("status", "Uninstalled");
                             else if (disabled.contains(pkg)) obj.put("status", "Disabled");
                             else obj.put("status", "Enabled");

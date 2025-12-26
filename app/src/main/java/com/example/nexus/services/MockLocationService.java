@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
@@ -32,7 +33,9 @@ public class MockLocationService extends Service {
         public void run() {
             if (isMocking) {
                 pushLocation(lat, lon);
-                handler.postDelayed(this, 1000); // Update every second
+                if (isMocking) {
+                    handler.postDelayed(this, 1000); // Update every second
+                }
             }
         }
     };
@@ -57,14 +60,35 @@ public class MockLocationService extends Service {
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         try {
-            locationManager.addTestProvider(LocationManager.GPS_PROVIDER, false, false, false, false, true, true, true, 0, 5);
+            try {
+                locationManager.removeTestProvider(LocationManager.GPS_PROVIDER);
+            } catch (Exception ignored) {}
+
+            // FIX: Changed powerRequirement (2nd to last arg) from 0 to 1
+            // 0 causes IllegalArgumentException on some Android versions
+            locationManager.addTestProvider(
+                    LocationManager.GPS_PROVIDER,
+                    false, // requiresNetwork
+                    false, // requiresSatellite
+                    false, // requiresCell
+                    false, // hasMonetaryCost
+                    true,  // supportsAltitude
+                    true,  // supportsSpeed
+                    true,  // supportsBearing
+                    1,     // powerRequirement (1=Low, 3=High). Was 0, causing crash.
+                    1      // accuracy (1=Fine, 2=Coarse)
+            );
+
             locationManager.setTestProviderEnabled(LocationManager.GPS_PROVIDER, true);
+
         } catch (SecurityException e) {
-            Log.e("NexusMock", "Permission denied. App not selected as Mock App.", e);
-            stopSelf();
+            Log.e("NexusMock", "Permission denied.", e);
+            showErrorAndStop("Error: Select 'Nexus' in Developer Options -> Mock Location App");
             return;
         } catch (IllegalArgumentException e) {
-            // Provider likely already exists
+            Log.e("NexusMock", "Failed to add test provider", e);
+            showErrorAndStop("Error: Could not hijack GPS Provider. Restart device or toggle Developer Options.");
+            return;
         }
 
         isMocking = true;
@@ -76,28 +100,48 @@ public class MockLocationService extends Service {
         isMocking = false;
         handler.removeCallbacks(mockRunnable);
         try {
-            locationManager.removeTestProvider(LocationManager.GPS_PROVIDER);
+            if (locationManager != null) {
+                locationManager.removeTestProvider(LocationManager.GPS_PROVIDER);
+            }
         } catch (Exception e) {
-            // Ignore
+            // Ignore cleanup errors
         }
         stopForeground(true);
         stopSelf();
     }
 
     private void pushLocation(double lat, double lon) {
+        if (!isMocking) return;
+
         Location mockLocation = new Location(LocationManager.GPS_PROVIDER);
         mockLocation.setLatitude(lat);
         mockLocation.setLongitude(lon);
         mockLocation.setAltitude(0);
         mockLocation.setTime(System.currentTimeMillis());
         mockLocation.setAccuracy(5.0f);
-        mockLocation.setElapsedRealtimeNanos(SystemClock.elapsedRealtimeNanos());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            mockLocation.setElapsedRealtimeNanos(SystemClock.elapsedRealtimeNanos());
+        }
 
         try {
             locationManager.setTestProviderLocation(LocationManager.GPS_PROVIDER, mockLocation);
+        } catch (SecurityException e) {
+            Log.e("NexusMock", "Security Exception: Mock Location not granted", e);
+            showErrorAndStop("Permission Revoked: Select 'Nexus' as Mock App in Settings");
+        } catch (IllegalArgumentException e) {
+            Log.e("NexusMock", "Provider mismatch", e);
+            showErrorAndStop("Error: GPS Mocking Interrupted. Please restart the tool.");
         } catch (Exception e) {
             Log.e("NexusMock", "Failed to push location", e);
         }
+    }
+
+    private void showErrorAndStop(String message) {
+        isMocking = false;
+        new Handler(getMainLooper()).post(() ->
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show()
+        );
+        stopMocking();
     }
 
     private Notification createNotification() {
