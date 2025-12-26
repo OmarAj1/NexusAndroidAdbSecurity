@@ -49,7 +49,6 @@ export const PurgeView = ({ allApps, users, onDisconnect, onAction, onTrimCaches
 
   const handleBulkUninstall = () => {
     if (confirm(`Uninstall ${selectedApps.size} apps for User ${filters.userId}? This will happen sequentially.`)) {
-      // Loop through and fire individual actions (Old Stable Method)
       selectedApps.forEach(pkg => {
         onAction('uninstall', pkg, filters.userId);
       });
@@ -58,7 +57,9 @@ export const PurgeView = ({ allApps, users, onDisconnect, onAction, onTrimCaches
   };
 
   return (
-    <div className="flex flex-col gap-4 min-h-full relative">
+    // FIX 1: Changed 'min-h-full' to 'h-full' and added 'overflow-hidden'.
+    // This forces the container to respect the screen size, allowing the inner Virtual List to calculate its height.
+    <div className="flex flex-col gap-4 h-full relative overflow-hidden">
 
       <SafetyModal
         isOpen={modalOpen}
@@ -69,7 +70,8 @@ export const PurgeView = ({ allApps, users, onDisconnect, onAction, onTrimCaches
         app={pendingAction ? getUadData(pendingAction.pkg) : undefined}
       />
 
-      <div className="sticky top-0 z-30 -mx-4 px-4 pt-2 pb-4 bg-void/95 backdrop-blur-xl border-b border-white/5 shadow-2xl shadow-black/50">
+      {/* Filter Bar */}
+      <div className="flex-none z-30 -mx-4 px-4 pt-2 pb-4 bg-void/95 backdrop-blur-xl border-b border-white/5 shadow-2xl shadow-black/50">
         <FilterBar
           search={search} setSearch={setSearch}
           filters={filters} updateFilter={updateFilter}
@@ -79,6 +81,7 @@ export const PurgeView = ({ allApps, users, onDisconnect, onAction, onTrimCaches
         />
       </div>
 
+      {/* List Container - flex-1 will now calculate correctly because parent is h-full */}
       <AppList
         apps={filteredApps}
         selectedApps={selectedApps}

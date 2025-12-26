@@ -5,64 +5,43 @@ import { Shield, Zap, Wrench, Loader2, Moon, Sun, Map as MapIcon } from 'lucide-
 import { useNativeBridge } from './hooks/useNativeBridge';
 import { AtmosphericBackground, ThemeConfig } from './components/ui/AtmosphericBackground';
 
-// Views - Standard Imports (Lightweight)
+// Views
 import { PurgeView } from './features/purge/PurgeView';
 import { ConnectionView } from './features/connection/ConnectionView';
 import { ShieldView } from './features/shield/ShieldView';
 import { ToolsView } from './features/tools/ToolsView';
 
-// LAZY LOAD: MapView (Heavy - contains Leaflet)
-// We use .then() to handle the named export 'MapView' since React.lazy expects 'default'
+// LAZY LOAD: MapView
 const MapView = React.lazy(() =>
   import('./features/map/MapView').then(module => ({ default: module.MapView }))
 );
 
-// Define Theme Configurations
 const THEMES: Record<string, ThemeConfig> = {
-  dark: {
-    accentColor: '#6366f1',
-    darkColor: '#1e1b4b',
-    bgColor: '#020617',
-    particles: []
-  },
-  light: {
-    accentColor: '#4f46e5',
-    darkColor: '#e0e7ff',
-    bgColor: '#fdfbf7',
-    particles: []
-  }
+  dark: { accentColor: '#6366f1', darkColor: '#1e1b4b', bgColor: '#020617', particles: [] },
+  light: { accentColor: '#4f46e5', darkColor: '#e0e7ff', bgColor: '#fdfbf7', particles: [] }
 };
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('shield');
 
-  // Theme State
   const [themeMode, setThemeMode] = useState<string>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'dark';
-    }
+    if (typeof window !== 'undefined') return localStorage.getItem('theme') || 'dark';
     return 'dark';
   });
 
   const {
     apps, users, status, vpnActive, shieldLogs, actions,
-    pairingData, connectData, executeCommand,
-    toolStats // Added toolStats back if needed for ToolsView
+    pairingData, connectData, executeCommand
   } = useNativeBridge();
 
   useEffect(() => {
     const root = window.document.documentElement;
-    if (themeMode === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
+    if (themeMode === 'dark') root.classList.add('dark');
+    else root.classList.remove('dark');
     localStorage.setItem('theme', themeMode);
   }, [themeMode]);
 
-  const toggleTheme = () => {
-    setThemeMode(prev => prev === 'dark' ? 'light' : 'dark');
-  };
+  const toggleTheme = () => setThemeMode(prev => prev === 'dark' ? 'light' : 'dark');
 
   const handleAppAction = (action: string, pkg: string, userId: number) => {
     if ((window as any).AndroidNative) {
@@ -75,6 +54,7 @@ export default function App() {
     const isHandshaking = status === 'Connected';
 
     if (isReady) {
+      // PurgeView is self-contained and handles its own height now
       return (
         <PurgeView
           allApps={apps}
@@ -88,7 +68,7 @@ export default function App() {
 
     if (isHandshaking) {
       return (
-        <div className="flex flex-col items-center justify-center h-[60vh] space-y-4">
+        <div className="flex flex-col items-center justify-center h-full space-y-4">
           <Loader2 size={48} className="text-accent animate-spin" />
           <div className="text-center">
             <h2 className="text-xl font-bold text-body">Establishing Shell</h2>
@@ -126,40 +106,51 @@ export default function App() {
           </button>
           <span className="font-bold text-base tracking-tight text-body">Nexus<span className="text-accent">Security</span></span>
         </div>
-
         <div className="text-[10px] font-mono text-muted shrink-0">
           {status === 'Shell Active' ? <span className="text-safe">● ONLINE</span> : <span>○ {status}</span>}
         </div>
       </header>
 
-      {/* MAIN CONTENT AREA */}
-      <main className={`flex-1 overflow-y-auto relative z-10 ${activeTab === 'map' ? 'pt-14 pb-0' : 'pt-20 pb-20'}`}>
-        <div className={activeTab === 'map' ? 'h-full w-full' : 'px-4'}>
+      {/* MAIN CONTENT AREA - FIXED LAYOUT */}
+      {/* FIX 1: Removed 'overflow-y-auto'. We use 'overflow-hidden' so the inner views
+         (like PurgeView or ShieldView) control their own scrolling.
+      */}
+      <main className={`flex-1 relative z-10 overflow-hidden ${activeTab === 'map' ? 'pt-14 pb-0' : 'pt-14 pb-16'}`}>
+
+        {/* FIX 2: Added 'h-full'. This passes the height down to the children.
+           Without this, PurgeView thinks it has 0 height.
+        */}
+        <div className={`h-full w-full ${activeTab === 'map' ? '' : 'px-4 py-4'}`}>
+
           {activeTab === 'shield' && (
-            <ShieldView
-              isActive={vpnActive}
-              onToggle={actions.toggleVpn}
-              logs={shieldLogs}
-            />
+            <div className="h-full overflow-y-auto"> {/* Shield needs its own scroll now */}
+              <ShieldView
+                isActive={vpnActive}
+                onToggle={actions.toggleVpn}
+                logs={shieldLogs}
+              />
+            </div>
           )}
 
-          {activeTab === 'purge' && renderPurgeContent()}
+          {activeTab === 'purge' && (
+            <div className="h-full w-full"> {/* Wrapper for PurgeView */}
+               {renderPurgeContent()}
+            </div>
+          )}
 
           {activeTab === 'tools' && (
-            <ToolsView
-              executeCommand={executeCommand}
-              onNavigate={setActiveTab}
-            />
+            <div className="h-full overflow-y-auto"> {/* Tools needs its own scroll */}
+              <ToolsView
+                executeCommand={executeCommand}
+                onNavigate={setActiveTab}
+              />
+            </div>
           )}
 
-          {/* LAZY LOADED MAP */}
           {activeTab === 'map' && (
             <Suspense fallback={
               <div className="h-full w-full flex items-center justify-center">
-                <div className="flex flex-col items-center gap-4">
-                  <Loader2 size={32} className="text-accent animate-spin" />
-                  <span className="text-xs text-muted font-mono animate-pulse">LOADING CARTOGRAPHY...</span>
-                </div>
+                <Loader2 size={32} className="text-accent animate-spin" />
               </div>
             }>
               <MapView />
